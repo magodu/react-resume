@@ -1,0 +1,317 @@
+@import "../../scss/_variables";
+
+
+.mobile-button {
+    display: none;
+}
+
+.nav-bar {
+    position: absolute;
+    z-index: 900;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    height: 50px;
+    background-color: #000;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding-left: 10%;
+
+    .main-nav {
+        li {
+            margin: 0;
+            padding: 0;
+            display: inline-block;
+            zoom: 1;
+            position: relative;
+            height: 50px;
+
+            &.active {
+                background: $primary-color;
+                a {
+                    color: #fff;
+                }
+            }
+
+            &.active:hover {
+                a {
+                    color: #fff !important;
+                }
+            }
+
+            a {
+                color: #fff;
+                display: block;
+                padding: 16px 0;
+                margin: 0 13px;
+                cursor: pointer;
+
+                &:hover {
+                    color: $primary-color !important;
+                }
+            }
+        }
+    }
+}
+
+.nav-bar.fixed-nav-bar {
+    position: fixed;
+    top: 0;
+    bottom: auto;
+    left: 0;
+
+    .main-nav {
+        ul {
+            bottom: auto;
+            top: 60px;
+
+            li.active {
+                background-color: $primary-color;
+                a {
+                    color: #fff;
+                }
+            }
+        }
+    }
+}
+
+.clearfix:before {
+    display: table;
+    content: ' ';
+}
+
+.main-nav ul,
+.main-nav ul ul.sub-menu:after {
+    display: none;
+}
+
+/* Submenu */
+
+.main-nav {
+    ul.sub-menu {
+        bottom: 50px;
+        margin: 0 0 0 -100px;
+        padding: 5px 0;
+        position: absolute;
+        background: #fff;
+        z-index: 1000;
+        left: 50%;
+        border: 1px solid #ccc;
+
+        li:first-child a {
+            border-top: none;
+        }
+
+        li > a {
+            color: #636363;
+            font-size: 0.85rem;
+            text-align: center;
+            padding: 5px 0;
+            margin: 0;
+            display: block;
+            width: 170px;
+            background: 0 0;
+            border-top: 1px solid #e5e5e5;
+        }
+
+        li.language {
+            height: 30px;
+        }
+
+        li.language-selected > a {
+            font-weight: bold;
+            color: $primary-color !important;
+        }
+    }
+
+    ul.sub-menu:before {
+        position: absolute;
+        display: block;
+        content: ' ';
+        width: 0;
+        height: 0;
+        top: auto;
+        bottom: -8px;
+        left: 50%;
+        margin-left: -4px;
+        border-top: 8px solid #fff;
+        border-bottom: none;
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        z-index: -1;
+    }
+
+    ul.sub-menu:after {
+        display: none;
+    }
+}
+
+.fixed-nav-bar .main-nav ul:before {
+    bottom: auto;
+    top: -8px;
+    border-top: none;
+    border-bottom: 8px solid #fff;
+}
+
+.main-nav ul li {
+    background: 0 0;
+    padding: 0 12px;
+    margin: 0;
+    float: none;
+}
+
+.main-nav ul ul {
+    margin: 0 0 0 97px;
+    top: -6px;
+    text-align: left;
+}
+
+.main-nav ul ul:before {
+    top: 15px;
+    left: -17px;
+    margin-left: 0;
+    border-right: 8px solid #ccc;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+}
+
+.main-nav li:hover > ul {
+    display: block;
+}
+
+
+
+@media screen and (max-width: 768px) {
+    .nav-bar {
+        padding-left: 0;
+    }
+
+    .main-nav ul ul.sub-menu:before {
+        display: none;
+    }
+    .main-nav-wrap {
+        position: absolute;
+        top: 5px;
+        right: 95px;
+        z-index: 1000;
+    }
+    nav {
+        text-align: left;
+        margin-left: 0.5em;
+    }
+
+    .main-nav {
+        clear: both;
+        position: absolute;
+        width: 180px;
+        height: auto;
+        z-index: 1000;
+        padding: 10px 12px;
+        background: #fff;
+        display: none;
+        margin-left: -5px;
+        border: 1px solid #ccc;
+        top: auto;
+        bottom: 50px;
+        max-height: 420px;
+    }
+
+    .show-menu {
+        display: block !important;
+    }
+
+    .nav-bar .main-nav li {
+        clear: both;
+        float: none;
+        padding: 5px 0;
+        position: static;
+        display: block;
+        border-top: 1px solid #e5e5e5;
+        height: auto;
+    }
+    .nav-bar .main-nav li:first-child {
+        border: none;
+    }
+    .nav-bar .main-nav li a,
+    .nav-bar .main-nav ul li a {
+        font: inherit;
+        font-size: 0.85em;
+        text-transform: inherit;
+        background: 0 0;
+        width: auto;
+        display: block;
+        padding: 0;
+        color: #666;
+        border: none;
+    }
+    .main-nav a:hover,
+    .main-nav ul a:hover {
+        background: 0 0;
+        color: #000;
+    }
+
+    .main-nav ul.sub-menu {
+        position: static;
+        display: block;
+        margin: 0;
+        padding: 0;
+        background: 0 0;
+        border: none;
+        bottom: unset;
+    }
+    .main-nav ul ul.sub-menu {
+        margin: 0;
+        text-align: center;
+    }
+
+    .fixed-nav-bar .main-nav {
+        position: absolute;
+        top: 50px;
+        bottom: auto;
+    }
+
+    .show-menu {
+        display: block !important;
+    }
+
+    .mobile-button {
+        position: relative;
+        height: 50px;
+        font-weight: 500;
+        margin: auto auto 20px;
+        display: inline-block;
+        cursor: pointer;
+        padding: 15px 0;
+        white-space: nowrap;
+        text-align: left;
+        color: #fff;
+        text-transform: uppercase;
+    }
+
+    .mobile-button .mobile-wrapper {
+        display: flex;
+        align-items: center;
+    }
+
+    .mobile-button .mobile-wrapper span {
+        margin-left: 5px;
+    }
+
+    .mobile-button:after {
+        padding: 1px;
+        content: '';
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: -1px;
+        left: -1px;
+        z-index: -1;
+    }
+
+    .header .home-overlay {
+        top: 20%;
+        width: 80%;
+        margin: 0 auto;
+    }
+}

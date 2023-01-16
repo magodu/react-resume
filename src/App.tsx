@@ -1,19 +1,13 @@
 import React from 'react';
-
-import reactLogo from './assets/images/react_logo.png';
+import Home from './pages/Home/Home';
+import AboutMe from './pages/AboutMe/AboutMe';
 
 function App() {
     return (
-        <div className="container">
-            <div className="title">
-                <h1>
-                    <img src={reactLogo} alt="" />
-                    My React resume project
-                </h1>
-                <h3>Typescript, SASS and GoogleMaps ready</h3>
-                <h3>First version</h3>
-            </div>
-        </div>
+        <React.Fragment>
+            <Home />
+            <AboutMe />
+        </React.Fragment>
     );
 }
 
