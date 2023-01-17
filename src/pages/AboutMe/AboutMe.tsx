@@ -1,14 +1,42 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 
-import React from 'react';
+import React, { useState } from 'react';
+import { Waypoint } from 'react-waypoint';
 
 import classes from './AboutMe.module.scss';
 import resumePhoto from '../../assets/images/resume-photo.jpg';
 import signatureImage from '../../assets/images/signature.jpg';
 
+interface aboutBlocks {
+    name: string;
+    email: string;
+    phone: string;
+    birthDate: string;
+    address: string;
+    nationality: string;
+}
+
 const AboutMe = () => {
+    const initialClasses = `col-sm-6 ${classes['info-block']}`;
+
+    const blocks = {
+        name: initialClasses,
+        email: initialClasses,
+        phone: initialClasses,
+        birthDate: initialClasses,
+        address: initialClasses,
+        nationality: initialClasses,
+    };
+
+    const [blockAnimationClasses, setBlockAnimationClasses] = useState<aboutBlocks>(blocks);
+
+    const addAnimationClass = (blockName: string) => {
+        setBlockAnimationClasses((prevState) => ({ ...prevState, [blockName]: `col-sm-6 ${classes['info-block']} fadeInRight animated` }));
+        console.log(blockAnimationClasses);
+    };
+
     return (
-        <section id="about" className="section">
+        <section id="about" className="section fadeInUpBig animated">
             <div className="container-section">
                 <div className="title">
                     <div className="section-title">
@@ -23,8 +51,9 @@ const AboutMe = () => {
                         <h3 className={classes['info-position']}>UX / UI Developer</h3>
                     </div>
                     <div className="col-md-9 col-sm-12">
-                        <div className={`${classes['about-info']} row`}>
-                            <div className={`col-sm-6 ${classes['info-block']}`}>
+                        <div className="row">
+                            <Waypoint onEnter={() => addAnimationClass('name')} />
+                            <div className={blockAnimationClasses['name']}>
                                 <div className={`${classes['info-icon']} ${classes['hvr-trim']}`}>
                                     <i className="bi bi-person-fill" aria-hidden="true"></i>
                                 </div>
@@ -33,16 +62,18 @@ const AboutMe = () => {
                                     Mario González Duarte
                                 </div>
                             </div>
-                            <div className={`col-sm-6 ${classes['info-block']}`}>
+                            <Waypoint onEnter={() => addAnimationClass('email')} />
+                            <div className={blockAnimationClasses['email']}>
                                 <div className={`${classes['info-icon']} ${classes['hvr-trim']}`}>
-                                    <i className="bi bi-person-fill" aria-hidden="true"></i>
+                                    <i className="bi bi-envelope-fill" aria-hidden="true"></i>
                                 </div>
                                 <div className={classes['info-text']}>
                                     <span>Email</span>
                                     magodu.pral@gmail.com
                                 </div>
                             </div>
-                            <div className={`col-sm-6 ${classes['info-block']}`}>
+                            <Waypoint onEnter={() => addAnimationClass('phone')} />
+                            <div className={blockAnimationClasses['phone']}>
                                 <div className={`${classes['info-icon']} ${classes['hvr-trim']}`}>
                                     <i className="bi bi-telephone-fill" aria-hidden="true"></i>
                                 </div>
@@ -51,8 +82,8 @@ const AboutMe = () => {
                                     +34 679 84 97 84
                                 </div>
                             </div>
-
-                            <div className={`col-sm-6 ${classes['info-block']}`}>
+                            <Waypoint onEnter={() => addAnimationClass('birthDate')} />
+                            <div className={blockAnimationClasses['birthDate']}>
                                 <div className={`${classes['info-icon']} ${classes['hvr-trim']}`}>
                                     <i className="bi bi-calendar-week" aria-hidden="true"></i>
                                 </div>
@@ -61,8 +92,8 @@ const AboutMe = () => {
                                     26 September 1982
                                 </div>
                             </div>
-
-                            <div className={`col-sm-6 ${classes['info-block']}`}>
+                            <Waypoint onEnter={() => addAnimationClass('address')} />
+                            <div className={blockAnimationClasses['address']}>
                                 <div className={`${classes['info-icon']} ${classes['hvr-trim']}`}>
                                     <i className="bi bi-geo-alt-fill" aria-hidden="true"></i>
                                 </div>
@@ -71,8 +102,8 @@ const AboutMe = () => {
                                     Madrid, Spain
                                 </div>
                             </div>
-
-                            <div className={`col-sm-6 ${classes['info-block']}`}>
+                            <Waypoint onEnter={() => addAnimationClass('nationality')} />
+                            <div className={blockAnimationClasses['nationality']}>
                                 <div className={`${classes['info-icon']} ${classes['hvr-trim']}`}>
                                     <i className="bi bi-flag-fill" aria-hidden="true"></i>
                                 </div>
