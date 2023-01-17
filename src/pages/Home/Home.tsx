@@ -9,7 +9,7 @@ import classes from './Home.module.scss';
 
 const Home = () => {
     const [homeNavBarFixed, setHomeNavBarFixed] = useState<boolean>(false);
-    const { word } = useTypingText(['Front end architech', 'Front end developer', 'Javascript front end engineer'], 130, 20, true);
+    const { word } = useTypingText(['Front end architech', 'Front end developer', 'Javascript developer'], 130, 20, true);
 
     return (
         <React.Fragment>
