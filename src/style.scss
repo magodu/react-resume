@@ -337,3 +337,45 @@ button:focus {
     border-color: #cb2027;
 }
 
+
+/*********************************************/
+/*             TYPING TEXT HOOK              */
+/*********************************************/
+.word {
+    display: block;
+
+    span {
+        color: #fff;
+        position: relative;
+
+        &::after {
+            content: '';
+            width: 2px;
+            height: 100%;
+            background: #fff;
+            display: block;
+            position: absolute;
+            right: -10px;
+            top: 0;
+            animation: blink 0.5s ease infinite alternate-reverse;
+        }
+    }
+
+    &.empty {
+        visibility: hidden;
+        span::after {
+            visibility: visible;
+            right: 0;
+        }
+    }
+}
+
+@keyframes blink {
+    from {
+        opacity: 100%;
+    }
+
+    to {
+        opacity: 0%;
+    }
+}

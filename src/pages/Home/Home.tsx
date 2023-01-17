@@ -4,11 +4,12 @@ import React, { useState } from 'react';
 import { Waypoint } from 'react-waypoint';
 
 import NavBar from '../../components/NavBar/NavBar';
-
+import useTypingText from '../../hooks/useTypingText';
 import classes from './Home.module.scss';
 
 const Home = () => {
-    const [ homeNavBarFixed, setHomeNavBarFixed ] = useState<boolean>(false);
+    const [homeNavBarFixed, setHomeNavBarFixed] = useState<boolean>(false);
+    const { word } = useTypingText(['Front end architech', 'Front end developer', 'Javascript front end engineer'], 130, 20, true);
 
     return (
         <React.Fragment>
@@ -21,8 +22,8 @@ const Home = () => {
                             <h2>Hello I'm</h2>
                             <h1>Mario González Duarte</h1>
                             <div className={classes['type-wrap']}>
-                                <div id="typed-strings">
-                                    <span>Frontend Developer</span>
+                                <div>
+                                    <span>{word}</span>
                                 </div>
                             </div>
                             <a className={`${classes['download-link']} ${classes['hvr-shutter-out-horizontal']}`} href="#">
@@ -36,9 +37,6 @@ const Home = () => {
                         <i className="bi bi-dot" aria-hidden="true"></i>
                     </a>
                 </div>
-                
-                
-                
             </header>
             <Waypoint onEnter={() => setHomeNavBarFixed(false)} onLeave={() => setHomeNavBarFixed(true)} />
         </React.Fragment>
