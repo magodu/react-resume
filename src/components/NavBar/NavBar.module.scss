@@ -55,16 +55,17 @@
     }
 }
 
-.nav-bar.fixed-nav-bar {
+.fixed-nav-bar {
     position: fixed;
     top: 0;
     bottom: auto;
     left: 0;
+    background-color: rgba(0, 0, 0, 0.8);
 
     .main-nav {
         ul {
-            bottom: auto;
-            top: 60px;
+            bottom: auto!important;
+            top: 50px;
 
             li.active {
                 background-color: $primary-color;
@@ -140,10 +141,6 @@
         border-left: 8px solid transparent;
         border-right: 8px solid transparent;
         z-index: -1;
-    }
-
-    ul.sub-menu:after {
-        display: none;
     }
 }
 
