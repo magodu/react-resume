@@ -64,7 +64,7 @@ const NavBar: React.FC<{ fixedBar: boolean }> = ({ fixedBar }) => {
                         <a>Contacto</a>
                     </li>
                     <li id="menuItemLanguage" className={classes['menu-item-language']}>
-                        <a>Settings</a>
+                        <a>Language</a>
                         <ul className={classes['sub-menu']}>
                             <li className={`${classes.language} ${classes['language-selected']}`}>
                                 <a>English</a>
