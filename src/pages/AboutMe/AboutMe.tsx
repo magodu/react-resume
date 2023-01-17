@@ -32,7 +32,6 @@ const AboutMe = () => {
 
     const addAnimationClass = (blockName: string) => {
         setBlockAnimationClasses((prevState) => ({ ...prevState, [blockName]: `col-sm-6 ${classes['info-block']} fadeInRight animated` }));
-        console.log(blockAnimationClasses);
     };
 
     return (
