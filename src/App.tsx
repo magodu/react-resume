@@ -1,6 +1,7 @@
 import React from 'react';
 import Home from './pages/Home/Home';
 import AboutMe from './pages/AboutMe/AboutMe';
+import Experience from './pages/Experience/Experience';
 
 function App() {
 
@@ -8,6 +9,7 @@ function App() {
         <React.Fragment>
             <Home />
             <AboutMe />
+            <Experience />
         </React.Fragment>
     );
 }
