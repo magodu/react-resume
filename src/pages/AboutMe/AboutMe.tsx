@@ -17,6 +17,7 @@ interface aboutBlocks {
 }
 
 const AboutMe = () => {
+    const [sectionAnimationClasses, setSectionAnimationClasses] = useState<string>('section');
     const initialClasses = `col-sm-6 ${classes['info-block']}`;
 
     const blocks = {
@@ -30,12 +31,17 @@ const AboutMe = () => {
 
     const [blockAnimationClasses, setBlockAnimationClasses] = useState<aboutBlocks>(blocks);
 
+    const addAnimationSectionClass = () => {
+        setSectionAnimationClasses('section fadeInUp animated');
+    };
+
     const addAnimationClass = (blockName: string) => {
         setBlockAnimationClasses((prevState) => ({ ...prevState, [blockName]: `col-sm-6 ${classes['info-block']} fadeInRight animated` }));
     };
 
     return (
-        <section id="about" className="section fadeInUpBig animated">
+        <section className={sectionAnimationClasses}>
+            <Waypoint onEnter={() => addAnimationSectionClass()} />
             <div className="container-section">
                 <div className="title">
                     <div className="section-title">
