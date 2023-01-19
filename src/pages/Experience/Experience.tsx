@@ -34,12 +34,12 @@ const Experience = () => {
     };
 
     const addAnimationBlockClass = (index: number) => {
-        const animation = index % 2 === 0 ? 'fadeInLeft' : 'fadeInRight';
+        const animationDirection = index % 2 === 0 ? 'fadeInLeft' : 'fadeInRight';
 
         setBlockAnimationClasses(
             blockAnimationClasses.map((job, j) => 
                 j === index
-                ? {...job, blockClasses: `${initialBlockClasses} ${animation} animated`}
+                ? {...job, blockClasses: `${initialBlockClasses} ${animationDirection} animated`}
                 : job
             )
         );

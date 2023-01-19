@@ -99,7 +99,7 @@ const Skills = () => {
     };
 
     const setBarValue = (value: number) => {
-        console.log('setBarValue', value);
+        //console.log('setBarValue', value);
     };
 
     return (
