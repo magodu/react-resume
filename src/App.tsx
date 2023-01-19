@@ -4,6 +4,7 @@ import AboutMe from './pages/AboutMe/AboutMe';
 import Experience from './pages/Experience/Experience';
 import Skills from './pages/Skills/Skills';
 import Training from './pages/Training/Training';
+import Contact from './pages/Contact/Contact';
 
 function App() {
 
@@ -14,6 +15,7 @@ function App() {
             <Experience />
             <Skills />
             <Training />
+            <Contact />
         </React.Fragment>
     );
 }

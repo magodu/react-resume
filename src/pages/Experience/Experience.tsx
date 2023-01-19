@@ -29,7 +29,7 @@ const Experience = () => {
     const [sectionAnimationClasses, setSectionAnimationClasses] = useState<string>('section');
     const [blockAnimationClasses, setBlockAnimationClasses] = useState<experienceBlock[]>(jobs);
 
-    const addAnimationSectionClass = () => {
+    const addAnimationSectionClasses = () => {
         setSectionAnimationClasses('section fadeInUp animated');
     };
 
@@ -59,7 +59,7 @@ const Experience = () => {
 
     return (
         <section className={sectionAnimationClasses}>
-            <Waypoint onEnter={() => addAnimationSectionClass()} />
+            <Waypoint onEnter={() => addAnimationSectionClasses()} />
             <div className="container-section">
                 <div className="title">
                     <div className="section-title">

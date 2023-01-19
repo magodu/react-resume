@@ -1,0 +1,86 @@
+@import '../../scss/_variables';
+
+.map {
+    height: 450px;
+    z-index: 1;
+    margin-bottom: 40px;
+}
+
+.contact {
+    h2 {
+        font-size: 20px;
+        margin-bottom: 20px;
+        font-weight: 600;
+        text-transform: uppercase;
+    }
+
+    .contact-block {
+        margin-bottom: 25px;
+
+        i.details-icons {
+            background-color: $primary-color;
+            color: #fff;
+            width: 30px;
+            height: 30px;
+            text-align: center;
+            vertical-align: middle;
+            line-height: 30px;
+            float: left;
+            font-size: 20px;
+            border-radius: 2px;
+        }
+
+        p {
+            line-height: 30px;
+            margin-left: 50px;
+            font-size: 14px;
+
+            a {
+                color: $primary-color;
+            }
+        }
+
+        .social-profiles {
+            margin-bottom: 30px;
+
+            span {
+                display: inline-block;
+                margin-right: 10px;
+                font-size: 16px;
+            }
+
+            a {
+                display: inline-block;
+                width: 30px;
+                height: 30px;
+                border: 1px solid #999;
+                text-align: center;
+                line-height: 30px;
+                color: #999;
+                margin-right: 8px;
+
+                &:hover {
+                    color: #ffffff;
+                }
+            }
+        }
+    }
+
+    .error {
+        background-color: #eb0000;
+        color: #fff;
+        padding: 10px;
+        font-weight: 600;
+    }
+
+    .success {
+        background-color: #28a745;
+        color: #fff;
+        padding: 10px;
+        font-weight: 600;
+    }
+}
+
+
+
+
