@@ -1,0 +1,86 @@
+@import '../../scss/_variables';
+
+.skills-wrapper {
+    padding-top: 20px;
+    margin-bottom: 1em;
+    display: flex;
+    justify-content: center;
+
+    .skills {
+        width: 90%;
+        display: flex;
+        flex-wrap: wrap;
+
+        li {
+            width: 50%;
+            margin-bottom: 10px;
+            padding-right: 30px;
+
+            .progress-wrapper {
+                background-color: #f0f0f0;
+                border-radius: 0;
+                height: 1.5rem;
+                margin-bottom: 20px;
+                position: relative;
+                box-shadow: none;
+                color: #333;
+                font-size: 0.8rem;
+
+                .lead {
+                    color: #fff;
+                    font-weight: 400;
+                    left: 10px;
+                    position: absolute;
+                    top: 13px;
+                    z-index: 99;
+                }
+
+                .percentage {
+                    align-self: end;
+                    margin-right: 27px;
+                    margin-top: 0;
+                }
+            }
+        }
+    }
+}
+
+$chartColors: #007bff, #56c7fa, #ff6600, #0fdc18, #eca900, #5476a9, #e0949f ,#ffc000, #a144ec, #63ad68, #b67baa, #f2455f;
+
+@for $i from 1 through length($chartColors) {
+    $chartColors: append($chartColors, darken(nth($chartColors, $i), 20));
+}
+$chartColorsLength: length($chartColors);
+
+.skills-wrapper {
+    .skills {
+        li {
+            @for $i from 1 through $chartColorsLength {
+                &:nth-of-type(#{$chartColorsLength}n + #{$i}) .progress-color {
+                    background-color: nth($chartColors, $i);
+                }
+            }
+        }
+    }
+}
+
+
+.skill-language {
+    margin-top: 30px;
+    h2 {
+        text-transform: uppercase;
+        font-size: 18px;
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .skills-wrapper {
+        .skills {
+            width: 100%;
+            li {
+                width: 100%;
+            }
+        }
+    }
+}
