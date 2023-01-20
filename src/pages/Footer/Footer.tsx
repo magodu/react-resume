@@ -7,6 +7,11 @@ import classes from './Footer.module.scss';
 
 const Footer = () => {
 
+    const getCurrentYear = (): number => {
+        const currentDate = new Date();
+        return currentDate.getFullYear();
+    };
+
     return (
         <footer className={`${classes.footer} pagewidth`}>
             <div className={classes['footer-content']}>
@@ -27,7 +32,7 @@ const Footer = () => {
             </div>
             <div className={classes['footer-text']}>
                 <div className="text">
-                    Mario González Duarte <i className="bi bi-dot" aria-hidden="true"></i> 2023
+                    Mario González Duarte <i className="bi bi-dot" aria-hidden="true"></i> {getCurrentYear()}
                 </div>
             </div>
         </footer>
