@@ -13,17 +13,17 @@ interface imageList {
 const DUMMY_DATA = [
     {
         description: 'Udemy',
-        image: 'courses_react.png',
+        image: 'course-react.png',
         title: 'React',
     },
     {
         description: 'Udemy',
-        image: 'courses_angular2.png',
+        image: 'course-angular2.png',
         title: 'Angular',
     },
     {
         description: 'Udemy',
-        image: 'courses_typescript.png',
+        image: 'course-typescript.png',
         title: 'Typescript',
     },
     {
@@ -38,7 +38,7 @@ const DUMMY_DATA = [
     },
     {
         description: 'Udemy',
-        image: 'lwc.png',
+        image: 'course-lwc.png',
         title: 'Lightning Web Components',
     },
     {
