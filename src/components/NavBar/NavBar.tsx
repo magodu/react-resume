@@ -57,7 +57,6 @@ const NavBar: React.FC<{ fixedBar: boolean }> = ({ fixedBar }) => {
     }, [clearMenuLinkClasses]);
 
     useEffect(() => {
-        console.log('Hash location changed', location);
         if (location.pathname === '/' && (location.hash === '' || location.hash === '#home')) {
             setActiveClass('home');
         } else {
