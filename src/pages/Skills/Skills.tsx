@@ -103,7 +103,7 @@ const Skills = () => {
     };
 
     return (
-        <section className={sectionAnimationClasses}>
+        <section id="skills" className={sectionAnimationClasses}>
             <Waypoint onEnter={() => addAnimationSectionClass()} />
             <div className="container-section">
                 <div className="title">

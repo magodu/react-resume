@@ -17,7 +17,7 @@ interface aboutBlocks {
 }
 
 const AboutMe = () => {
-    const [sectionAnimationClasses, setSectionAnimationClasses] = useState<string>('section');
+    const [sectionAnimationClasses, setSectionAnimationClasses] = useState<string>(`section ${classes['top-margin']}`);
     const initialClasses = `col-sm-6 ${classes['info-block']}`;
 
     const blocks = {
@@ -32,7 +32,7 @@ const AboutMe = () => {
     const [blockAnimationClasses, setBlockAnimationClasses] = useState<aboutBlocks>(blocks);
 
     const addAnimationSectionClass = () => {
-        setSectionAnimationClasses('section fadeInUp animated');
+        setSectionAnimationClasses(`section ${classes['top-margin']} fadeInUp animated`);
     };
 
     const addAnimationClass = (blockName: string) => {
@@ -40,7 +40,7 @@ const AboutMe = () => {
     };
 
     return (
-        <section className={sectionAnimationClasses}>
+        <section id="aboutMe" className={sectionAnimationClasses}>
             <Waypoint onEnter={() => addAnimationSectionClass()} />
             <div className="container-section">
                 <div className="title">

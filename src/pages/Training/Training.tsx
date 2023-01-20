@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 import { Waypoint } from 'react-waypoint';
 
 import classes from './Training.module.scss';
-import angularCourse from '../../assets/images/courses/courses_angular2.png';
 
 interface imageList {
     name: string;
@@ -126,7 +125,7 @@ const Training = () => {
     
 
     return (
-        <section className={sectionAnimationClasses}>
+        <section id="training" className={sectionAnimationClasses}>
             <Waypoint onEnter={() => addAnimationSectionClasses()} />
             <div className="container-section">
                 <div className="title">

@@ -1,13 +1,15 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 
 import React, { useState, useEffect } from 'react';
+//import { matchRoutes, useLocation } from "react-router-dom"
+import { HashLink } from 'react-router-hash-link';
 import { Waypoint } from 'react-waypoint';
 
 import classes from './NavBar.module.scss';
 
 const NavBar: React.FC<{ fixedBar: boolean }> = ({ fixedBar }) => {
     const initialClasses = `${classes['nav-bar']} ${classes.clearfix} no-select`;
-
+   // const location = useLocation();
     const [ navBarClasses, setNavBarClasses ] = useState<string>(initialClasses);
     const [ navBarFixed, setNavBarFixed ] = useState<boolean>(false);
 
@@ -29,8 +31,13 @@ const NavBar: React.FC<{ fixedBar: boolean }> = ({ fixedBar }) => {
         }
     }
 
+    const setActiveClass = () => {
+        console.log('setActiveClass');
+        // const routes = [{ path: "/#home" }];
+        // const [{ route }] = matchRoutes(routes, location); 
+    }
+
     return (
-        
         <div className={navBarClasses}>
             <Waypoint onEnter={setFixedClass} onLeave={() => {}} />
             <nav>
@@ -41,27 +48,23 @@ const NavBar: React.FC<{ fixedBar: boolean }> = ({ fixedBar }) => {
                     </div>
                 </div>
                 <ul className={`${classes['main-nav']} pagewidth`}>
-                    {/* show-menu */}
-                    <li id="menuItemMain" className={`menu-item ${classes.active}`}>
-                        <a>Inicio</a>
+                    <li id="menuItemMain" className={`menu-item ${classes.active}`} onClick={() => setActiveClass()}>
+                        <HashLink smooth to="/#home">Home</HashLink>
                     </li>
-                    <li id="menuItemAboutMe" className="menu-item">
-                        <a>Sobre Mi</a>
+                    <li id="menuItemMain" className="menu-item">
+                        <HashLink smooth to="/#aboutMe">About Me</HashLink>
                     </li>
-                    <li id="menuItemExperience" className="menu-item">
-                        <a>Experiencia</a>
+                    <li id="menuItemMain" className="menu-item">
+                        <HashLink smooth to="/#experience">Experience</HashLink>
                     </li>
-                    <li id="menuItemSkills" className="menu-item">
-                        <a>Conocimientos</a>
+                    <li id="menuItemMain" className="menu-item">
+                        <HashLink smooth to="/#skills">Skills</HashLink>
                     </li>
-                    <li id="menuItemLanguages" className="menu-item">
-                        <a>Idiomas</a>
+                    <li id="menuItemMain" className="menu-item">
+                        <HashLink smooth to="/#training">Training</HashLink>
                     </li>
-                    <li id="menuItemTraining" className="menu-item">
-                        <a>Formación</a>
-                    </li>
-                    <li id="menuItemContact" className="menu-item">
-                        <a>Contacto</a>
+                    <li id="menuItemMain" className="menu-item">
+                        <HashLink smooth to="/#contact">Contact</HashLink>
                     </li>
                     <li id="menuItemLanguage" className={classes['menu-item-language']}>
                         <a>Language</a>
@@ -76,7 +79,6 @@ const NavBar: React.FC<{ fixedBar: boolean }> = ({ fixedBar }) => {
                     </li>
                 </ul>
             </nav>
-            
         </div>
     );
 };

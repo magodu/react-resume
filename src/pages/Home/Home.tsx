@@ -14,7 +14,7 @@ const Home = () => {
     return (
         <React.Fragment>
             <NavBar fixedBar={homeNavBarFixed} />
-            <header className={`${classes.header} pagewidth`}>
+            <header id="home" className={`${classes.header} pagewidth`}>
                 <div className={classes.background}></div>
                 <div className={classes['home-overlay']}>
                     <div className={classes['home-intro']}>

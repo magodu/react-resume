@@ -58,7 +58,7 @@ const Experience = () => {
 
 
     return (
-        <section className={sectionAnimationClasses}>
+        <section id="experience" className={sectionAnimationClasses}>
             <Waypoint onEnter={() => addAnimationSectionClasses()} />
             <div className="container-section">
                 <div className="title">

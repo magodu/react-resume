@@ -59,12 +59,10 @@ const Contact = () => {
         }
 
         setContactAnimationClasses((prevState) => ({ ...prevState, [blockName]: classes }));
-
-        console.log(contactAnimationClasses, classes)
     };
 
     return (
-        <section className={sectionAnimationClasses}>
+        <section id="contact" className={sectionAnimationClasses}>
             <Waypoint onEnter={() => addAnimationSectionClasses()} />
             <div className="container-section">
                 <div className="title">
