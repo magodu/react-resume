@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
-import { matchRoutes, useLocation } from "react-router-dom"
+import { useLocation } from "react-router-dom"
 import { HashLink } from 'react-router-hash-link';
 import { Waypoint } from 'react-waypoint';
 
@@ -21,6 +21,7 @@ const NavBar: React.FC<{ fixedBar: boolean }> = ({ fixedBar }) => {
     const location = useLocation();
     const [ navBarClasses, setNavBarClasses ] = useState<string>(initialClasses);
     const [ navBarFixed, setNavBarFixed ] = useState<boolean>(false);
+    const [ menuActive, setMenuActive ] = useState<boolean>(false);
 
     const initialMenuLinkClasses: any = useMemo(() => {
         return {
@@ -57,6 +58,7 @@ const NavBar: React.FC<{ fixedBar: boolean }> = ({ fixedBar }) => {
     }, [clearMenuLinkClasses]);
 
     useEffect(() => {
+        setMenuActive(false);
         if (location.pathname === '/' && (location.hash === '' || location.hash === '#home')) {
             setActiveClass('home');
         } else {
@@ -72,17 +74,21 @@ const NavBar: React.FC<{ fixedBar: boolean }> = ({ fixedBar }) => {
         }
     }
 
+    const toggleMenu = () => {
+        setMenuActive((prevState) => (!prevState));
+    }
+
     return (
         <div className={navBarClasses}>
             <Waypoint onEnter={setFixedClass} onLeave={() => {}} />
             <nav>
                 <div className={classes['mobile-button']}>
-                    <div className={classes['mobile-wrapper']}>
+                    <div className={classes['mobile-wrapper']} onClick={() => toggleMenu()}>
                         <i className="bi bi-list text-white" style={{ fontSize: 25 }}></i>
                         <span>Menú</span>
                     </div>
                 </div>
-                <ul className={`${classes['main-nav']} pagewidth`}>
+                <ul className={`${classes['main-nav']} pagewidth ${menuActive ? classes['show-menu'] : ''}`}>
                     <li id="menuItemMain" className={menuLinkClasses['home']} onClick={() => setActiveClass('home')}>
                         <HashLink smooth to="/#home">Home</HashLink>
                     </li>
