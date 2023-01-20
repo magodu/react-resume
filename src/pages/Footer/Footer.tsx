@@ -22,12 +22,6 @@ const Footer = () => {
                             <span>Back to top</span>
                         </HashLink>
                     </p>
-                    {/* <HashLink smooth to="/#home">
-                        <p className={classes['back-top']}>
-                            <i className="bi bi-chevron-up" aria-hidden="true"></i>
-                            <a href="#">Back to top</a> 
-                        </p>
-                    </HashLink> */}
                 </div>
             </div>
             <div className={classes['footer-text']}>
