@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 
 import React, { useState } from 'react';
+import { useNavigate } from "react-router-dom"
 import { Waypoint } from 'react-waypoint';
 
 import Pie from '../../components/Pie/Pie';
@@ -85,6 +86,7 @@ const DUMMY_BARS_DATA = [
 ];
 
 const Skills = () => {
+    const navigate = useNavigate();
     const [sectionAnimationClasses, setSectionAnimationClasses] = useState<string>('section');
 
     const pieChartConfig = {
@@ -94,8 +96,9 @@ const Skills = () => {
         },
     };
 
-    const addAnimationSectionClass = () => {
+    const addRouteAnimationSectionClass = () => {
         setSectionAnimationClasses('section fadeInUp animated');
+        navigate('#skills');
     };
 
     const setBarValue = (value: number) => {
@@ -104,7 +107,7 @@ const Skills = () => {
 
     return (
         <section id="skills" className={sectionAnimationClasses}>
-            <Waypoint onEnter={() => addAnimationSectionClass()} />
+            <Waypoint onEnter={() => addRouteAnimationSectionClass()} />
             <div className="container-section">
                 <div className="title">
                     <div className="section-title">

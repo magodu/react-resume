@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 
 import React, { useState } from 'react';
+import { useNavigate } from "react-router-dom"
 import { Waypoint } from 'react-waypoint';
 
 import classes from './AboutMe.module.scss';
@@ -17,6 +18,7 @@ interface aboutBlocks {
 }
 
 const AboutMe = () => {
+    const navigate = useNavigate();
     const [sectionAnimationClasses, setSectionAnimationClasses] = useState<string>(`section ${classes['top-margin']}`);
     const initialClasses = `col-sm-6 ${classes['info-block']}`;
 
@@ -31,8 +33,9 @@ const AboutMe = () => {
 
     const [blockAnimationClasses, setBlockAnimationClasses] = useState<aboutBlocks>(blocks);
 
-    const addAnimationSectionClass = () => {
+    const addRouteAnimationSectionClass = () => {
         setSectionAnimationClasses(`section ${classes['top-margin']} fadeInUp animated`);
+        navigate('#aboutMe');
     };
 
     const addAnimationClass = (blockName: string) => {
@@ -41,7 +44,7 @@ const AboutMe = () => {
 
     return (
         <section id="aboutMe" className={sectionAnimationClasses}>
-            <Waypoint onEnter={() => addAnimationSectionClass()} />
+            <Waypoint onEnter={() => addRouteAnimationSectionClass()} />
             <div className="container-section">
                 <div className="title">
                     <div className="section-title">

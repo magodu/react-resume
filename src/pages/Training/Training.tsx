@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 
 import React, { useState } from 'react';
+import { useNavigate } from "react-router-dom"
 import { Waypoint } from 'react-waypoint';
 
 import classes from './Training.module.scss';
@@ -100,11 +101,13 @@ const DUMMY_DATA = [
 
 
 const Training = () => {
+    const navigate = useNavigate();
     const [sectionAnimationClasses, setSectionAnimationClasses] = useState<string>('section');
     const [coursesAnimationClasses, setCoursesAnimationClasses] = useState<string>('list-courses');
 
-    const addAnimationSectionClasses = () => {
+    const addRouteAnimationSectionClass = () => {
         setSectionAnimationClasses('section fadeInUp animated');
+        navigate('#training');
     };
 
     const addAnimationCoursesClasses = () => {
@@ -126,7 +129,7 @@ const Training = () => {
 
     return (
         <section id="training" className={sectionAnimationClasses}>
-            <Waypoint onEnter={() => addAnimationSectionClasses()} />
+            <Waypoint onEnter={() => addRouteAnimationSectionClass()} />
             <div className="container-section">
                 <div className="title">
                     <div className="section-title">

@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 
 import React, { useState } from 'react';
+import { useNavigate } from "react-router-dom"
 import { Waypoint } from 'react-waypoint';
 
 import NavBar from '../../components/NavBar/NavBar';
@@ -8,12 +9,18 @@ import useTypingText from '../../hooks/useTypingText';
 import classes from './Home.module.scss';
 
 const Home = () => {
+    const navigate = useNavigate();
     const [homeNavBarFixed, setHomeNavBarFixed] = useState<boolean>(false);
     const { word } = useTypingText(['Front end architech', 'Javascript developer', 'Front end developer'], 130, 20, false);
+
+    const changeRoute = () => {
+        navigate('#home');
+    };
 
     return (
         <React.Fragment>
             <NavBar fixedBar={homeNavBarFixed} />
+            <Waypoint onEnter={() => changeRoute()} />
             <header id="home" className={`${classes.header} pagewidth`}>
                 <div className={classes.background}></div>
                 <div className={classes['home-overlay']}>

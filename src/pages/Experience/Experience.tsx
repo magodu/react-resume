@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 
 import React, { useState } from 'react';
+import { useNavigate } from "react-router-dom"
 import { Waypoint } from 'react-waypoint';
 
 import classes from './Experience.module.scss';
@@ -13,7 +14,7 @@ interface experienceBlock {
 }
 
 const Experience = () => {
-
+    const navigate = useNavigate();
     const initialBlockClasses = classes['timeline-block'];
     const initialContentClasses = classes['timeline-content'];
 
@@ -29,8 +30,9 @@ const Experience = () => {
     const [sectionAnimationClasses, setSectionAnimationClasses] = useState<string>('section');
     const [blockAnimationClasses, setBlockAnimationClasses] = useState<experienceBlock[]>(jobs);
 
-    const addAnimationSectionClasses = () => {
+    const addRouteAnimationSectionClass = () => {
         setSectionAnimationClasses('section fadeInUp animated');
+        navigate('#experience');
     };
 
     const addAnimationBlockClass = (index: number) => {
@@ -59,7 +61,7 @@ const Experience = () => {
 
     return (
         <section id="experience" className={sectionAnimationClasses}>
-            <Waypoint onEnter={() => addAnimationSectionClasses()} />
+            <Waypoint onEnter={() => addRouteAnimationSectionClass()} />
             <div className="container-section">
                 <div className="title">
                     <div className="section-title">

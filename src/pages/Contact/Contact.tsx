@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 
 import React, { useState } from 'react';
+import { useNavigate } from "react-router-dom"
 import { Waypoint } from 'react-waypoint';
 
 import GoogleMapComponent from '../../components/GoogleMap/GoogleMap';
@@ -21,11 +22,13 @@ interface contactBlock {
 };
 
 const Contact = () => {
-    const googleMapZoom = 13;
-    const googleMapPosition = { lat: 40.408004, lng: -3.678024 };
+    const navigate = useNavigate();
     const [formSuccess, setFormSuccess] = useState<boolean>(false);
     const [formError, setFormError] = useState<boolean>(false);
 
+    const googleMapZoom = 13;
+    const googleMapPosition = { lat: 40.408004, lng: -3.678024 };
+    
     const [sectionAnimationClasses, setSectionAnimationClasses] = useState<string>(`section ${classes.contact}`);
     const initialContactClasses = classes['contact-block'];
 
@@ -44,8 +47,9 @@ const Contact = () => {
 
     const [contactAnimationClasses, setContactAnimationClasses] = useState<contactBlock>(contactBlockClasses);
 
-    const addAnimationSectionClasses = () => {
+    const addRouteAnimationSectionClass = () => {
         setSectionAnimationClasses(`section ${classes.contact} fadeInUp animated`);
+        navigate('#contact');
     };
 
     const addAnimationBlockClass = (blockName: string, direction: string) => {
@@ -63,7 +67,7 @@ const Contact = () => {
 
     return (
         <section id="contact" className={sectionAnimationClasses}>
-            <Waypoint onEnter={() => addAnimationSectionClasses()} />
+            <Waypoint onEnter={() => addRouteAnimationSectionClass()} />
             <div className="container-section">
                 <div className="title">
                     <div className="section-title">
@@ -115,9 +119,6 @@ const Contact = () => {
                                 </a>
                                 <a className="hvr-pulse-grow github" href="#" title="Link to my Github repos">
                                     <i className="bi bi-github" aria-hidden="true"></i>
-                                </a>
-                                <a className="hvr-pulse-grow adobe" href="#" title="Download my resume">
-                                    <i className="bi bi-filetype-pdf" aria-hidden="true"></i>
                                 </a>
                             </div>
                         </div>
