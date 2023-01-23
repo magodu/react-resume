@@ -1,109 +1,115 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 
-import React, { useState } from 'react';
-import { useNavigate } from "react-router-dom"
+import React, { useState, useRef, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Waypoint } from 'react-waypoint';
 
 import classes from './Training.module.scss';
 
-interface imageList {
-    name: string;
-    image: any;
-  }
+
+interface course {
+    description: string,
+    imageName: string,
+    imageSrc?: any,
+    title: string
+
+}
 
 const DUMMY_DATA = [
     {
         description: 'Udemy',
-        image: 'course-react.png',
+        imageName: 'course-react.png',
         title: 'React',
     },
     {
         description: 'Udemy',
-        image: 'course-angular2.png',
+        imageName: 'course-angular2.png',
         title: 'Angular',
     },
     {
         description: 'Udemy',
-        image: 'course-typescript.png',
+        imageName: 'course-typescript.png',
         title: 'Typescript',
     },
     {
         description: 'Formación interna. Adesis.',
-        image: 'course-angular-js.png',
+        imageName: 'course-angular-js.png',
         title: 'AngularJS',
     },
     {
         description: 'Formación interna. Adesis.',
-        image: 'course-angularjs-directives.png',
+        imageName: 'course-angularjs-directives.png',
         title: 'Directivas de AngularJS',
     },
     {
         description: 'Udemy',
-        image: 'course-lwc.png',
+        imageName: 'course-lwc.png',
         title: 'Lightning Web Components',
     },
     {
         description: 'Formación interna. Adesis.',
-        image: 'course-clean-code.png',
+        imageName: 'course-clean-code.png',
         title: 'Código limpio',
     },
     {
         description: 'Formación interna. Adesis.',
-        image: 'course-node-js.png',
+        imageName: 'course-node-js.png',
         title: 'NodeJS',
     },
     {
         description: 'Formación interna. Adesis.',
-        image: 'course-closures.png',
+        imageName: 'course-closures.png',
         title: 'Closures',
     },
     {
         description: 'Formación interna. Adesis.',
-        image: 'course-memory-leaks.png',
+        imageName: 'course-memory-leaks.png',
         title: 'Memory Leaks',
     },
     {
         description: 'Formación interna. Adesis.',
-        image: 'course-functional-programming.png',
+        imageName: 'course-functional-programming.png',
         title: 'Programación funcional',
     },
     {
         description: 'Formación interna. Adesis.',
-        image: 'course-polymer.png',
+        imageName: 'course-polymer.png',
         title: 'Polymer',
     },
     {
         description: 'ESINE. 300 horas. Educación a distancia.',
-        image: 'course-e-commerce.png',
+        imageName: 'course-e-commerce.png',
         title: 'Curso superior de Internet y Comercio electrónico.',
     },
     {
         description: 'UNED. 3 creditos. Ávila',
-        image: 'course-web-design.png',
+        imageName: 'course-web-design.png',
         title: 'Curso práctico de diseño web',
     },
     {
         description: 'Formanet, Santander',
-        image: 'course-photoshop.png',
+        imageName: 'course-photoshop.png',
         title: 'Curso de retoque fotográfico con Adobe Photoshop',
     },
     {
         description: 'Universidad de Cantabria. Cursos de verano',
-        image: 'course-java.png',
+        imageName: 'course-java.png',
         title: 'Java. Cursos de verano',
     },
     {
         description: 'MSL Formación. 60 horas. Madrid',
-        image: 'course-dot-net.png',
+        imageName: 'course-dot-net.png',
         title: 'Curso certificado por Microsoft para el desarrollo e implentación de aplicaciones web con Microsoft Visual Basic .NET .MOC 6463A',
     },
 ];
 
-
 const Training = () => {
     const navigate = useNavigate();
     const [sectionAnimationClasses, setSectionAnimationClasses] = useState<string>('section');
-    const [coursesAnimationClasses, setCoursesAnimationClasses] = useState<string>('list-courses');
+    const [coursesAnimationClasses, setCoursesAnimationClasses] = useState<string>(classes['list-courses']);
+    const [imagesLoaded, setImagesLoaded] = useState<boolean>(false);
+
+    const courses = useRef<Array<course>>([]);
 
     const addRouteAnimationSectionClass = () => {
         setSectionAnimationClasses('section fadeInUp animated');
@@ -114,18 +120,34 @@ const Training = () => {
         setCoursesAnimationClasses(`${classes['list-courses']} fadeInUp animated`);
     };
 
-    const images: Array<imageList> =  DUMMY_DATA.map((item, i) => (    
-        {
-            name: item.image,
-            image: require(`../../assets/images/courses/${item.image}`)
-        }
-    ));
+    useEffect(() => {
+        const loadCourseData = (data: course) => {
+            return new Promise((resolve, reject) => {
+                const courseData: course = {
+                    description: data.description,
+                    imageName: data.imageName,
+                    imageSrc: require(`../../assets/images/courses/${data.imageName}`),
+                    title: data.title
+                }
 
-    const getImage = (name: string) => {
-        const found = images.find(e => e.name === name);
-        return found ? found.image : null;
-    };
-    
+                const image = new Image();
+                image.src = courseData.imageSrc;
+                
+                image.onload = () =>
+                    resolve(courseData);
+               image.onerror = (error) => reject(error);
+            });
+        };
+
+        Promise.all(DUMMY_DATA.map((data) => loadCourseData(data)))
+            .then((response: any) => {
+                courses.current = response;
+                setImagesLoaded(true);
+            })
+            .catch((error) => {
+                console.log('Failed to load images', error);
+            });
+    }, []);
 
     return (
         <section id="training" className={sectionAnimationClasses}>
@@ -148,17 +170,20 @@ const Training = () => {
                         </article>
                         <h2>Courses</h2>
                         <div className={classes.courses}>
-                            
-                            <ul className={coursesAnimationClasses}>
-                                <Waypoint onEnter={() => addAnimationCoursesClasses()} />
-                                {DUMMY_DATA.map((item, i) => (
-                                    <li key={i}>
-                                        <img src={getImage(item.image)} alt={item.title} />
-                                        <h3>{item.title}</h3>
-                                        <p>{item.description}</p>
-                                    </li>
-                                ))}
-                            </ul>
+                            {
+                                imagesLoaded ? (
+                                <ul className={coursesAnimationClasses}>
+                                    <Waypoint onEnter={() => addAnimationCoursesClasses()} />
+                                    {courses.current.map((item, i) => (
+                                        <li key={i}>
+                                            <img src={item.imageSrc} alt={item.title} />
+                                            <h3>{item.title}</h3>
+                                            <p>{item.description}</p>
+                                        </li>
+                                    ))}
+                                </ul> ) : (
+                                <div className="spinner-border text-dark" role="status"></div>
+                            )}
                         </div>
                     </div>
                 </div>

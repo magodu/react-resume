@@ -22,6 +22,7 @@ const NavBar: React.FC<{ fixedBar: boolean }> = ({ fixedBar }) => {
     const [ navBarClasses, setNavBarClasses ] = useState<string>(initialClasses);
     const [ navBarFixed, setNavBarFixed ] = useState<boolean>(false);
     const [ menuActive, setMenuActive ] = useState<boolean>(false);
+    const [ languageMenuActive, setLanguageMenuActive ] = useState<boolean>(false);
 
     const initialMenuLinkClasses: any = useMemo(() => {
         return {
@@ -78,6 +79,11 @@ const NavBar: React.FC<{ fixedBar: boolean }> = ({ fixedBar }) => {
         setMenuActive((prevState) => (!prevState));
     }
 
+    const setLanguage = (language: string) => {
+        console.log('Set language to ', language);
+        setLanguageMenuActive((prevState) => (!prevState));
+    }
+
     return (
         <div className={navBarClasses}>
             <Waypoint onEnter={setFixedClass} onLeave={() => {}} />
@@ -110,10 +116,10 @@ const NavBar: React.FC<{ fixedBar: boolean }> = ({ fixedBar }) => {
                     <li id="menuItemLanguage" className={classes['menu-item-language']}>
                         <a>Language</a>
                         <ul className={classes['sub-menu']}>
-                            <li className={`${classes.language} ${classes['language-selected']}`}>
+                            <li className={`${classes.language} ${languageMenuActive ? classes['language-selected'] : ''}`} onClick={() => setLanguage('EN')}>
                                 <a>English</a>
                             </li>
-                            <li className={classes.language}>
+                            <li className={`${classes.language} ${languageMenuActive ? classes['language-selected'] : ''}`} onClick={() => setLanguage('ES')}>
                                 <a>Spanish</a>
                             </li>
                         </ul>
