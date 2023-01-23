@@ -16,13 +16,24 @@ interface menuLink {
     contact: string
 };
 
+interface languageMenu {
+    english: boolean,
+    spanish: boolean
+};
+
 const NavBar: React.FC<{ fixedBar: boolean }> = ({ fixedBar }) => {
     const initialClasses = `${classes['nav-bar']} ${classes.clearfix} no-select`;
     const location = useLocation();
     const [ navBarClasses, setNavBarClasses ] = useState<string>(initialClasses);
     const [ navBarFixed, setNavBarFixed ] = useState<boolean>(false);
     const [ menuActive, setMenuActive ] = useState<boolean>(false);
-    const [ languageMenuActive, setLanguageMenuActive ] = useState<boolean>(false);
+
+    const initialLanguageMenuClasses: languageMenu = {
+        english: false,
+        spanish: false
+    };
+
+    const [languageMenuActive, setLanguageMenuActive] = useState<languageMenu>(initialLanguageMenuClasses);
 
     const initialMenuLinkClasses: any = useMemo(() => {
         return {
@@ -35,6 +46,7 @@ const NavBar: React.FC<{ fixedBar: boolean }> = ({ fixedBar }) => {
         }
     }, []);
 
+    
     const [menuLinkClasses, setMenuLinkClasses] = useState<menuLink>(initialMenuLinkClasses);
 
     useEffect(() => {
@@ -46,6 +58,8 @@ const NavBar: React.FC<{ fixedBar: boolean }> = ({ fixedBar }) => {
             setNavBarClasses(initialClasses);
             setNavBarFixed(false);
         }
+
+        setLanguageMenuActive((prevState) => ({ ...prevState, 'spanish': true }));
     }, [initialClasses, fixedBar]);
 
     const clearMenuLinkClasses = useCallback(() => {
@@ -81,7 +95,8 @@ const NavBar: React.FC<{ fixedBar: boolean }> = ({ fixedBar }) => {
 
     const setLanguage = (language: string) => {
         console.log('Set language to ', language);
-        setLanguageMenuActive((prevState) => (!prevState));
+        setLanguageMenuActive({ ...initialLanguageMenuClasses });
+        setLanguageMenuActive((prevState) => ({ ...prevState, [language]: true }));
     }
 
     return (
@@ -116,10 +131,10 @@ const NavBar: React.FC<{ fixedBar: boolean }> = ({ fixedBar }) => {
                     <li id="menuItemLanguage" className={classes['menu-item-language']}>
                         <a>Language</a>
                         <ul className={classes['sub-menu']}>
-                            <li className={`${classes.language} ${languageMenuActive ? classes['language-selected'] : ''}`} onClick={() => setLanguage('EN')}>
+                            <li className={`${classes.language} ${languageMenuActive['english'] ? classes['language-selected'] : ''}`} onClick={() => setLanguage('english')}>
                                 <a>English</a>
                             </li>
-                            <li className={`${classes.language} ${languageMenuActive ? classes['language-selected'] : ''}`} onClick={() => setLanguage('ES')}>
+                            <li className={`${classes.language} ${languageMenuActive['spanish'] ? classes['language-selected'] : ''}`} onClick={() => setLanguage('spanish')}>
                                 <a>Spanish</a>
                             </li>
                         </ul>
