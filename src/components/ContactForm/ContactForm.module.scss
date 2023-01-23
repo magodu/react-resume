@@ -1,13 +1,23 @@
-.error {
-    background-color: #eb0000;
-    color: #fff;
-    padding: 10px;
-    font-weight: 600;
+.message {
+    margin-bottom: 10px;
+
+    &.error {
+        background-color: #eb0000;
+        color: #fff;
+        padding: 10px;
+        font-weight: 600;
+    }
+    
+    &.success {
+        background-color: #28a745;
+        color: #fff;
+        padding: 10px;
+        font-weight: 600;
+    }
 }
 
-.success {
-    background-color: #28a745;
-    color: #fff;
-    padding: 10px;
-    font-weight: 600;
-}
+.error-text {
+    color: #b40e0e;
+    font-size: 14px;
+    margin-bottom: 0;
+  }
