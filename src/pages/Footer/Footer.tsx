@@ -1,11 +1,13 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 
 import { HashLink } from 'react-router-hash-link';
+import { useTranslation } from 'react-i18next';
 
 import classes from './Footer.module.scss';
 
 
 const Footer = () => {
+    const [translate] = useTranslation('global');
 
     const getCurrentYear = (): number => {
         const currentDate = new Date();
@@ -19,7 +21,7 @@ const Footer = () => {
                     <p className={classes['back-top']}>
                         <HashLink smooth to="/#home">
                             <i className="bi bi-chevron-up" aria-hidden="true"></i>
-                            <span>Back to top</span>
+                            <span>{translate('footer.buttonToTop')}</span>
                         </HashLink>
                     </p>
                 </div>

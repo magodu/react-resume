@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom"
 import { Waypoint } from 'react-waypoint';
+import { useTranslation } from 'react-i18next';
 
 import NavBar from '../../components/NavBar/NavBar';
 import useTypingText from '../../hooks/useTypingText';
@@ -11,7 +12,9 @@ import classes from './Home.module.scss';
 const Home = () => {
     const navigate = useNavigate();
     const [homeNavBarFixed, setHomeNavBarFixed] = useState<boolean>(false);
-    const { word } = useTypingText(['Front end architech', 'Javascript developer', 'Front end developer'], 130, 20, false);
+    const [translate] = useTranslation('global');
+    const { word } = useTypingText([translate('home.positions.architect'), translate('home.positions.jsDeveloper'), translate('home.positions.developer')], 130, 20, false);
+   
 
     const changeRoute = () => {
         navigate('#home');
@@ -26,7 +29,7 @@ const Home = () => {
                 <div className={classes['home-overlay']}>
                     <div className={classes['home-intro']}>
                         <div className={classes.name}>
-                            <h2>Hello I'm</h2>
+                            <h2>{translate('home.greeting')}</h2>
                             <h1>Mario González Duarte</h1>
                             <div className={classes['type-wrap']}>
                                 <div>
@@ -34,13 +37,13 @@ const Home = () => {
                                 </div>
                             </div>
                             <a className={`${classes['download-link']} ${classes['hvr-shutter-out-horizontal']}`} href="#">
-                                Download my CV
+                                {translate('common.resume_download')}
                             </a>
                         </div>
                     </div>
                 </div>
                 <div>
-                    <a className={`${classes['scroll-down']} ${classes['page-scroll']}`} title="Scroll Down" href="#">
+                    <a className={`${classes['scroll-down']} ${classes['page-scroll']}`} title={`${translate('home.scroll')}`} href="#">
                         <i className="bi bi-dot" aria-hidden="true"></i>
                     </a>
                 </div>

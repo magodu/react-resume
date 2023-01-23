@@ -1,0 +1,106 @@
+{
+    "common": {
+        "title_home": "Inicio",
+        "title_aboutMe": "Sobre Mi",
+        "title_experience": "Experiencia",
+        "title_skills": "Conocimientos",
+        "title_training": "Formación",
+        "title_contact": "Contacto",
+        "title_language": "Idioma",
+        "social_title_linkedin": "Link a mi perfil de LinkedIn",
+        "social_title_github": "Link a mis repositorios de Github",
+        "resume_download": "Descarga mi CV",
+        "loadingError": "Error cargando datos. Intente recargar la web." 
+    },
+    "home": {
+        "language_english": "Inglés",
+        "language_spanish": "Español", 
+        "menu": "Menú",
+        "greeting": "Hola, soy",
+        "scroll": "Scroll hacia abajo",
+        "positions": {
+            "architect": "Arquitecto Front End",
+            "developer": "Desarrollador Front End",
+            "jsDeveloper": "Desarrollador Javascript"
+        }
+    },
+    "aboutMe": {
+        "position": "Desarrollador Frontend",
+        "name": "Nombre",
+        "phone": "teléfono",
+        "address": "Dirección",
+        "email": "Email",
+        "birthDate": "Fecha de nacimiento",
+        "nationality": "Nacionalidad",
+        "socialProfiles": "Perfiles sociales",
+        "farewell": "Atentamente",
+        "signature": "Firma"
+    },
+    "experience": {
+        "dates": {
+            "today": "Fecha actual",
+            "month": " mes",
+            "months": " meses",
+            "year": " año",
+            "years": " años"
+        }
+    },
+    "skills": {
+        "languages_subtitle": "Idiomas"
+    },
+    "training": {
+        "education_subtitle": "Educación",
+        "courses_subtitle": "Cursos"
+    },
+    "contact": {
+        "details": {
+            "title": "Detalles de contacto",
+            "phone": "teléfono",
+            "whatsapp": "Whatsapp",
+            "email": "Email"
+        },
+        "contactForm": {
+            "title": "Escribeme",
+            "placeholder_name": "Nombre",
+            "placeholder_email": "Email",
+            "placeholder_phone": "Teléfono (opcional)",
+            "placeholder_message": "Mensaje",
+            "submit_button": "Enviar",
+            "error_name": "El nombre no debe estar vacío.",
+            "error_email": "Por favor, introduzca un email válido.",
+            "error_message": "Por favor, introduzca un mensaje.",
+            "error_banner": "Por favor, revise los campos no válidos",
+            "success_banner": "El mensaje se ha enviado correctamente. Le contactaré lo antes posible.",
+            "sending": "Enviando...",
+            "server_error_title": "Error al enviar el mensaje",
+            "server_error_subtitle": "Opps! There is some problem with the server. Try again.",
+            "server_error_emailMe": "If you prefer, you can also email me directly to:"
+        }
+    },
+    "footer": {
+        "buttonToTop": "Inicio"
+    },
+ 
+    "contactForm": {
+        "title": "Quick Contact",
+        "subtitle": "Contact me and I'll reply to you soon!",
+        "placeholders": {
+            "name": "Your name",
+            "email": "Your email address",
+            "message": "Type your message here...."
+        },
+        "button": {
+            "submit": "Submit",
+            "sending": "Sending..."
+        },
+        "confirm": {
+            "title": "Message sent",
+            "subtitle": "I'll reply to you soon :)"
+        },
+        "error": {
+            "title": "Error sending message",
+            "subtitle": "Parece que hay algun problema con el servidor. Inténtalo de nuevo.",
+            "emailMe": "O si prefieres, enviame un email directamente a:"
+        }
+    }
+}

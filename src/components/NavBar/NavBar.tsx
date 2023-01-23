@@ -4,6 +4,7 @@ import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { useLocation } from "react-router-dom"
 import { HashLink } from 'react-router-hash-link';
 import { Waypoint } from 'react-waypoint';
+import { useTranslation } from 'react-i18next';
 
 import classes from './NavBar.module.scss';
 
@@ -27,6 +28,8 @@ const NavBar: React.FC<{ fixedBar: boolean }> = ({ fixedBar }) => {
     const [ navBarClasses, setNavBarClasses ] = useState<string>(initialClasses);
     const [ navBarFixed, setNavBarFixed ] = useState<boolean>(false);
     const [ menuActive, setMenuActive ] = useState<boolean>(false);
+
+    const [translate, i18n] = useTranslation('global');
 
     const initialLanguageMenuClasses: languageMenu = {
         english: false,
@@ -95,6 +98,9 @@ const NavBar: React.FC<{ fixedBar: boolean }> = ({ fixedBar }) => {
 
     const setLanguage = (language: string) => {
         console.log('Set language to ', language);
+        const keyCode = language === 'spanish' ? 'es' : 'en';
+        i18n.changeLanguage(keyCode);
+        //TODO: guardar en localStorage
         setLanguageMenuActive({ ...initialLanguageMenuClasses });
         setLanguageMenuActive((prevState) => ({ ...prevState, [language]: true }));
     }
@@ -106,36 +112,36 @@ const NavBar: React.FC<{ fixedBar: boolean }> = ({ fixedBar }) => {
                 <div className={classes['mobile-button']}>
                     <div className={classes['mobile-wrapper']} onClick={() => toggleMenu()}>
                         <i className="bi bi-list text-white" style={{ fontSize: 25 }}></i>
-                        <span>Menú</span>
+                        <span>{translate('home.menu')}</span>
                     </div>
                 </div>
                 <ul className={`${classes['main-nav']} pagewidth ${menuActive ? classes['show-menu'] : ''}`}>
                     <li id="menuItemMain" className={menuLinkClasses['home']} onClick={() => setActiveClass('home')}>
-                        <HashLink smooth to="/#home">Home</HashLink>
+                        <HashLink smooth to="/#home">{translate('common.title_home')}</HashLink>
                     </li>
                     <li id="menuItemMain" className={menuLinkClasses['aboutMe']} onClick={() => setActiveClass('aboutMe')}>
-                        <HashLink smooth to="/#aboutMe">About Me</HashLink>
+                        <HashLink smooth to="/#aboutMe">{translate('common.title_aboutMe')}</HashLink>
                     </li>
                     <li id="menuItemMain" className={menuLinkClasses['experience']} onClick={() => setActiveClass('experience')}>
-                        <HashLink smooth to="/#experience">Experience</HashLink>
+                        <HashLink smooth to="/#experience">{translate('common.title_experience')}</HashLink>
                     </li>
                     <li id="menuItemMain" className={menuLinkClasses['skills']} onClick={() => setActiveClass('skills')}>
-                        <HashLink smooth to="/#skills">Skills</HashLink>
+                        <HashLink smooth to="/#skills">{translate('common.title_skills')}</HashLink>
                     </li>
                     <li id="menuItemMain" className={menuLinkClasses['training']} onClick={() => setActiveClass('training')}>
-                        <HashLink smooth to="/#training">Training</HashLink>
+                        <HashLink smooth to="/#training">{translate('common.title_training')}</HashLink>
                     </li>
                     <li id="menuItemMain" className={menuLinkClasses['contact']} onClick={() => setActiveClass('contact')}>
-                        <HashLink smooth to="/#contact">Contact</HashLink>
+                        <HashLink smooth to="/#contact">{translate('common.title_contact')}</HashLink>
                     </li>
                     <li id="menuItemLanguage" className={classes['menu-item-language']}>
-                        <a>Language</a>
+                        <a>{translate('common.title_language')}</a>
                         <ul className={classes['sub-menu']}>
                             <li className={`${classes.language} ${languageMenuActive['english'] ? classes['language-selected'] : ''}`} onClick={() => setLanguage('english')}>
-                                <a>English</a>
+                                <a>{translate('home.language_english')}</a>
                             </li>
                             <li className={`${classes.language} ${languageMenuActive['spanish'] ? classes['language-selected'] : ''}`} onClick={() => setLanguage('spanish')}>
-                                <a>Spanish</a>
+                                <a>{translate('home.language_spanish')}</a>
                             </li>
                         </ul>
                     </li>

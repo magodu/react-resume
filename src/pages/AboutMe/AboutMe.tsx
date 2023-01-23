@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom"
 import { Waypoint } from 'react-waypoint';
+import { useTranslation } from 'react-i18next';
 
 import classes from './AboutMe.module.scss';
 import resumePhoto from '../../assets/images/resume-photo.jpg';
@@ -20,8 +21,9 @@ interface aboutBlocks {
 const AboutMe = () => {
     const navigate = useNavigate();
     const [sectionAnimationClasses, setSectionAnimationClasses] = useState<string>(`section ${classes['top-margin']}`);
-    const initialClasses = `col-sm-6 ${classes['info-block']}`;
+    const [translate] = useTranslation('global');
 
+    const initialClasses = `col-sm-6 ${classes['info-block']}`;
     const blocks = {
         name: initialClasses,
         email: initialClasses,
@@ -48,7 +50,7 @@ const AboutMe = () => {
             <div className="container-section">
                 <div className="title">
                     <div className="section-title">
-                        <h4>About Me</h4>
+                        <h4>{translate('common.title_aboutMe')}</h4>
                     </div>
                 </div>
                 <div className="row">
@@ -56,7 +58,7 @@ const AboutMe = () => {
                         <a className={classes['profile-img']}>
                             <img src={resumePhoto} alt="Profile photograph" />
                         </a>
-                        <h3 className={classes['info-position']}>UX / UI Developer</h3>
+                        <h3 className={classes['info-position']}>{translate('aboutMe.position')}</h3>
                     </div>
                     <div className="col-md-9 col-sm-12">
                         <div className="row">
@@ -66,7 +68,7 @@ const AboutMe = () => {
                                     <i className="bi bi-person-fill" aria-hidden="true"></i>
                                 </div>
                                 <div className={classes['info-text']}>
-                                    <span>Name</span>
+                                    <span>{translate('aboutMe.name')}</span>
                                     Mario González Duarte
                                 </div>
                             </div>
@@ -76,7 +78,7 @@ const AboutMe = () => {
                                     <i className="bi bi-envelope-fill" aria-hidden="true"></i>
                                 </div>
                                 <div className={classes['info-text']}>
-                                    <span>Email</span>
+                                    <span>{translate('aboutMe.email')}</span>
                                     magodu.pral@gmail.com
                                 </div>
                             </div>
@@ -86,7 +88,7 @@ const AboutMe = () => {
                                     <i className="bi bi-telephone-fill" aria-hidden="true"></i>
                                 </div>
                                 <div className={classes['info-text']}>
-                                    <span>Phone</span>
+                                    <span>{translate('aboutMe.phone')}</span>
                                     +34 679 84 97 84
                                 </div>
                             </div>
@@ -96,7 +98,7 @@ const AboutMe = () => {
                                     <i className="bi bi-calendar-week" aria-hidden="true"></i>
                                 </div>
                                 <div className={classes['info-text']}>
-                                    <span>Date of Birth</span>
+                                    <span>{translate('aboutMe.birthDate')}</span>
                                     26 September 1982
                                 </div>
                             </div>
@@ -106,7 +108,7 @@ const AboutMe = () => {
                                     <i className="bi bi-geo-alt-fill" aria-hidden="true"></i>
                                 </div>
                                 <div className={classes['info-text']}>
-                                    <span>Address</span>
+                                    <span>{translate('aboutMe.address')}</span>
                                     Madrid, Spain
                                 </div>
                             </div>
@@ -116,13 +118,13 @@ const AboutMe = () => {
                                     <i className="bi bi-flag-fill" aria-hidden="true"></i>
                                 </div>
                                 <div className={classes['info-text']}>
-                                    <span>Nationality</span>
+                                    <span>{translate('aboutMe.nationality')}</span>
                                     Spanish
                                 </div>
                             </div>
 
                             <div className={`col-sm-12 ${classes['social-profiles']}`}>
-                                <span>Social Profiles </span>
+                                <span>{translate('aboutMe.socialProfiles')} </span>
                                 <a className="hvr-pulse-grow linkedin" href="#" title="Link to my Linkedin profile">
                                     <i className="bi bi-linkedin" aria-hidden="true"></i>
                                 </a>
@@ -142,8 +144,8 @@ const AboutMe = () => {
                                     a huge change in the world.
                                 </p>
                                 <p className={classes.twke3}>
-                                    <span>Yours sincerely,</span>
-                                    <img src={signatureImage} className={classes['img-responsive']} alt="signature" />
+                                    <span>{translate('aboutMe.farewell')}</span>
+                                    <img src={signatureImage} className={classes['img-responsive']} alt={`${translate('home.signature')}`} />
                                 </p>
                             </div>
                         </div>
