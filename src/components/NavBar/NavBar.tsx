@@ -97,7 +97,6 @@ const NavBar: React.FC<{ fixedBar: boolean }> = ({ fixedBar }) => {
     }
 
     const setLanguage = (language: string) => {
-        console.log('Set language to ', language);
         const keyCode = language === 'spanish' ? 'es' : 'en';
         i18n.changeLanguage(keyCode);
         //TODO: guardar en localStorage
