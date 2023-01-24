@@ -13,6 +13,7 @@ import './style.scss';
 i18next.init( {
     interpolation: { escapeValue: false },
     lng: 'es',
+    supportedLngs: ['es', 'en'],
     resources: {
         es: {
             global: global_es
