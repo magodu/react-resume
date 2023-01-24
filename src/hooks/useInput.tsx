@@ -32,7 +32,7 @@ const inputStateReducer = (state: InputState, action: ActionType) => {
     }
 };
 
-const useInputTS = (validateValue: any) => {
+const useInput = (validateValue: any) => {
     const [inputState, dispatch] = useReducer(inputStateReducer, initialInputState);
     const valueIsValid = validateValue(inputState.value);
     const hasError = !valueIsValid && inputState.isTouched;
@@ -60,4 +60,4 @@ const useInputTS = (validateValue: any) => {
     };
 };
 
-export default useInputTS;
+export default useInput;
