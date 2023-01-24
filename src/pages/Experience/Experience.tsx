@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom"
 import { Waypoint } from 'react-waypoint';
+import { useTranslation } from 'react-i18next';
 
 import classes from './Experience.module.scss';
 
@@ -15,6 +16,7 @@ interface experienceBlock {
 
 const Experience = () => {
     const navigate = useNavigate();
+    const [translate] = useTranslation('global');
     const initialBlockClasses = classes['timeline-block'];
     const initialContentClasses = classes['timeline-content'];
 
@@ -65,7 +67,7 @@ const Experience = () => {
             <div className="container-section">
                 <div className="title">
                     <div className="section-title">
-                        <h4>Experience</h4>
+                        <h4>{translate('common.title_experience')}</h4>
                     </div>
                 </div>
                 <div className="resume-section experience">

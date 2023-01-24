@@ -1,5 +1,6 @@
 import React, { useState, useEffect, FormEvent } from 'react';
 import { Waypoint } from 'react-waypoint';
+import { useTranslation } from 'react-i18next';
 
 import useInput from '../../hooks/useInput';
 
@@ -18,7 +19,7 @@ const ContactForm = () => {
     const [formSuccess, setFormSuccess] = useState<boolean>(false);
     const [formError, setFormError] = useState<boolean>(false);
     const [formIsValid, setFormIsValid] = useState<boolean>(true);
-
+    const [translate] = useTranslation('global');
 
     const { 
         value: enteredName,
@@ -123,15 +124,15 @@ const ContactForm = () => {
 
     return (
         <React.Fragment>
-            <h2>Write me</h2>
+            <h2>{translate('contact.contactForm.title')}</h2>
             {formError && (
                 <div className={`${classes.message} ${classes.error}`}>
-                    <i className="bi bi-emoji-frown" aria-hidden="true"></i> Please review the wrong fields
+                    <i className="bi bi-emoji-frown" aria-hidden="true"></i> {translate('contact.contactForm.error_banner')}
                 </div>
             )}
             {formSuccess && (
                 <div className={`${classes.message} ${classes.success}`}>
-                    <i className="bi bi-emoji-smile" aria-hidden="true"></i> Message has sent succesfully. I will contact you back ASAP.
+                    <i className="bi bi-emoji-smile" aria-hidden="true"></i> {translate('contact.contactForm.success_banner')}
                 </div>
             )}
             <form onSubmit={submitHandler} noValidate>
@@ -140,14 +141,14 @@ const ContactForm = () => {
                     <input 
                         type="text"
                         id="name"
-                        placeholder="Your Name"
+                        placeholder={`${translate('contact.contactForm.placeholder_name')}`}
                         value={enteredName}
                         className={formAnimationClasses['inputName']}
                         onChange={nameChangeHandler}
                         onBlur={nameBlurHandler}
                     />
                     {formError && nameInputHasError && (
-                        <p className={`${classes['error-text']} no-select`}>Name must not be empty.</p>
+                        <p className={`${classes['error-text']} no-select`}>{translate('contact.contactForm.error_name')}</p>
                     )}
                 </div>                
                 <div className={inputEmailClasses}>
@@ -155,14 +156,14 @@ const ContactForm = () => {
                     <input
                         type="email"
                         id="email"
-                        placeholder="Email"
+                        placeholder={`${translate('contact.contactForm.placeholder_email')}`}
                         value={enteredEmail}
                         className={formAnimationClasses['inputEmail']}
                         onChange={emailChangeHandler}
                         onBlur={emailBlurHandler}
                     />
                     {formError && emailInputHasError && (
-                        <p className={`${classes['error-text']} no-select`}>Please enter a valid email.</p>
+                        <p className={`${classes['error-text']} no-select`}>{translate('contact.contactForm.error_email')}</p>
                     )}
                 </div>
                 <div>
@@ -170,7 +171,7 @@ const ContactForm = () => {
                     <input
                         type="text"
                         id="phone"
-                        placeholder="Phone (optional)"
+                        placeholder={`${translate('contact.contactForm.placeholder_phone')}`}
                         value={enteredPhone}
                         className={formAnimationClasses['inputPhone']}
                         onChange={phoneChangeHandler}
@@ -181,19 +182,19 @@ const ContactForm = () => {
                     <Waypoint onEnter={() => addAnimationBlockClasses('inputMessage')} />
                     <textarea
                         id="message"
-                        placeholder="Your Message"
+                        placeholder={`${translate('contact.contactForm.placeholder_message')}`}
                         value={enteredMessage}
                         className={formAnimationClasses['inputMessage']}
                         onChange={messageChangeHandler}
                         onBlur={messageBlurHandler}
                     />
                     {formError && messageInputHasError && (
-                        <p className={`${classes['error-text']} no-select`}>Please enter a message</p>
+                        <p className={`${classes['error-text']} no-select`}>{translate('contact.contactForm.error_message')}</p>
                     )}
                 </div>
                 <Waypoint onEnter={() => addAnimationBlockClasses('inputButton')} />
                 <button className={formAnimationClasses['inputButton']} type="submit" value="Send Now">
-                    Send Now
+                    {translate('contact.contactForm.submit_button')}
                 </button>
             </form>
         </React.Fragment>

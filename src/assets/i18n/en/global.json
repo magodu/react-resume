@@ -57,7 +57,8 @@
             "title": "Contact details",
             "phone": "Phone",
             "whatsapp": "Whatsapp",
-            "email": "Email"
+            "email": "Email",
+            "resumeDownload": "Descarga mi curriculum en formato PDF"
         },
         "contactForm": {
             "title": "Write me",

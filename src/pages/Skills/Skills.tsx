@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom"
 import { Waypoint } from 'react-waypoint';
+import { useTranslation } from 'react-i18next';
 
 import Pie from '../../components/Pie/Pie';
 
@@ -88,6 +89,7 @@ const DUMMY_BARS_DATA = [
 const Skills = () => {
     const navigate = useNavigate();
     const [sectionAnimationClasses, setSectionAnimationClasses] = useState<string>('section');
+    const [translate] = useTranslation('global');
 
     const pieChartConfig = {
         color: '#06A763',
@@ -111,7 +113,7 @@ const Skills = () => {
             <div className="container-section">
                 <div className="title">
                     <div className="section-title">
-                        <h4>Skills</h4>
+                        <h4>{translate('common.title_skills')}</h4>
                     </div>
                 </div>
 
@@ -132,7 +134,7 @@ const Skills = () => {
                 </div>
 
                 <div className={classes['skill-language']}>
-                    <h2>LANGUAGES</h2>
+                    <h2>{translate('skills.languages_subtitle')}</h2>
 
                     <div className="col-sm-12">
                         <div className="skills">

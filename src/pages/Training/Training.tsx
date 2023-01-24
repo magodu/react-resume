@@ -3,6 +3,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Waypoint } from 'react-waypoint';
+import { useTranslation } from 'react-i18next';
 
 import classes from './Training.module.scss';
 
@@ -108,6 +109,7 @@ const Training = () => {
     const [sectionAnimationClasses, setSectionAnimationClasses] = useState<string>('section');
     const [coursesAnimationClasses, setCoursesAnimationClasses] = useState<string>(classes['list-courses']);
     const [imagesLoaded, setImagesLoaded] = useState<boolean>(false);
+    const [translate] = useTranslation('global');
 
     const courses = useRef<Array<course>>([]);
 
@@ -155,20 +157,20 @@ const Training = () => {
             <div className="container-section">
                 <div className="title">
                     <div className="section-title">
-                        <h4>Training</h4>
+                        <h4>{translate('common.title_training')}</h4>
                     </div>
                 </div>
 
                 <div className={`row ${classes.training}`}>
                     <div className="col-md-12 col-xs-12">
-                        <h2>Education</h2>
+                        <h2>{translate('training.education_subtitle')}</h2>
                         <article>
                             <div className={classes['training-section']}>
                                 <div className={classes.degree}>Higher Level Training Cycle (CFGS) in Management Information Systems. Computer and Information Sciences.</div>
                                 <div className={classes.place}>IES Alisal. Santander (Spain)</div>
                             </div>
                         </article>
-                        <h2>Courses</h2>
+                        <h2>{translate('training.courses_subtitle')}</h2>
                         <div className={classes.courses}>
                             {
                                 imagesLoaded ? (

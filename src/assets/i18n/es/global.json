@@ -57,10 +57,11 @@
             "title": "Detalles de contacto",
             "phone": "teléfono",
             "whatsapp": "Whatsapp",
-            "email": "Email"
+            "email": "Email",
+            "resumeDownload": "Download my resume in PDF format"
         },
         "contactForm": {
-            "title": "Escribeme",
+            "title": "Escríbeme",
             "placeholder_name": "Nombre",
             "placeholder_email": "Email",
             "placeholder_phone": "Teléfono (opcional)",

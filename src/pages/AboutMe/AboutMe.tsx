@@ -125,10 +125,10 @@ const AboutMe = () => {
 
                             <div className={`col-sm-12 ${classes['social-profiles']}`}>
                                 <span>{translate('aboutMe.socialProfiles')} </span>
-                                <a className="hvr-pulse-grow linkedin" href="#" title="Link to my Linkedin profile">
+                                <a className="hvr-pulse-grow linkedin" href="#" title={`${translate('common.social_title_linkedin')}`}>
                                     <i className="bi bi-linkedin" aria-hidden="true"></i>
                                 </a>
-                                <a className="hvr-pulse-grow github" href="#" title="Link to my Github repositories">
+                                <a className="hvr-pulse-grow github" href="#" title={`${translate('common.social_title_github')}`}>
                                     <i className="bi bi-github" aria-hidden="true"></i>
                                 </a>
                             </div>
