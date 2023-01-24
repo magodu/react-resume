@@ -24,7 +24,7 @@ const Contact = () => {
     const [sectionAnimationClasses, setSectionAnimationClasses] = useState<string>(`section ${classes.contact}`);
     const initialContactClasses = classes['contact-block'];
     const googleMapZoom = 13;
-    const googleMapPosition = { lat: 40.408004, lng: -3.678024 };
+    const googleMapPosition = { lat: 40.407196, lng: -3.678261 };
 
     const contactBlockClasses: contactBlock = {
         'phone': initialContactClasses,
