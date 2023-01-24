@@ -1,5 +1,6 @@
 {
     "common": {
+        "loading": "Cargando",
         "title_home": "Inicio",
         "title_aboutMe": "Sobre Mi",
         "title_experience": "Experiencia",
