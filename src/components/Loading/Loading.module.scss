@@ -1,5 +1,16 @@
+@import '../../scss/_variables';
+
+$loading-bgcolor: #0fa;
+
 .loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: #000;
+    background-color: rgba(0, 0, 0, 0.5);
+    // background: linear-gradient(90deg, darken($loading-bgcolor, 15%), darken($loading-bgcolor, 8%));
+    // box-shadow: inset 0px 0px 90px rgba(0, 0, 0, 0.5);
+    //opacity: 0.4;
     height: 100%;
     width: 100%;
     position: fixed;
@@ -13,10 +24,50 @@
     z-index: 999999;
     text-align: center;
 
-    img {
-        width:700px;
-        height: 700px;
-        margin: auto;
-        vertical-align: middle;
+    .loader {
+        width: 100px;
+        height: 102px;
+        border-radius: 100%;
+        position: absolute;
+        top: 45%;
+        left: calc(50% - 50px);
+        animation: spin 5s infinite linear;
+    
+        .circle {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            .inner {
+                width: 100%;
+                height: 100%;
+                border-radius: 100%;
+                //border: 5px solid transparentize($loading-bgcolor, 0.6);
+                border: 5px solid transparentize($loading-bgcolor, 0.4);
+                border-right: none;
+                border-top: none;
+                background-clip: padding;
+                box-shadow: inset 0px 0px 10px transparentize($loading-bgcolor, 0.85);
+            }
+        }
+    }
+}
+
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@for $i from 0 through $loading-ncirc {
+    .circle:nth-of-type(#{$i}) {
+        transform: rotate($i * 70deg);
+
+        .inner {
+            animation: spin 2s infinite linear;
+        }
     }
 }
