@@ -1,111 +1,74 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 
-import React, { useState } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { useNavigate } from "react-router-dom"
 import { Waypoint } from 'react-waypoint';
 import { useTranslation } from 'react-i18next';
 
+import { SiteContext } from '../../store/site-context';
+import { isEmptyObject } from '../../utils';
+
 import Pie from '../../components/Pie/Pie';
+import Spinner from '../../components/Spinner/Spinner';
 
 import classes from './Skills.module.scss';
 
-const DUMMY_BARS_DATA = [
-    {
-        skill: 'Angular',
-        level: 96,
-    },
-    {
-        skill: 'React',
-        level: 89,
-    },
-    {
-        skill: 'Javascript (nativo)',
-        level: 90,
-    },
-    {
-        skill: 'TypeScript',
-        level: 85,
-    },
-    {
-        skill: 'Lightning Web Components',
-        level: 89,
-    },
-    {
-        skill: 'AngularJS',
-        level: 95,
-    },
-    {
-        skill: 'JQuery',
-        level: 90,
-    },
-    {
-        skill: 'Webpack',
-        level: 85,
-    },
-    {
-        skill: 'HTML5',
-        level: 95,
-    },
-    {
-        skill: 'CSS / SASS / LESS',
-        level: 89,
-    },
-    {
-        skill: 'Diseño Responsive',
-        level: 85,
-    },
-   
-    {
-        skill: 'API REST',
-        level: 99,
-    },
-    {
-        skill: 'Git',
-        level: 95,
-    },
-   
-    {
-        skill: 'NodeJs',
-        level: 75,
-    },
-    {
-        skill: 'Arquitectura MV* ',
-        level: 89,
-    },
-    {
-        skill: 'TDD',
-        level: 70,
-    },
-    {
-        skill: 'Metodologías ágiles',
-        level: 80,
-    },
-    {
-        skill: 'Photoshop',
-        level: 90,
-    }
-];
-
 const Skills = () => {
+    const { data } = useContext(SiteContext);
+    const [loadedData, setLoadedData] = useState<boolean>(false);
+    const [sectionData, setSectionData] = useState<any>(null);
     const navigate = useNavigate();
     const [sectionAnimationClasses, setSectionAnimationClasses] = useState<string>('section');
     const [translate] = useTranslation('global');
 
     const pieChartConfig = {
+        delay: 1000,
         color: '#06A763',
         percentText: {
             color: '#58666e',
         },
     };
 
+    useEffect(() => {
+        if (!isEmptyObject(data)) {
+            setLoadedData(true);
+
+            setSectionData({
+                skills: data.skills,
+                languages: data.languages.map((obj: any) => ({ ...obj, initialValue: '1' }))
+            });
+        }
+    }, [data]);
+
+    
+    const setSkillBarValues = () => {
+        const identifier = setTimeout(() => {
+            document.querySelectorAll('.progress-bar').forEach((barElem) => {
+                if (barElem instanceof HTMLElement) {
+                    const value = `${barElem.dataset.progress}%`;
+                    barElem.style.width = value;
+                }
+            });
+            clearTimeout(identifier);
+        }, 1000);
+
+    };
+
+    const setLanguageValues = () => {
+        setSectionData((prevData: any) => {
+            const newData = {...prevData}
+            newData.languages = newData.languages && newData.languages.map((lng: any) => ({ ...lng, initialValue: lng.level }))
+            return newData;
+        });
+    };
+
     const addRouteAnimationSectionClass = () => {
         setSectionAnimationClasses('section fadeInUp animated');
         navigate('#skills');
+        
+        setSkillBarValues();
     };
 
-    const setBarValue = (value: number) => {
-        //console.log('setBarValue', value);
-    };
 
     return (
         <section id="skills" className={sectionAnimationClasses}>
@@ -118,39 +81,40 @@ const Skills = () => {
                 </div>
 
                 <div className={classes['skills-wrapper']}>
-                    <ul className={classes.skills}>
-                       {DUMMY_BARS_DATA.map((item, i) => (
-                        <li key={i}>
-                            <Waypoint onEnter={() => setBarValue(item.level)} />
-                            <div className={`progress ${classes['progress-wrapper']}`}>
-                                <div className={classes.lead}>{item.skill}</div>
-                                <div className={`progress-bar ${classes['progress-color']}`} role="progressbar" style={{ width: `${item.level}%` }}>
-                                    <span className={classes.percentage}>{item.level}%</span>
+                    {!loadedData && (<Spinner />)}
+                    {loadedData && (   
+                        <ul className={classes.skills}>
+                        {sectionData.skills.map((skill: any, i: number) => (
+                            <li key={i}>
+                                <div className={`progress ${classes['progress-wrapper']}`}>
+                                    <div className={classes.lead}>{skill.skill}</div>
+                                    <div className={`progress-bar ${classes['progress-color']}`} role="progressbar" data-progress={skill.level} >
+                                        <span className={classes.percentage}>{skill.level}%</span>
+                                    </div>
                                 </div>
-                            </div>
-                        </li>
-                        ))}
-                    </ul>
+                            </li>
+                            ))}
+                        </ul>
+                    )}
+                    
                 </div>
-
+                <Waypoint onEnter={() => setLanguageValues()} />
                 <div className={classes['skill-language']}>
                     <h2>{translate('skills.languages_subtitle')}</h2>
-
-                    <div className="col-sm-12">
-                        <div className="skills">
-                            <div className="row">
-                                <div className="col-md-4 col-xs-4">
-                                    <Pie percentage={95} title="Spanish" config={pieChartConfig} />
-                                </div>
-                                <div className="col-md-4 col-xs-4">
-                                    <Pie percentage={80} title="English" config={pieChartConfig} />
-                                </div>
-                                <div className="col-md-4 col-xs-4">
-                                    <Pie percentage={25} title="French" config={pieChartConfig} />
+                    {!loadedData && (<Spinner />)}
+                    {loadedData && (   
+                        <div className="col-sm-12">
+                            <div className="skills">
+                                <div className="row">
+                                    {sectionData.languages.map((language: any, i: number) => (
+                                        <div key={i} className="col-md-4 col-xs-4">
+                                            <Pie percentage={language.initialValue} title={`${language.language}`} config={pieChartConfig} />
+                                        </div>
+                                    ))}
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    )}
                 </div>
             </div>
         </section>

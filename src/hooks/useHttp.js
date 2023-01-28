@@ -1,12 +1,5 @@
 import { useState, useCallback } from 'react';
 
-// interface requestConfigType {
-//     url: RequestInfo | URL;
-//     method: string | undefined;
-//     headers: HeadersInit | undefined;
-//     body: any;
-// }
-
 const useHttp = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
@@ -31,9 +24,10 @@ const useHttp = () => {
         } catch (error) {
             setError(error.message || 'Something went wrong!');
         }
+      
         setIsLoading(false);
+     
     }, []);
-
 
     return {
         isLoading: isLoading,

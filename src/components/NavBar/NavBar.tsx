@@ -1,12 +1,13 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-
-import React, { useState, useEffect, useCallback, useMemo } from 'react';
-import { useLocation } from "react-router-dom"
+import React, { useContext, useState, useEffect, useCallback, useMemo } from 'react';
+import { useLocation, Link } from "react-router-dom"
 import { HashLink } from 'react-router-hash-link';
 import { Waypoint } from 'react-waypoint';
 import { useTranslation } from 'react-i18next';
 
+import { SiteContext } from '../../store/site-context';
+
 import classes from './NavBar.module.scss';
+
 
 interface menuLink {
     home: string,
@@ -18,22 +19,22 @@ interface menuLink {
 };
 
 interface languageMenu {
-    english: boolean,
-    spanish: boolean
+    en: boolean,
+    es: boolean
 };
 
-const NavBar: React.FC<{ fixedBar: boolean }> = ({ fixedBar }) => {
-    const initialClasses = `${classes['nav-bar']} ${classes.clearfix} no-select`;
+const NavBar: React.FC<{ fixedBar: boolean, onChangeLanguage: (language: string) => void }> = ({ fixedBar, onChangeLanguage }) => {
+    const context = useContext(SiteContext);
     const location = useLocation();
+    const initialClasses = `${classes['nav-bar']} ${classes.clearfix} no-select`;
     const [ navBarClasses, setNavBarClasses ] = useState<string>(initialClasses);
     const [ navBarFixed, setNavBarFixed ] = useState<boolean>(false);
     const [ menuActive, setMenuActive ] = useState<boolean>(false);
-
-    const [translate, i18n] = useTranslation('global');
+    const [ translate ] = useTranslation('global');
 
     const initialLanguageMenuClasses: languageMenu = {
-        english: false,
-        spanish: false
+        en: false,
+        es: false
     };
 
     const [languageMenuActive, setLanguageMenuActive] = useState<languageMenu>(initialLanguageMenuClasses);
@@ -62,8 +63,10 @@ const NavBar: React.FC<{ fixedBar: boolean }> = ({ fixedBar }) => {
             setNavBarFixed(false);
         }
 
-        setLanguageMenuActive((prevState) => ({ ...prevState, 'spanish': true }));
-    }, [initialClasses, fixedBar]);
+        const languageSelected = context.language;
+        setLanguageMenuActive((prevState) => ({ ...prevState, [languageSelected]: true }));
+
+    }, [initialClasses, fixedBar, context]);
 
     const clearMenuLinkClasses = useCallback(() => {
         setMenuLinkClasses({ ...initialMenuLinkClasses });
@@ -96,12 +99,16 @@ const NavBar: React.FC<{ fixedBar: boolean }> = ({ fixedBar }) => {
         setMenuActive((prevState) => (!prevState));
     }
 
-    const setLanguage = (language: string) => {
-        const keyCode = language === 'spanish' ? 'es' : 'en';
-        i18n.changeLanguage(keyCode);
-        //TODO: guardar en localStorage
+    const setLanguage = (event: React.FormEvent, language: string) => {
+        event.preventDefault();
+
         setLanguageMenuActive({ ...initialLanguageMenuClasses });
         setLanguageMenuActive((prevState) => ({ ...prevState, [language]: true }));
+
+
+        console.log(language, 'languageMenuActive', languageMenuActive);
+
+        onChangeLanguage(language); 
     }
 
     return (
@@ -134,13 +141,13 @@ const NavBar: React.FC<{ fixedBar: boolean }> = ({ fixedBar }) => {
                         <HashLink smooth to="/#contact">{translate('common.title_contact')}</HashLink>
                     </li>
                     <li id="menuItemLanguage" className={classes['menu-item-language']}>
-                        <a>{translate('common.title_language')}</a>
+                        <span className="title">{translate('common.title_language')}</span>
                         <ul className={classes['sub-menu']}>
-                            <li className={`${classes.language} ${languageMenuActive['english'] ? classes['language-selected'] : ''}`} onClick={() => setLanguage('english')}>
-                                <a>{translate('home.language_english')}</a>
+                            <li className={`${classes.language} ${languageMenuActive['en'] ? classes['language-selected'] : ''}`} onClick={(e) => setLanguage(e, 'en')}>
+                                <Link to="">{translate('home.language_english')}</Link>
                             </li>
-                            <li className={`${classes.language} ${languageMenuActive['spanish'] ? classes['language-selected'] : ''}`} onClick={() => setLanguage('spanish')}>
-                                <a>{translate('home.language_spanish')}</a>
+                            <li className={`${classes.language} ${languageMenuActive['es'] ? classes['language-selected'] : ''}`} onClick={(e) => setLanguage(e, 'es')}>
+                                <Link to="">{translate('home.language_spanish')}</Link>
                             </li>
                         </ul>
                     </li>
@@ -151,3 +158,4 @@ const NavBar: React.FC<{ fixedBar: boolean }> = ({ fixedBar }) => {
 };
 
 export default NavBar;
+

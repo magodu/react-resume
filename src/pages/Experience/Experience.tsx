@@ -1,9 +1,13 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-
-import React, { useState } from 'react';
+import { useState, useRef, useEffect, useCallback, useContext } from 'react';
 import { useNavigate } from "react-router-dom"
 import { Waypoint } from 'react-waypoint';
 import { useTranslation } from 'react-i18next';
+
+import { SiteContext } from '../../store/site-context';
+import { isEmptyObject } from '../../utils';
+
+import Spinner from '../../components/Spinner/Spinner';
+import DateFormattedText from '../../components/DateFormattedText/DateFormattedText';
 
 import classes from './Experience.module.scss';
 
@@ -15,22 +19,34 @@ interface experienceBlock {
 }
 
 const Experience = () => {
+    const { data } = useContext(SiteContext);
+    const [loadedData, setLoadedData] = useState<boolean>(false);
+    const [sectionData, setSectionData] = useState<any>(null);
+    const sectionDataRef = useRef<any>(null);
     const navigate = useNavigate();
     const [translate] = useTranslation('global');
-    const initialBlockClasses = classes['timeline-block'];
+    const initialBlockClasses = `${classes['timeline-block']} hide`;
     const initialContentClasses = classes['timeline-content'];
 
-    const jobs = [ 
-        { id: 0, blockClasses: initialBlockClasses, contentClasses: initialContentClasses, expanded: false},
-        { id: 1, blockClasses: initialBlockClasses, contentClasses: initialContentClasses, expanded: false},
-        { id: 2, blockClasses: initialBlockClasses, contentClasses: initialContentClasses, expanded: false},
-        { id: 3, blockClasses: initialBlockClasses, contentClasses: initialContentClasses, expanded: false},
-        { id: 4, blockClasses: initialBlockClasses, contentClasses: initialContentClasses, expanded: false},
-        { id: 5, blockClasses: initialBlockClasses, contentClasses: initialContentClasses, expanded: false}  
-    ];
-
     const [sectionAnimationClasses, setSectionAnimationClasses] = useState<string>('section');
-    const [blockAnimationClasses, setBlockAnimationClasses] = useState<experienceBlock[]>(jobs);
+    const [blockAnimationClasses, setBlockAnimationClasses] = useState<experienceBlock[]>([]);
+
+    const createClassesList = useCallback(() => {
+        let jobs: experienceBlock[] = [];
+        sectionDataRef.current.forEach((job: any, index: number) => {
+            jobs.push({ id: index, blockClasses: classes['timeline-block'], contentClasses: classes['timeline-content'], expanded: false});
+        });
+        setBlockAnimationClasses(jobs);
+    }, []);
+
+    useEffect(() => {
+        if (!isEmptyObject(data)) {
+            setLoadedData(true);
+            setSectionData(data.experience);
+            sectionDataRef.current = data.experience;
+            createClassesList();
+        }
+    }, [createClassesList, data, sectionData]);
 
     const addRouteAnimationSectionClass = () => {
         setSectionAnimationClasses('section fadeInUp animated');
@@ -43,7 +59,7 @@ const Experience = () => {
         setBlockAnimationClasses(
             blockAnimationClasses.map((job, j) => 
                 j === index
-                ? {...job, blockClasses: `${initialBlockClasses} ${animationDirection} animated`}
+                ? {...job, blockClasses: `${initialBlockClasses} ${animationDirection} animated show`}
                 : job
             )
         );
@@ -60,7 +76,6 @@ const Experience = () => {
         );
     };
 
-
     return (
         <section id="experience" className={sectionAnimationClasses}>
             <Waypoint onEnter={() => addRouteAnimationSectionClass()} />
@@ -70,101 +85,33 @@ const Experience = () => {
                         <h4>{translate('common.title_experience')}</h4>
                     </div>
                 </div>
-                <div className="resume-section experience">
-                    <div className={classes['timeline-container']}>
-                        <div className={blockAnimationClasses[0].blockClasses}>
-                            <Waypoint onEnter={() => addAnimationBlockClass(0)} />
-                            <div className={classes['timeline-year']}>
-                                <i>2016</i>
-                            </div>
-                             <div className={blockAnimationClasses[0].contentClasses}>
-                                <h2>
-                                    <span>Google Inc.</span>
-                                </h2>
-                                <p>Intern ( July 2016 - Present) 6 months | Madrid </p>
-                                <span className={classes.arrow} title="Show more" onClick={addExpandedBlockClass.bind(null, 0)}></span>
-                                <div className={classes['job-description']}>
-                                    Desarrollador Javascript en ISBAN USA, en Boston (Massachussets, USA), desarrollando diferentes aplicaciones internas del banco con AngularJS, JQuery, Lo-Dash.js/Underscore.js, TDD, HTML5, Bootstrap y herramientas
-                                    como Git, NodeJS, Jenkins y JIRA.
+                {!loadedData && (<Spinner />)}
+                {loadedData && (
+                    <div className="resume-section experience">
+                        <div className={classes['timeline-container']}>
+                            { sectionData.map((experience: any, i: number) => (
+                                <div key={i} className={blockAnimationClasses[i].blockClasses}>
+                                    <Waypoint onEnter={() => addAnimationBlockClass(i)} />
+                                    <div className={classes['timeline-year']}>
+                                        <i>{experience.yearFrom}</i>
+                                    </div>
+                                    <div className={blockAnimationClasses[i].contentClasses}>
+                                        <h2>
+                                            <span>{experience.company}</span>
+                                        </h2>
+                                        <p>{experience.position} ( <DateFormattedText from={experience.dateFrom} to={experience.dateTo}/> <br /> {experience.place} </p>
+                                        <span className={classes.arrow} title={`${translate('experience.showMoreAlt')}`} onClick={addExpandedBlockClass.bind(null, i)}></span>
+                                        <div className={classes['job-description']}>
+                                            { experience.description.map((paragraph: any, j: number) => (
+                                                <p key={j}>{paragraph.text}</p>
+                                            ))}
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-
-                        <div className={blockAnimationClasses[1].blockClasses}>
-                            <Waypoint onEnter={() => addAnimationBlockClass(1)} />
-                            <div className={classes['timeline-year']}>
-                                <i>2014</i>
-                            </div>
-                             <div className={blockAnimationClasses[1].contentClasses}>
-                                <h2>
-                                    <span>Apple Inc.</span>
-                                </h2>
-                                <p>Front End Developer ( Jan 2014 - Dec 2015 ) 12 months | Madrid</p>
-                                <span className={classes.arrow} title="Show more" onClick={addExpandedBlockClass.bind(null, 1)}></span>
-                                <div className={classes['job-description']}>Job description</div>
-                            </div>
-                        </div>
-
-                        <div className={blockAnimationClasses[2].blockClasses}>
-                            <Waypoint onEnter={() => addAnimationBlockClass(2)} />
-                            <div className={classes['timeline-year']}>
-                                <i>2013</i>
-                            </div>
-                             <div className={blockAnimationClasses[2].contentClasses}>
-                                <h2>
-                                    <span>Facebook co.</span>
-                                </h2>
-                                <p>Manager Web Development ( Jan 2013 - Dec 2013 ) 2 years | Madrid</p>
-                                <span className={classes.arrow} title="Show more" onClick={addExpandedBlockClass.bind(null, 2)}></span>
-                                <div className={classes['job-description']}>Job description</div>
-                            </div>
-                        </div>
-
-                        <div className={blockAnimationClasses[3].blockClasses}>
-                            <Waypoint onEnter={() => addAnimationBlockClass(3)} />
-                            <div className={classes['timeline-year']}>
-                                <i>2012</i>
-                            </div>
-                             <div className={blockAnimationClasses[3].contentClasses}>
-                                <h2>
-                                    <span>DDB Worldwide</span>
-                                </h2>
-                                <p>Intern ( July 2012 - Dec 2013 ) 3 years, 4 months | Madrid</p>
-                                <span className={classes.arrow} title="Show more" onClick={addExpandedBlockClass.bind(null, 3)}></span>
-                                <div className={classes['job-description']}>Job description</div>
-                            </div>
-                        </div>
-                        <div className={blockAnimationClasses[4].blockClasses}>
-                            <Waypoint onEnter={() => addAnimationBlockClass(4)} />
-                            <div className={classes['timeline-year']}>
-                                <i>2010</i>
-                            </div>
-                             <div className={blockAnimationClasses[4].contentClasses}>
-                                <h2>
-                                    <span>Maronia Software</span>
-                                </h2>
-                                <p>Intern ( July 2009 - Dec 2010 ) 2 years | Madrid</p>
-                                <span className={classes.arrow} title="Show more" onClick={addExpandedBlockClass.bind(null, 4)}></span>
-                                <div className={classes['job-description']}>Job description</div>
-                            </div>
-                        </div>
-
-                        <div className={blockAnimationClasses[5].blockClasses}>
-                            <Waypoint onEnter={() => addAnimationBlockClass(5)} />
-                            <div className={classes['timeline-year']}>
-                                <i>2010</i>
-                            </div>
-                             <div className={blockAnimationClasses[5].contentClasses}>
-                                <h2>
-                                    <span>Marosoft</span>
-                                </h2>
-                                <p>Intern ( July 2008 - Dec 2009 ) 2 months | Madrid</p>
-                                <span className={classes.arrow} title="Show more" onClick={addExpandedBlockClass.bind(null, 5)}></span>
-                                <div className={classes['job-description']}>Job description</div>
-                            </div>
+                            ))}
                         </div>
                     </div>
-                </div>
+                )}
             </div>
         </section>
     );

@@ -195,6 +195,15 @@ button:focus {
     margin-bottom: 3rem;
 }
 
+.hide {
+    visibility: hidden;
+}
+
+.show {
+    visibility: visible;
+    transition: visibility 2000ms ease;
+}
+
 /*********************************************/
 /*              PAGE SCROLLBAR               */
 /*********************************************/

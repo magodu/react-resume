@@ -61,11 +61,11 @@ const ContactForm = () => {
 
 
     const initialformClasses: formAnimationBlock = {
-        'inputName': '',
-        'inputEmail': '',
-        'inputPhone': '',
-        'inputMessage': '',
-        'inputButton': 'btn btn-primary float-right'
+        'inputName': 'hide',
+        'inputEmail': 'hide',
+        'inputPhone': 'hide',
+        'inputMessage': 'hide',
+        'inputButton': 'btn btn-primary hide float-right'
     };
 
     const [formAnimationClasses, setFormAnimationClasses] = useState<formAnimationBlock>(initialformClasses);
@@ -82,9 +82,9 @@ const ContactForm = () => {
     const addAnimationBlockClasses = (blockName: string) => {
         let classes = '';
         if (blockName === 'inputButton') {
-            classes = 'btn btn-primary float-right fadeInRight animated';
+            classes = 'btn btn-primary float-right fadeInRight animated show';
         } else {
-            classes = 'fadeInRight animated';
+            classes = 'fadeInRight animated show';
         }
 
         setFormAnimationClasses((prevState) => ({ ...prevState, [blockName]: classes }));

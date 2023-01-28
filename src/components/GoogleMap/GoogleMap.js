@@ -7,7 +7,7 @@ const Map = ({ zoom, position }) => {
     const currentPosition = useMemo(() => position, [position]);
 
     return (
-        <GoogleMap zoom={zoom} center={currentPosition} mapContainerClassName="map-container">
+        <GoogleMap zoom={zoom} center={currentPosition} disableDefaultUI="true" mapContainerClassName="map-container">
             <MarkerF position={currentPosition}></MarkerF>
         </GoogleMap>
     );

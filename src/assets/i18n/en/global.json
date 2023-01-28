@@ -11,11 +11,25 @@
         "social_title_linkedin": "Link to my LinkedIn profile",
         "social_title_github": "Link to my Github repositories",
         "resume_download": "Download my resume",
-        "loadingError": "Error loading data has occurred. Try to reload the site."
+        "loadingError": "Error loading data has occurred. Try to reload the site.",
+        "monthNames": {
+            "january": "January",
+            "february": "February",
+            "march": "March",
+            "april": "April",
+            "may": "May",
+            "june": "June",
+            "july": "July",
+            "august": "August",
+            "september": "September",
+            "october": "October",
+            "november": "November",
+            "december": "December"
+        }
     },
     "home": {
         "language_english": "English",
-        "language_spanish": "Spanish",
+                "language_spanish": "Spanish",
         "menu": "Menu",
         "greeting": "Hello I´m",
         "scroll": "Scroll Down",
@@ -44,7 +58,8 @@
             "months": " months",
             "year": " year",
             "years": " years"
-        }
+        },
+        "showMoreAlt": "show more"
     },
     "skills": {
         "languages_subtitle": "Languages"

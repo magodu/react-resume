@@ -11,7 +11,21 @@
         "social_title_linkedin": "Link a mi perfil de LinkedIn",
         "social_title_github": "Link a mis repositorios de Github",
         "resume_download": "Descarga mi CV",
-        "loadingError": "Error cargando datos. Intente recargar la web." 
+        "loadingError": "Error cargando datos. Intente recargar la web.",
+        "monthNames": {
+            "january": "Enero",
+            "february": "Febrero",
+            "march": "Marzo",
+            "april": "Abril",
+            "may": "Mayo",
+            "june": "Junio",
+            "july": "Julio",
+            "august": "Agosto",
+            "september": "Septiembre",
+            "october": "Octubre",
+            "november": "Noviembre",
+            "december": "Deciembre"
+        }
     },
     "home": {
         "language_english": "Inglés",
@@ -44,7 +58,8 @@
             "months": " meses",
             "year": " año",
             "years": " años"
-        }
+        },
+        "showMoreAlt": "show more"
     },
     "skills": {
         "languages_subtitle": "Idiomas"
