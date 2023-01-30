@@ -148,7 +148,7 @@ const AboutMe = () => {
                                         <p key={i}>{item.text}</p>
                                     )) }
 
-                                    <p className={classes.twke3}>
+                                    <p className={classes.farewell}>
                                         <span>{translate('aboutMe.farewell')}</span>
                                         <img src={signatureImage} className={classes['img-responsive']} alt={`${translate('home.signature')}`} />
                                     </p>
