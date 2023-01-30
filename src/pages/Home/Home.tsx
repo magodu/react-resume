@@ -1,7 +1,5 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-
 import React, { useState, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { Waypoint } from 'react-waypoint';
 import { useTranslation } from 'react-i18next';
 
@@ -46,16 +44,16 @@ const Home: React.FC<{ onChangeLanguage: (language: string) => void }> = ({ onCh
                                     <span>{word}</span>
                                 </div>
                             </div>
-                            <a href={language === 'es' ? CV_MarioGonzalez_es : resume_MarioGonzalez_en} className={classes['download-link']} target="_blank" rel="noreferrer">
+                            <Link to={language === 'es' ? CV_MarioGonzalez_es : resume_MarioGonzalez_en} className={classes['download-link']} target="_blank" rel="noreferrer">
                                 {translate('common.resume_download')}
-                            </a>
+                            </Link>
                         </div>
                     </div>
                 </div>
                 <div>
-                    <a className={`${classes['scroll-down']} ${classes['page-scroll']}`} title={`${translate('home.scroll')}`} href="#">
+                    <Link to="" className={`${classes['scroll-down']} ${classes['page-scroll']}`} title={`${translate('home.scroll')}`} >
                         <i className="bi bi-dot" aria-hidden="true"></i>
-                    </a>
+                    </Link>
                 </div>
             </header>
             <Waypoint onEnter={() => setHomeNavBarFixed(false)} onLeave={() => setHomeNavBarFixed(true)} />
