@@ -78,7 +78,7 @@ const Contact = () => {
                 {!loadedData && (<Spinner />)}
                 {loadedData && (   
                     <div className="row">
-                        <GoogleMapComponent zoom={googleMapZoom} position={googleMapPosition} />
+                        <GoogleMapComponent zoom={sectionData.maps.zoom} position={googleMapPosition} />
                     </div>
                 )}
                 <div className="row">
