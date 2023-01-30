@@ -110,7 +110,7 @@
     
 }
 
-.hvr-shutter-out-horizontal {
+.download-link {
     display: inline-block;
     vertical-align: middle;
     -webkit-transform: translateZ(0);
@@ -152,14 +152,14 @@
     }
 }
 
-.hvr-shutter-out-horizontal:hover,
-.hvr-shutter-out-horizontal:focus,
-.hvr-shutter-out-horizontal:active {
+.download-link:hover,
+.download-link:focus,
+.download-link:active {
     color: $primary-color;
 }
-.hvr-shutter-out-horizontal:hover:before,
-.hvr-shutter-out-horizontal:focus:before,
-.hvr-shutter-out-horizontal:active:before {
+.download-link:hover:before,
+.download-link:focus:before,
+.download-link:active:before {
     -webkit-transform: scaleX(1);
     transform: scaleX(1);
 }

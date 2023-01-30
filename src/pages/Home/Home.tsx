@@ -46,7 +46,7 @@ const Home: React.FC<{ onChangeLanguage: (language: string) => void }> = ({ onCh
                                     <span>{word}</span>
                                 </div>
                             </div>
-                            <a href={language === 'es' ? CV_MarioGonzalez_es : resume_MarioGonzalez_en} className={`${classes['download-link']} ${classes['hvr-shutter-out-horizontal']}`} target="_blank" rel="noreferrer">
+                            <a href={language === 'es' ? CV_MarioGonzalez_es : resume_MarioGonzalez_en} className={classes['download-link']} target="_blank" rel="noreferrer">
                                 {translate('common.resume_download')}
                             </a>
                         </div>
