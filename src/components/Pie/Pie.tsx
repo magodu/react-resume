@@ -2,21 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 
 import classes from './Pie.module.scss';
 
-interface piePercentText {
-    color?: string;
-    size?: string;
-}
-
-
-type pieChartConfigType = { 
-    delay?: number,
-    width?: number,
-    height?: number,
-    color: string,
-    trackColor?: string,
-    percentText: piePercentText
-};
-
+import { pieChartConfigType } from '../../models/appTypes';
 
 const cleanPercentage = (percentage: number) => {
     const tooLow = !Number.isFinite(+percentage) || percentage < 0;

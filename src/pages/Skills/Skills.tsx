@@ -12,22 +12,7 @@ import Pie from '../../components/Pie/Pie';
 import Spinner from '../../components/Spinner/Spinner';
 
 import classes from './Skills.module.scss';
-
-
-interface piePercentText {
-    color?: string;
-    size?: string;
-}
-
-
-type pieChartConfigType = { 
-    delay?: number,
-    width?: number,
-    height?: number,
-    color: string,
-    trackColor?: string,
-    percentText: piePercentText
-};
+import { pieChartConfigType } from '../../models/appTypes';
 
 
 const Skills = () => {
