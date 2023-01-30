@@ -10,14 +10,8 @@ import Spinner from '../../components/Spinner/Spinner';
 
 import classes from './Training.module.scss';
 
+import { course } from '../../models/appTypes';
 
-interface course {
-    description: string,
-    imageName: string,
-    imageSrc?: any,
-    title: string
-
-}
 
 const Training = () => {
     const { data } = useContext(SiteContext);

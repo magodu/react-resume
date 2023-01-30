@@ -17,13 +17,8 @@ import classes from './Contact.module.scss';
 import CV_MarioGonzalez_es from '../../assets/contents/CV_MarioGonzalez_es.pdf';
 import resume_MarioGonzalez_en from '../../assets/contents/CV_MarioGonzalez_en.pdf';
 
-interface contactBlock {
-    phone: string,
-    whatsapp: string,
-    email: string,
-    downloadLink: string,
-    social: string
-};
+import { contactBlock } from '../../models/appTypes';
+
 
 const Contact = () => {
     const { language, data } = useContext(SiteContext);

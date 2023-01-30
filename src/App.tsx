@@ -15,16 +15,13 @@ import useHttp from './hooks/useHttp';
 import useLocalStorage from './hooks/useLocalStorage';
 
 import { SiteContext } from './store/site-context'
+import { localStorageDataType } from './models/appTypes';
 
 
-interface localStorageDataType {
-    language: string
-};
 
 const localStorageData: localStorageDataType = {
     language: 'es'
 };
-
 
 function App() {
     const context = useContext(SiteContext);

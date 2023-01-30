@@ -1,15 +1,8 @@
 import React, { useState } from 'react';
 
-type SiteContextObj = {
-    language: string;
-    data: any;
-    setLanguage: (language: string) => void;
-    setData: (data: any) => void;
-};
+import { SiteContextObj, InputProps } from '../models/appTypes';
 
-interface InputProps {
-    children: React.ReactElement;
-}
+
 
 export const SiteContext = React.createContext<SiteContextObj>({
     language: '',

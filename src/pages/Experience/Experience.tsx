@@ -11,12 +11,8 @@ import DateFormattedText from '../../components/DateFormattedText/DateFormattedT
 
 import classes from './Experience.module.scss';
 
-interface experienceBlock {
-    id: number,
-    blockClasses: string,
-    contentClasses: string,
-    expanded: boolean
-}
+import { experienceBlock } from '../../models/appTypes';
+
 
 const Experience = () => {
     const { data } = useContext(SiteContext);

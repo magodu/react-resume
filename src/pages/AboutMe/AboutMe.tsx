@@ -14,14 +14,8 @@ import classes from './AboutMe.module.scss';
 import resumePhoto from '../../assets/images/resume-photo.jpg';
 import signatureImage from '../../assets/images/signature.jpg';
 
-interface aboutBlocks {
-    name: string;
-    email: string;
-    phone: string;
-    birthDate: string;
-    address: string;
-    nationality: string;
-}
+import { aboutBlocks } from '../../models/appTypes';
+
 
 const AboutMe = () => {
     const { data } = useContext(SiteContext);
