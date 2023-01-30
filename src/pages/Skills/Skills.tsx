@@ -13,6 +13,23 @@ import Spinner from '../../components/Spinner/Spinner';
 
 import classes from './Skills.module.scss';
 
+
+interface piePercentText {
+    color?: string;
+    size?: string;
+}
+
+
+type pieChartConfigType = { 
+    delay?: number,
+    width?: number,
+    height?: number,
+    color: string,
+    trackColor?: string,
+    percentText: piePercentText
+};
+
+
 const Skills = () => {
     const { data } = useContext(SiteContext);
     const [loadedData, setLoadedData] = useState<boolean>(false);
@@ -21,12 +38,12 @@ const Skills = () => {
     const [sectionAnimationClasses, setSectionAnimationClasses] = useState<string>('section');
     const [translate] = useTranslation('global');
 
-    const pieChartConfig = {
+    const pieChartConfig: pieChartConfigType = {
         delay: 1000,
         color: '#06A763',
         percentText: {
             color: '#58666e',
-        },
+        }
     };
 
     useEffect(() => {

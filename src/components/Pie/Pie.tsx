@@ -2,16 +2,32 @@ import React, { useState, useEffect, useCallback } from 'react';
 
 import classes from './Pie.module.scss';
 
-const cleanPercentage = (percentage) => {
+interface piePercentText {
+    color?: string;
+    size?: string;
+}
+
+
+type pieChartConfigType = { 
+    delay?: number,
+    width?: number,
+    height?: number,
+    color: string,
+    trackColor?: string,
+    percentText: piePercentText
+};
+
+
+const cleanPercentage = (percentage: number) => {
     const tooLow = !Number.isFinite(+percentage) || percentage < 0;
     const tooHigh = percentage > 100;
     return tooLow ? 0 : tooHigh ? 100 : +percentage;
 };
 
-const Circle = ({ colour, pct }) => {
+const Circle: React.FC<{ colour: string, pct?: number }> = ({ colour, pct }) => {
     const r = 70;
     const circ = 2 * Math.PI * r;
-    const strokePct = ((100 - pct) * circ) / 100; // where stroke will start, e.g. from 15% to 100%.
+    const strokePct = pct ? ((100 - pct) * circ) / 100 : 0; // where stroke will start, e.g. from 15% to 100%.
     return (
         <circle
             r={r}
@@ -21,12 +37,12 @@ const Circle = ({ colour, pct }) => {
             stroke={strokePct !== circ ? colour : ''} // remove colour as 0% sets full circumference
             strokeWidth={'1rem'}
             strokeDasharray={circ}
-            strokeDashoffset={pct ? strokePct : 0}
+            strokeDashoffset={strokePct}
         ></circle>
     );
 };
 
-const Text = ({ percentage, config }) => {
+const Text: React.FC<{ percentage: number, config: any }> = ({ percentage, config }) => {
 
     const [percentageText, setPercentageText] = useState('1');
 
@@ -57,9 +73,10 @@ const Text = ({ percentage, config }) => {
     );
 };
 
-const Pie = ({ percentage, title, config }) => {
+const Pie: React.FC<{ percentage: number, title: string, config: pieChartConfigType }> = ({ percentage, title, config  }) => {
+
     const [percentageBar, setPercentageBar] = useState(1);
-    const timer = config && config.delay ? parseInt(config.delay, 10) : 0;
+    const timer = config && config.delay ? config.delay : 0;
     
     useEffect(() => {
         const identifier = setTimeout(() => {
