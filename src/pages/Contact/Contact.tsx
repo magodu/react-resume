@@ -28,8 +28,6 @@ const Contact = () => {
     const [translate] = useTranslation('global');
     const [sectionAnimationClasses, setSectionAnimationClasses] = useState<string>(`section ${classes.contact}`);
     const initialContactClasses = `${classes['contact-block']} hide`;
-    const googleMapZoom = 13;
-    const googleMapPosition = { lat: 40.407196, lng: -3.678261 };
 
     const contactBlockClasses: contactBlock = {
         'phone': initialContactClasses,
@@ -47,7 +45,13 @@ const Contact = () => {
 
             setSectionData({
                 personalData: data.aboutMe.personalData,
-                maps: data.contact.maps
+                maps: {
+                    zoom: data.contact.maps.zoom,
+                    position: {
+                        lat: data.contact.maps.latitude,
+                        lng: data.contact.maps.longitude
+                    }
+                }
             });
         }
     }, [data]);
@@ -73,7 +77,7 @@ const Contact = () => {
                 {!loadedData && (<Spinner />)}
                 {loadedData && (   
                     <div className="row">
-                        <GoogleMapComponent zoom={sectionData.maps.zoom} position={googleMapPosition} />
+                        <GoogleMapComponent zoom={sectionData.maps.zoom} position={sectionData.maps.position} />
                     </div>
                 )}
                 <div className="row">
