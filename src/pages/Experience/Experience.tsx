@@ -98,9 +98,11 @@ const Experience = () => {
                                         <p>{experience.position} ( <DateFormattedText from={experience.dateFrom} to={experience.dateTo}/> <br /> {experience.place} </p>
                                         <span className={classes.arrow} title={`${translate('experience.showMoreAlt')}`} onClick={addExpandedBlockClass.bind(null, i)}></span>
                                         <div className={classes['job-description']}>
-                                            { experience.description.map((paragraph: any, j: number) => (
-                                                <p key={j}>{paragraph.text}</p>
-                                            ))}
+                                            <div className={classes.collapsible}>
+                                                { experience.description.map((paragraph: any, j: number) => (
+                                                    <p key={j}>{paragraph.text}</p>
+                                                ))}
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

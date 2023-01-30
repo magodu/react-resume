@@ -141,16 +141,48 @@
                 transform: rotate(45deg);
             }
 
-            &.expanded .job-description {
-                display: block;
-                /* animation: fade-out 1s; */
-            }
-        
-            .job-description {
-                padding: 0 1em 1em 1em;
-                display: none; 
+            &.expanded .job-description > .collapsible {
+                transition: margin-bottom 0.3s cubic-bezier(0, 0, 0, 1);
+                margin-bottom: 0;
+                max-height: 1000px;
             }
 
+            &.expanded .job-description:after {
+                    content: '';
+                    height: 50px;
+                    transition: height 0.3s linear, max-height 0s 0.3s linear;
+                    max-height: 0px;
+            }
+
+        
+            .job-description {
+                padding: 0 1rem;
+                overflow: hidden;
+
+                &:after {
+                    height: 0;
+                    transition: height 0.3s linear;
+                    max-height: 50px;
+                }
+          
+                .collapsible {
+                    margin-bottom: -2000px;
+                    transition: margin-bottom 0.3s cubic-bezier(1, 0, 1, 1),
+                                visibility 0s 0.3s, max-height 0s 0.3s;
+                    visibility: visible;
+                    max-height: 0;
+
+                    p {
+                        padding: 10px 0;
+                    }
+                }
+
+              
+
+
+
+                
+            }
         }
     }
 }
@@ -174,7 +206,6 @@
     }
     
 }
-
 
 
 @media (min-width: 1170px) {
