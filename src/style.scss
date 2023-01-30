@@ -13,6 +13,11 @@
 @import "./scss/_media-queries";
 
 
+:root {
+    --theme-first-color: $primary-color;
+}
+
+
 
 /*********************************************/
 /*              GENERAL STYLES               */
@@ -161,7 +166,7 @@ textarea:focus {
     border-right: 1px solid $primary-color;
     border-bottom: 4px solid #707070;
     letter-spacing: 3px;
-    background-color: $primary-color;
+    background-color: var(theme-first-color);
 
     &:hover {
         border-color: $primary-color;
