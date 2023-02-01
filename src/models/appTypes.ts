@@ -8,13 +8,14 @@ export interface localStorageDataType {
     colorTheme: colorThemeType
 };
 
-
 export type SiteContextObj = {
     language: string;
     colorTheme: colorThemeType;
     data: any;
-    setLanguage: (language: string) => void;
-    setColorTheme: (color: colorThemeType) => void;
+    isLoading: boolean,
+    errorLoading: boolean,
+    setLanguageHandler: (language: string) => void;
+    setThemeHandler: (color: colorThemeType) => void;
     setData: (data: any) => void;
 };
 

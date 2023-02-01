@@ -11,7 +11,8 @@
         "social_title_linkedin": "Link a mi perfil de LinkedIn",
         "social_title_github": "Link a mis repositorios de Github",
         "resume_download": "Descarga mi CV",
-        "loadingError": "Error cargando datos. Intente recargar la web.",
+        "loadingError": "Error cargando datos.",
+        "loadingError2": "Ha ocurrido un error al tratar de cargar la web. Posiblemente el error se debe a que el servidor está caido. Por favor, trate de recargar la página o espere unos minutos.",
         "monthNames": {
             "january": "Enero",
             "february": "Febrero",
@@ -43,7 +44,7 @@
     "aboutMe": {
         "position": "Desarrollador Frontend",
         "name": "Nombre",
-        "phone": "teléfono",
+        "phone": "Teléfono",
         "address": "Dirección",
         "email": "Email",
         "birthDate": "Fecha de nacimiento",

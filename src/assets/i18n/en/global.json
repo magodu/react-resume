@@ -11,7 +11,8 @@
         "social_title_linkedin": "Link to my LinkedIn profile",
         "social_title_github": "Link to my Github repositories",
         "resume_download": "Download my resume",
-        "loadingError": "Error loading data has occurred. Try to reload the site.",
+        "loadingError": "Error loading data has occurred.",
+        "loadingError2": "An error has occurred while trying to load the website. Possibly the error is due to the server is down. Please, try to refresh the page or wait a few minutes.",
         "monthNames": {
             "january": "January",
             "february": "February",

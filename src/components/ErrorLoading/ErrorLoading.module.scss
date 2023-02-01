@@ -1,0 +1,22 @@
+.loading-error {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    .banner {
+        width: 100%;
+        text-align: center;
+    }
+
+    .web {
+        width: 100%;
+        text-align: center;
+        font-size: 1.5rem;
+        margin: 2rem;
+    }
+
+    .text {
+        width: 100%;
+        text-align: center;
+    }
+}

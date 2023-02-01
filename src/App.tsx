@@ -10,14 +10,12 @@ import Training from './pages/Training/Training';
 import Contact from './pages/Contact/Contact';
 import Footer from './pages/Footer/Footer';
 import Loading from './components/Loading/Loading';
+import ErrorLoading from './components/ErrorLoading/ErrorLoading';
 
-import useHttp from './hooks/useHttp';
 import useLocalStorage from './hooks/useLocalStorage';
 
 import { SiteContext } from './store/site-context'
 import { localStorageDataType, colorThemeType } from './models/appTypes';
-
-
 
 const localStorageData: localStorageDataType = {
     language: 'es',
@@ -31,58 +29,29 @@ function App() {
     const context = useContext(SiteContext);
     const { i18n } = useTranslation('global');
     const [ localStorageConfig, setLocalStorageConfig ] = useLocalStorage('mgdResume');
-    const { isLoading, error, sendRequest: fetchResumeData } = useHttp();
     const navigate = useNavigate();
 
-    const setLanguage = useCallback(() => {
-        let languageSelected = localStorageData.language;
-        if (localStorageConfig && localStorageConfig.language) {
-            languageSelected = localStorageConfig.language;
-        } else {
+    const setLocalStorageData = useCallback(() => {
+        if (!localStorageConfig) {
             localStorage.setItem('mgdResume', JSON.stringify(localStorageData));
+        } else {
+            // language
+            let languageSelected = localStorageConfig ? localStorageConfig.language : '';
+            i18n.changeLanguage(languageSelected);
+            context.setLanguageHandler(languageSelected);
+    
+            // theme
+            const themeSelected = localStorageConfig ? localStorageConfig.colorTheme : {};
+            context.setThemeHandler(themeSelected);
+            document.documentElement.style.setProperty('--theme-first-color', themeSelected.color);
         }
 
-        i18n.changeLanguage(languageSelected);
-        context.setLanguage(languageSelected);
-
-        return languageSelected;
-
-    }, [i18n, localStorageConfig]);
-
-
-    const setColorTheme = useCallback(() => {
-        let themeSelected = localStorageData.colorTheme;
-
-        if (localStorageConfig && localStorageConfig.colorTheme) {
-            themeSelected = localStorageConfig.colorTheme;
-        } else {
-            localStorage.setItem('mgdResume', JSON.stringify(localStorageData));
-        }
-
-        document.documentElement.style.setProperty('--theme-first-color', themeSelected.color);
-        context.setColorTheme(themeSelected);
-
-    }, [i18n, localStorageConfig]);
-
-    const getData = useCallback((languageSelected: string) => {
-        const transformData = (response: any) => {
-            console.log('response', languageSelected, response.data);
-            context.setData(response.data);
-        };
-
-        fetchResumeData( {
-                url: `https://react-resume-data-default-rtdb.europe-west1.firebasedatabase.app/${languageSelected}.json`
-            },
-            transformData
-        );
-    }, [fetchResumeData]);
+    }, [localStorageConfig, context, i18n]);
 
     useEffect(() => {
-        setColorTheme();
-        const languageSelected = setLanguage();
-        getData(languageSelected);
+        setLocalStorageData();
 
-    }, [getData, setLanguage, setColorTheme]);
+    }, [setLocalStorageData]);
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -98,31 +67,35 @@ function App() {
             ...oldConfig,
             language: language
         }));
+
+        context.setLanguageHandler(language);
+        i18n.changeLanguage(language);
     };
 
-    const changeThemeHandler = (color: colorThemeType) => {
+    const changeThemeHandler = (themeSelected: colorThemeType) => {
         setLocalStorageConfig((oldConfig: localStorageDataType) => ({
             ...oldConfig,
-            colorTheme: color
+            colorTheme: themeSelected
         }));
 
-        context.setColorTheme(color);
+        context.setThemeHandler(themeSelected);
     };
 
     return (
         <React.Fragment>  
-            { error && <h2>Error retrieving data. Put notification</h2> }
-            <div>
-                { isLoading && <Loading /> }
-                <Home onChangeLanguage={changeLanguageHandler} onChangeTheme={changeThemeHandler} />
-                <AboutMe/>
-                <Experience />
-                <Skills />
-                <Training />
-                <Contact />
-                <Footer />
-            </div>
-            
+            { context.errorLoading && ( <ErrorLoading /> )}
+            { !context.errorLoading && (
+                <div>
+                    { context.isLoading && <Loading /> }
+                    <Home onChangeLanguage={changeLanguageHandler} onChangeTheme={changeThemeHandler} />
+                    <AboutMe/>
+                    <Experience />
+                    <Skills />
+                    <Training />
+                    <Contact />
+                    <Footer />
+                </div>
+            )}
         </React.Fragment>
     );
 }

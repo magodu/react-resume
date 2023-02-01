@@ -36,7 +36,7 @@ interface colorThemeMenu {
 
 
 const NavBar: React.FC<{ fixedBar: boolean, onChangeLanguage: (language: string) => void, onChangeTheme: (color: colorThemeType) => void }> = ({ fixedBar, onChangeLanguage, onChangeTheme }) => {
-    const context = useContext(SiteContext);
+    const { language, colorTheme } = useContext(SiteContext);
     const location = useLocation();
     const initialClasses = `${classes['nav-bar']} ${classes.clearfix} no-select`;
     const [ navBarClasses, setNavBarClasses ] = useState<string>(initialClasses);
@@ -64,16 +64,18 @@ const NavBar: React.FC<{ fixedBar: boolean, onChangeLanguage: (language: string)
 
     const [menuLinkClasses, setMenuLinkClasses] = useState<menuLink>(initialMenuLinkClasses);
 
-    const initialcolorThemeClasses: colorThemeMenu = {
-        green: false,
-        blue: false,
-        aquamarine: false,
-        grey: false,
-        purple: false,
-        orange: false,
-        red: false,
-        pink: false
-    };
+    const initialcolorThemeClasses: colorThemeMenu = useMemo(() => {
+        return { 
+            green: false,
+            blue: false,
+            aquamarine: false,
+            grey: false,
+            purple: false,
+            orange: false,
+            red: false,
+            pink: false 
+        }
+    }, []);
 
     const [colorThemeActive, setColorThemeActive] = useState<colorThemeMenu>(initialcolorThemeClasses);
 
@@ -87,14 +89,15 @@ const NavBar: React.FC<{ fixedBar: boolean, onChangeLanguage: (language: string)
             setNavBarFixed(false);
         }
 
-        const languageSelected = context.language;
+        const languageSelected = language;
+       // setLanguageMenuActive({ ...initialLanguageMenuClasses });
         setLanguageMenuActive((prevState) => ({ ...prevState, [languageSelected]: true }));
 
-        const colorThemeSelected = context.colorTheme;
+        const colorThemeSelected = colorTheme;
         setColorThemeActive({ ...initialcolorThemeClasses });
         setColorThemeActive((prevState) => ({ ...prevState, [colorThemeSelected.description]: true }));
 
-    }, [initialClasses, fixedBar, context]);
+    }, [initialClasses, initialcolorThemeClasses, fixedBar, language, colorTheme]);
 
     const clearMenuLinkClasses = useCallback(() => {
         setMenuLinkClasses({ ...initialMenuLinkClasses });
