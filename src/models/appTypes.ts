@@ -1,15 +1,20 @@
-
-
+export interface colorThemeType {
+    description: string,
+    color: string
+} ;
 
 export interface localStorageDataType {
-    language: string
+    language: string,
+    colorTheme: colorThemeType
 };
 
 
 export type SiteContextObj = {
     language: string;
+    colorTheme: colorThemeType;
     data: any;
     setLanguage: (language: string) => void;
+    setColorTheme: (color: colorThemeType) => void;
     setData: (data: any) => void;
 };
 

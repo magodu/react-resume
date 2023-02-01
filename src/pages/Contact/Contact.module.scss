@@ -18,7 +18,7 @@
         margin-bottom: 25px;
 
         i.details-icons {
-            background-color: $primary-color;
+            background-color: var(--theme-first-color);
             color: #fff;
             width: 30px;
             height: 30px;
@@ -36,7 +36,7 @@
             font-size: 14px;
 
             a {
-                color: $primary-color;
+                color: var(--theme-first-color);
             }
         }
 

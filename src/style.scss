@@ -14,10 +14,8 @@
 
 
 :root {
-    --theme-first-color: $primary-color;
+    --theme-first-color: #06A763;
 }
-
-
 
 /*********************************************/
 /*              GENERAL STYLES               */
@@ -25,8 +23,8 @@
 
 body {
     -ms-overflow-style: -ms-autohiding-scrollbar;
-    scrollbar-base-color: $primary-color;
-    scrollbar-base-color: $primary-color;
+    scrollbar-base-color: var(--theme-first-color);
+    scrollbar-base-color: var(--theme-first-color);
     scrollbar-3dlight-color: #2f3742;
     scrollbar-highlight-color: #2f3742;
     scrollbar-track-color: #2f3742;
@@ -45,7 +43,7 @@ p {
 }
 
 ::selection {
-    background: $primary-color;
+    background: var(--theme-first-color);
     color: #ffffff;
     text-shadow: none;
 }
@@ -96,7 +94,7 @@ a {
 
 a:focus,
 a:hover {
-    color: $primary-color;
+    color: var(--theme-first-color);
     text-decoration: none;
 }
 
@@ -138,7 +136,7 @@ textarea {
 input:focus,
 textarea:focus {
     outline: none;
-    border-bottom: 1px solid $primary-color !important;
+    border-bottom: 1px solid var(--theme-first-color)!important;
     -webkit-box-shadow: none;
     box-shadow: none;
 }
@@ -161,22 +159,22 @@ textarea:focus {
     color: #fff;
     border-radius: 3px;
     transition: all 0.3s;
-    border-top: 1px solid $primary-color;
-    border-left: 1px solid $primary-color;
-    border-right: 1px solid $primary-color;
+    border-top: 1px solid var(--theme-first-color);
+    border-left: 1px solid var(--theme-first-color);
+    border-right: 1px solid var(--theme-first-color);
     border-bottom: 4px solid #707070;
     letter-spacing: 3px;
-    background-color: var(theme-first-color);
+    background-color: var(--theme-first-color);
 
     &:hover {
-        border-color: $primary-color;
+        border-color: var(--theme-first-color);
     }
 
     &:hover,
     &:focus {
         border-bottom: 4px solid #707070;
         background-color: #fff;
-        color: $primary-color;
+        color: var(--theme-first-color);
     }
 }
 
@@ -210,6 +208,18 @@ button:focus {
 }
 
 /*********************************************/
+/*              THEME COLORS               */
+/*********************************************/
+.color1 { background: #06A763; }
+.color2 { background: #1F5694; }
+.color3 { background: #038175; }
+.color4 { background: #616161; }
+.color5 { background: #5F1A89; }
+.color6 { background: #fe8026; }
+.color7 { background: #e42444; }
+.color8 { background: #cf2b7e; }
+
+/*********************************************/
 /*              PAGE SCROLLBAR               */
 /*********************************************/
 ::-webkit-scrollbar {
@@ -223,7 +233,7 @@ button:focus {
 
 ::-webkit-scrollbar-thumb:vertical {
     height: 30px;
-    background-color: $primary-color;
+    background-color: var(--theme-first-color);
 }
 
 
@@ -256,7 +266,7 @@ button:focus {
 
 .section-title h4 {
     background: #fff none repeat scroll 0 0;
-    border: 2px solid $primary-color;
+    border: 2px solid var(--theme-first-color);
     color: #363636;
     display: inline-block;
     font-weight: 600;

@@ -5,9 +5,9 @@ import { Waypoint } from 'react-waypoint';
 import { useTranslation } from 'react-i18next';
 
 import { SiteContext } from '../../store/site-context';
+import { colorThemeType } from '../../models/appTypes';
 
 import classes from './NavBar.module.scss';
-
 
 interface menuLink {
     home: string,
@@ -23,7 +23,19 @@ interface languageMenu {
     es: boolean
 };
 
-const NavBar: React.FC<{ fixedBar: boolean, onChangeLanguage: (language: string) => void }> = ({ fixedBar, onChangeLanguage }) => {
+interface colorThemeMenu {
+    green: boolean,
+    blue: boolean,
+    aquamarine: boolean,
+    grey: boolean,
+    purple: boolean,
+    orange: boolean,
+    red: boolean,
+    pink: boolean
+};
+
+
+const NavBar: React.FC<{ fixedBar: boolean, onChangeLanguage: (language: string) => void, onChangeTheme: (color: colorThemeType) => void }> = ({ fixedBar, onChangeLanguage, onChangeTheme }) => {
     const context = useContext(SiteContext);
     const location = useLocation();
     const initialClasses = `${classes['nav-bar']} ${classes.clearfix} no-select`;
@@ -50,8 +62,20 @@ const NavBar: React.FC<{ fixedBar: boolean, onChangeLanguage: (language: string)
         }
     }, []);
 
-    
     const [menuLinkClasses, setMenuLinkClasses] = useState<menuLink>(initialMenuLinkClasses);
+
+    const initialcolorThemeClasses: colorThemeMenu = {
+        green: false,
+        blue: false,
+        aquamarine: false,
+        grey: false,
+        purple: false,
+        orange: false,
+        red: false,
+        pink: false
+    };
+
+    const [colorThemeActive, setColorThemeActive] = useState<colorThemeMenu>(initialcolorThemeClasses);
 
     useEffect(() => {
         if (fixedBar) {
@@ -65,6 +89,10 @@ const NavBar: React.FC<{ fixedBar: boolean, onChangeLanguage: (language: string)
 
         const languageSelected = context.language;
         setLanguageMenuActive((prevState) => ({ ...prevState, [languageSelected]: true }));
+
+        const colorThemeSelected = context.colorTheme;
+        setColorThemeActive({ ...initialcolorThemeClasses });
+        setColorThemeActive((prevState) => ({ ...prevState, [colorThemeSelected.description]: true }));
 
     }, [initialClasses, fixedBar, context]);
 
@@ -104,12 +132,16 @@ const NavBar: React.FC<{ fixedBar: boolean, onChangeLanguage: (language: string)
 
         setLanguageMenuActive({ ...initialLanguageMenuClasses });
         setLanguageMenuActive((prevState) => ({ ...prevState, [language]: true }));
-
-
-        console.log(language, 'languageMenuActive', languageMenuActive);
-
         onChangeLanguage(language); 
     }
+
+    const changeThemeColor = (color: string, description: string) => {
+        const colorData = {
+            description: description,
+            color: color
+        }
+        onChangeTheme(colorData); 
+    };
 
     return (
         <div className={navBarClasses}>
@@ -152,6 +184,24 @@ const NavBar: React.FC<{ fixedBar: boolean, onChangeLanguage: (language: string)
                         </ul>
                     </li>
                 </ul>
+                <div className={classes.theme}>
+                    <div className={`${classes.wrapper} ${classes.colors} text-center`}>
+                        <p>{translate('home.colorTheme')}</p>
+                        <ul>
+                            <li id="green" className={`${classes.color1} ${colorThemeActive['green'] ? classes['color-selected'] : ''}`} onClick={changeThemeColor.bind(null, '#06A763', 'green')}></li>
+                            <li id="blue" className={`${classes.color2} ${colorThemeActive['blue'] ? classes['color-selected'] : ''}`} onClick={changeThemeColor.bind(null, '#1F5694', 'blue')}></li>
+                            <li id="aquamarine" className={`${classes.color3} ${colorThemeActive['aquamarine'] ? classes['color-selected'] : ''}`} onClick={changeThemeColor.bind(null, '#038175', 'aquamarine')}></li>
+                            <li id="grey" className={`${classes.color4} ${colorThemeActive['grey'] ? classes['color-selected'] : ''}`} onClick={changeThemeColor.bind(null, '#616161', 'grey')}></li>
+                            <li id="purple" className={`${classes.color5} ${colorThemeActive['purple'] ? classes['color-selected'] : ''}`} onClick={changeThemeColor.bind(null, '#8E44AD', 'purple')}></li>
+                            <li id="orange" className={`${classes.color6} ${colorThemeActive['orange'] ? classes['color-selected'] : ''}`} onClick={changeThemeColor.bind(null, '#fe8026', 'orange')}></li>
+                            <li id="red" className={`${classes.color7} ${colorThemeActive['red'] ? classes['color-selected'] : ''}`} onClick={changeThemeColor.bind(null, '#e42444', 'red')}></li>
+                            <li id="pink" className={`${classes.color8} ${colorThemeActive['pink'] ? classes['color-selected'] : ''}`} onClick={changeThemeColor.bind(null, '#cf2b7e', 'pink')}></li>
+                        </ul>
+                    </div>
+                    <div className={`${classes.wrapper} ${classes.icon} `}>
+                        <i className="bi bi-gear-fill"></i>
+                    </div>
+                </div>
             </nav>
         </div>
     );

@@ -4,6 +4,7 @@ import { Waypoint } from 'react-waypoint';
 import { useTranslation } from 'react-i18next';
 
 import { SiteContext } from '../../store/site-context';
+import { colorThemeType } from '../../models/appTypes';
 
 import NavBar from '../../components/NavBar/NavBar';
 import useTypingText from '../../hooks/useTypingText';
@@ -12,7 +13,7 @@ import classes from './Home.module.scss';
 import CV_MarioGonzalez_es from '../../assets/contents/CV_MarioGonzalez_es.pdf';
 import resume_MarioGonzalez_en from '../../assets/contents/CV_MarioGonzalez_en.pdf';
 
-const Home: React.FC<{ onChangeLanguage: (language: string) => void }> = ({ onChangeLanguage }) => {
+const Home: React.FC<{ onChangeLanguage: (language: string) => void, onChangeTheme: (color: colorThemeType) => void }> = ({ onChangeLanguage, onChangeTheme }) => {
     const { language, data } = useContext(SiteContext);
     const navigate = useNavigate();
     const [homeNavBarFixed, setHomeNavBarFixed] = useState<boolean>(false);
@@ -23,13 +24,17 @@ const Home: React.FC<{ onChangeLanguage: (language: string) => void }> = ({ onCh
         onChangeLanguage(language);
     };
 
+    const changeThemeHandler = (color: colorThemeType) => {
+        onChangeTheme(color);
+    };
+
     const changeRoute = () => {
         navigate('#home');
     };
 
     return (
         <React.Fragment>
-            <NavBar fixedBar={homeNavBarFixed} onChangeLanguage={changeLanguageHandler} />
+            <NavBar fixedBar={homeNavBarFixed} onChangeLanguage={changeLanguageHandler} onChangeTheme={changeThemeHandler}/>
             <Waypoint onEnter={() => changeRoute()} />
             <header id="home" className={`${classes.header} pagewidth`}>
                 {data.openToWork && (<div className={classes.ribbon}><span>Open to work</span></div>)}
@@ -51,7 +56,7 @@ const Home: React.FC<{ onChangeLanguage: (language: string) => void }> = ({ onCh
                     </div>
                 </div>
                 <div>
-                    <Link to="" className={`${classes['scroll-down']} ${classes['page-scroll']}`} title={`${translate('home.scroll')}`} >
+                    <Link to="" className={`${classes['scroll-down']} ${classes['page-scroll']}`} title={`${translate('home.scroll')}`}>
                         <i className="bi bi-dot" aria-hidden="true"></i>
                     </Link>
                 </div>

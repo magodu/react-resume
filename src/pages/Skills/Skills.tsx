@@ -16,7 +16,7 @@ import { pieChartConfigType } from '../../models/appTypes';
 
 
 const Skills = () => {
-    const { data } = useContext(SiteContext);
+    const { colorTheme, data } = useContext(SiteContext);
     const [loadedData, setLoadedData] = useState<boolean>(false);
     const [sectionData, setSectionData] = useState<any>(null);
     const navigate = useNavigate();
@@ -25,7 +25,7 @@ const Skills = () => {
 
     const pieChartConfig: pieChartConfigType = {
         delay: 1000,
-        color: '#06A763',
+        color: colorTheme.color,
         percentText: {
             color: '#58666e',
         }

@@ -15,12 +15,16 @@ import useHttp from './hooks/useHttp';
 import useLocalStorage from './hooks/useLocalStorage';
 
 import { SiteContext } from './store/site-context'
-import { localStorageDataType } from './models/appTypes';
+import { localStorageDataType, colorThemeType } from './models/appTypes';
 
 
 
 const localStorageData: localStorageDataType = {
-    language: 'es'
+    language: 'es',
+    colorTheme: {
+        color: '#06A763',
+        description: 'green'
+    }
 };
 
 function App() {
@@ -30,12 +34,8 @@ function App() {
     const { isLoading, error, sendRequest: fetchResumeData } = useHttp();
     const navigate = useNavigate();
 
-    const modifyContext = ((languageSelected: string) => {
-        context.setLanguage(languageSelected);
-    })
-
     const setLanguage = useCallback(() => {
-        let languageSelected = 'es';
+        let languageSelected = localStorageData.language;
         if (localStorageConfig && localStorageConfig.language) {
             languageSelected = localStorageConfig.language;
         } else {
@@ -43,9 +43,24 @@ function App() {
         }
 
         i18n.changeLanguage(languageSelected);
-        modifyContext(languageSelected);
+        context.setLanguage(languageSelected);
 
         return languageSelected;
+
+    }, [i18n, localStorageConfig]);
+
+
+    const setColorTheme = useCallback(() => {
+        let themeSelected = localStorageData.colorTheme;
+
+        if (localStorageConfig && localStorageConfig.colorTheme) {
+            themeSelected = localStorageConfig.colorTheme;
+        } else {
+            localStorage.setItem('mgdResume', JSON.stringify(localStorageData));
+        }
+
+        document.documentElement.style.setProperty('--theme-first-color', themeSelected.color);
+        context.setColorTheme(themeSelected);
 
     }, [i18n, localStorageConfig]);
 
@@ -63,10 +78,11 @@ function App() {
     }, [fetchResumeData]);
 
     useEffect(() => {
+        setColorTheme();
         const languageSelected = setLanguage();
         getData(languageSelected);
 
-    }, [getData, setLanguage]);
+    }, [getData, setLanguage, setColorTheme]);
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -84,12 +100,21 @@ function App() {
         }));
     };
 
+    const changeThemeHandler = (color: colorThemeType) => {
+        setLocalStorageConfig((oldConfig: localStorageDataType) => ({
+            ...oldConfig,
+            colorTheme: color
+        }));
+
+        context.setColorTheme(color);
+    };
+
     return (
         <React.Fragment>  
             { error && <h2>Error retrieving data. Put notification</h2> }
             <div>
                 { isLoading && <Loading /> }
-                <Home onChangeLanguage={changeLanguageHandler} />
+                <Home onChangeLanguage={changeLanguageHandler} onChangeTheme={changeThemeHandler} />
                 <AboutMe/>
                 <Experience />
                 <Skills />

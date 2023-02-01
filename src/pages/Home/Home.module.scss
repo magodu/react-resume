@@ -76,38 +76,36 @@
         }
     }
 
-   
-        .ribbon {
-            position: absolute;
-            right: -5px;
-            top: -5px;
-            z-index: 1;
-            overflow: hidden;
-            width: 22rem;
-            height: 22rem;
-            text-align: right;
+    .ribbon {
+        position: absolute;
+        right: -5px;
+        top: -5px;
+        z-index: 1;
+        overflow: hidden;
+        width: 22rem;
+        height: 22rem;
+        text-align: right;
 
-            span {
-                font-size: 1.6rem;
-                color: #fff;
-                text-transform: uppercase;
-                text-align: center;
-                font-weight: bold;
-                line-height: 65px;
-                transform: rotate(45deg);
-                -webkit-transform: rotate(45deg);
-                width: 100%;
-                height: 4rem;
-                display: block;
-                background: #79a70a;
-                background: linear-gradient(#9bc90d 0%, #79a70a 100%);
-                box-shadow: 0 3px 10px -5px black;
-                position: absolute;
-                top: 75px;
-                right: -75px;
-            }
+        span {
+            font-size: 1.6rem;
+            color: #fff;
+            text-transform: uppercase;
+            text-align: center;
+            font-weight: bold;
+            line-height: 65px;
+            transform: rotate(45deg);
+            -webkit-transform: rotate(45deg);
+            width: 100%;
+            height: 4rem;
+            display: block;
+            background: #79a70a;
+            background: linear-gradient(#9bc90d 0%, #79a70a 100%);
+            box-shadow: 0 3px 10px -5px black;
+            position: absolute;
+            top: 75px;
+            right: -75px;
         }
-    
+    }
 }
 
 .download-link {
@@ -120,7 +118,7 @@
     backface-visibility: hidden;
     -moz-osx-font-smoothing: grayscale;
     position: relative;
-    background: $primary-color;
+    background: var(--theme-first-color);
     -webkit-transition-property: color;
     transition-property: color;
     -webkit-transition-duration: 0.3s;
@@ -155,7 +153,7 @@
 .download-link:hover,
 .download-link:focus,
 .download-link:active {
-    color: $primary-color;
+    color: var(--theme-first-color);
 }
 .download-link:hover:before,
 .download-link:focus:before,

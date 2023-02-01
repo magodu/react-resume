@@ -8,15 +8,15 @@
 
     &:hover {
         .profile-img {
-            background-color: $primary-color;
+            background-color: var(--theme-first-color);
         }
         .info-position {
-            color: $primary-color;
+            color: var(--theme-first-color);
         }
     }
     .profile-img {
         display: block;
-        border: 1px solid $primary-color;
+        border: 1px solid var(--theme-first-color);
         padding: 3px;
 
         img {
@@ -38,7 +38,7 @@
     .info-icon {
         height: 57px;
         width: 57px;
-        background: $primary-color;
+        background: var(--theme-first-color);
         float: left;
 
         i {

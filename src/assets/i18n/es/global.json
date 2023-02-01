@@ -33,6 +33,7 @@
         "menu": "Menú",
         "greeting": "Hola, soy",
         "scroll": "Scroll hacia abajo",
+        "colorTheme": "Selección de color",
         "positions": {
             "architect": "Arquitecto Front End",
             "developer": "Desarrollador Front End",
