@@ -28,7 +28,7 @@ interface colorThemeMenu {
     blue: boolean,
     aquamarine: boolean,
     grey: boolean,
-    purple: boolean,
+    coral: boolean,
     orange: boolean,
     red: boolean,
     pink: boolean
@@ -70,7 +70,7 @@ const NavBar: React.FC<{ fixedBar: boolean, onChangeLanguage: (language: string)
             blue: false,
             aquamarine: false,
             grey: false,
-            purple: false,
+            coral: false,
             orange: false,
             red: false,
             pink: false 
@@ -90,7 +90,6 @@ const NavBar: React.FC<{ fixedBar: boolean, onChangeLanguage: (language: string)
         }
 
         const languageSelected = language;
-       // setLanguageMenuActive({ ...initialLanguageMenuClasses });
         setLanguageMenuActive((prevState) => ({ ...prevState, [languageSelected]: true }));
 
         const colorThemeSelected = colorTheme;
@@ -157,22 +156,22 @@ const NavBar: React.FC<{ fixedBar: boolean, onChangeLanguage: (language: string)
                     </div>
                 </div>
                 <ul className={`${classes['main-nav']} pagewidth ${menuActive ? classes['show-menu'] : ''}`}>
-                    <li id="menuItemMain" className={menuLinkClasses['home']} onClick={() => setActiveClass('home')}>
+                    <li id="menuItemMain" className={menuLinkClasses['home']}>
                         <HashLink smooth to="/#home">{translate('common.title_home')}</HashLink>
                     </li>
-                    <li id="menuItemMain" className={menuLinkClasses['aboutMe']} onClick={() => setActiveClass('aboutMe')}>
+                    <li id="menuItemMain" className={menuLinkClasses['aboutMe']}>
                         <HashLink smooth to="/#aboutMe">{translate('common.title_aboutMe')}</HashLink>
                     </li>
-                    <li id="menuItemMain" className={menuLinkClasses['experience']} onClick={() => setActiveClass('experience')}>
+                    <li id="menuItemMain" className={menuLinkClasses['experience']}>
                         <HashLink smooth to="/#experience">{translate('common.title_experience')}</HashLink>
                     </li>
-                    <li id="menuItemMain" className={menuLinkClasses['skills']} onClick={() => setActiveClass('skills')}>
+                    <li id="menuItemMain" className={menuLinkClasses['skills']}>
                         <HashLink smooth to="/#skills">{translate('common.title_skills')}</HashLink>
                     </li>
-                    <li id="menuItemMain" className={menuLinkClasses['training']} onClick={() => setActiveClass('training')}>
+                    <li id="menuItemMain" className={menuLinkClasses['training']}>
                         <HashLink smooth to="/#training">{translate('common.title_training')}</HashLink>
                     </li>
-                    <li id="menuItemMain" className={menuLinkClasses['contact']} onClick={() => setActiveClass('contact')}>
+                    <li id="menuItemMain" className={menuLinkClasses['contact']}>
                         <HashLink smooth to="/#contact">{translate('common.title_contact')}</HashLink>
                     </li>
                     <li id="menuItemLanguage" className={classes['menu-item-language']}>
@@ -195,7 +194,7 @@ const NavBar: React.FC<{ fixedBar: boolean, onChangeLanguage: (language: string)
                             <li id="blue" className={`${classes.color2} ${colorThemeActive['blue'] ? classes['color-selected'] : ''}`} onClick={changeThemeColor.bind(null, '#1F5694', 'blue')}></li>
                             <li id="aquamarine" className={`${classes.color3} ${colorThemeActive['aquamarine'] ? classes['color-selected'] : ''}`} onClick={changeThemeColor.bind(null, '#038175', 'aquamarine')}></li>
                             <li id="grey" className={`${classes.color4} ${colorThemeActive['grey'] ? classes['color-selected'] : ''}`} onClick={changeThemeColor.bind(null, '#616161', 'grey')}></li>
-                            <li id="purple" className={`${classes.color5} ${colorThemeActive['purple'] ? classes['color-selected'] : ''}`} onClick={changeThemeColor.bind(null, '#8E44AD', 'purple')}></li>
+                            <li id="coral" className={`${classes.color5} ${colorThemeActive['coral'] ? classes['color-selected'] : ''}`} onClick={changeThemeColor.bind(null, '#ff7f50', 'coral')}></li>
                             <li id="orange" className={`${classes.color6} ${colorThemeActive['orange'] ? classes['color-selected'] : ''}`} onClick={changeThemeColor.bind(null, '#fe8026', 'orange')}></li>
                             <li id="red" className={`${classes.color7} ${colorThemeActive['red'] ? classes['color-selected'] : ''}`} onClick={changeThemeColor.bind(null, '#e42444', 'red')}></li>
                             <li id="pink" className={`${classes.color8} ${colorThemeActive['pink'] ? classes['color-selected'] : ''}`} onClick={changeThemeColor.bind(null, '#cf2b7e', 'pink')}></li>
