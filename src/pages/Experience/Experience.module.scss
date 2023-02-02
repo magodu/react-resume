@@ -84,11 +84,15 @@
                 font-weight: bold;
                 line-height: 28px;
                 height: 56px;
-                span {
-                    cursor: pointer;
-                    
-                    &:hover {
-                        font-size: 15px!important;
+
+                a {
+                    color: white;
+                    span {
+                        cursor: pointer;
+                        
+                        &:hover {
+                            font-size: 15px!important;
+                        }
                     }
                 }
             }

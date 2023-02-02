@@ -93,7 +93,7 @@ const Experience = () => {
                                     </div>
                                     <div className={blockAnimationClasses[i].contentClasses}>
                                         <h2>
-                                            <span>{experience.company}</span>
+                                            <a href={experience.url} target="_blank" rel="noreferrer"><span>{experience.company}</span></a>
                                         </h2>
                                         <p>{experience.position} ( <DateFormattedText from={experience.dateFrom} to={experience.dateTo}/> <br /> {experience.place} </p>
                                         <span className={classes.arrow} title={`${translate('experience.showMoreAlt')}`} onClick={addExpandedBlockClass.bind(null, i)}></span>
