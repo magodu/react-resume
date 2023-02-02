@@ -45,6 +45,7 @@ const Contact = () => {
 
             setSectionData({
                 personalData: data.aboutMe.personalData,
+                socialProfiles: data.aboutMe.socialProfiles,
                 maps: {
                     zoom: data.contact.maps.zoom,
                     position: {
@@ -117,13 +118,14 @@ const Contact = () => {
                                         </a>
                                     </p>
                                 </div>
+
                                 <div className={contactAnimationClasses['social']}>
                                     <Waypoint onEnter={() => addAnimationBlockClass('social')} />
                                     <div className={classes['social-profiles']}>
-                                        <a className="hvr-pulse-grow linkedin" href="#" title={`${translate('common.social_title_linkedin')}`}>
+                                        <a className="hvr-pulse-grow linkedin" href={sectionData.socialProfiles.linkedIn} target="_blank" title={`${translate('common.social_title_linkedin')}`} rel="noreferrer">
                                             <i className="bi bi-linkedin" aria-hidden="true"></i>
                                         </a>
-                                        <a className="hvr-pulse-grow github" href="#" title={`${translate('common.social_title_github')}`}>
+                                        <a className="hvr-pulse-grow github" href={sectionData.socialProfiles.github} target="_blank" title={`${translate('common.social_title_github')}`} rel="noreferrer">
                                             <i className="bi bi-github" aria-hidden="true"></i>
                                         </a>
                                     </div>

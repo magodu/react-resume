@@ -237,6 +237,7 @@
                 left: 50%;
                 margin-left: -24px;
                 -webkit-backface-visibility: hidden;
+                backface-visibility: hidden;
             }
 
             .timeline-content {
