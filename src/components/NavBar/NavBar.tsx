@@ -190,14 +190,14 @@ const NavBar: React.FC<{ fixedBar: boolean, onChangeLanguage: (language: string)
                     <div className={`${classes.wrapper} ${classes.colors} text-center`}>
                         <p>{translate('home.colorTheme')}</p>
                         <ul>
-                            <li id="green" className={`${classes.color1} ${colorThemeActive['green'] ? classes['color-selected'] : ''}`} onClick={changeThemeColor.bind(null, '#06A763', 'green')}></li>
-                            <li id="blue" className={`${classes.color2} ${colorThemeActive['blue'] ? classes['color-selected'] : ''}`} onClick={changeThemeColor.bind(null, '#1F5694', 'blue')}></li>
-                            <li id="aquamarine" className={`${classes.color3} ${colorThemeActive['aquamarine'] ? classes['color-selected'] : ''}`} onClick={changeThemeColor.bind(null, '#038175', 'aquamarine')}></li>
-                            <li id="grey" className={`${classes.color4} ${colorThemeActive['grey'] ? classes['color-selected'] : ''}`} onClick={changeThemeColor.bind(null, '#616161', 'grey')}></li>
-                            <li id="coral" className={`${classes.color5} ${colorThemeActive['coral'] ? classes['color-selected'] : ''}`} onClick={changeThemeColor.bind(null, '#ff7f50', 'coral')}></li>
-                            <li id="orange" className={`${classes.color6} ${colorThemeActive['orange'] ? classes['color-selected'] : ''}`} onClick={changeThemeColor.bind(null, '#fe8026', 'orange')}></li>
-                            <li id="red" className={`${classes.color7} ${colorThemeActive['red'] ? classes['color-selected'] : ''}`} onClick={changeThemeColor.bind(null, '#e42444', 'red')}></li>
-                            <li id="pink" className={`${classes.color8} ${colorThemeActive['pink'] ? classes['color-selected'] : ''}`} onClick={changeThemeColor.bind(null, '#cf2b7e', 'pink')}></li>
+                            <li id="green" className={`${classes.green} ${colorThemeActive['green'] ? classes['color-selected'] : ''}`} onClick={changeThemeColor.bind(null, '#06A763', 'green')}></li>
+                            <li id="blue" className={`${classes.blue} ${colorThemeActive['blue'] ? classes['color-selected'] : ''}`} onClick={changeThemeColor.bind(null, '#1F5694', 'blue')}></li>
+                            <li id="coral" className={`${classes.coral} ${colorThemeActive['coral'] ? classes['color-selected'] : ''}`} onClick={changeThemeColor.bind(null, '#ff7f50', 'coral')}></li>
+                            <li id="grey" className={`${classes.grey} ${colorThemeActive['grey'] ? classes['color-selected'] : ''}`} onClick={changeThemeColor.bind(null, '#616161', 'grey')}></li>
+                            <li id="aquamarine" className={`${classes.aquamarine} ${colorThemeActive['aquamarine'] ? classes['color-selected'] : ''}`} onClick={changeThemeColor.bind(null, '#038175', 'aquamarine')}></li>
+                            <li id="orange" className={`${classes.orange} ${colorThemeActive['orange'] ? classes['color-selected'] : ''}`} onClick={changeThemeColor.bind(null, '#fe8026', 'orange')}></li>
+                            <li id="red" className={`${classes.red} ${colorThemeActive['red'] ? classes['color-selected'] : ''}`} onClick={changeThemeColor.bind(null, '#e42444', 'red')}></li>
+                            <li id="pink" className={`${classes.pink} ${colorThemeActive['pink'] ? classes['color-selected'] : ''}`} onClick={changeThemeColor.bind(null, '#cf2b7e', 'pink')}></li>
                         </ul>
                     </div>
                     <div className={`${classes.wrapper} ${classes.icon} `}>
