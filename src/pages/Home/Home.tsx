@@ -12,8 +12,8 @@ import NavBar from '../../components/NavBar/NavBar';
 import useTypingText from '../../hooks/useTypingText';
 import classes from './Home.module.scss';
 
-import CV_MarioGonzalez_es from '../../assets/contents/CV_MarioGonzalez_es.pdf';
-import resume_MarioGonzalez_en from '../../assets/contents/CV_MarioGonzalez_en.pdf';
+import CV_MarioGonzalez_es from '../../assets/contents/Mario_Gonzalez_Duarte_CV_es.pdf';
+import resume_MarioGonzalez_en from '../../assets/contents/Mario_Gonzalez_Duarte_resume_en.pdf';
 
 const Home: React.FC<{ onChangeLanguage: (language: string) => void, onChangeTheme: (color: colorThemeType) => void }> = ({ onChangeLanguage, onChangeTheme }) => {
     const { language, data } = useContext(SiteContext);
