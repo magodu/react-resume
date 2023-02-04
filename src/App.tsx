@@ -33,10 +33,12 @@ function App() {
 
     const setLocalStorageData = useCallback(() => {
         if (!localStorageConfig) {
-            localStorage.setItem('mgdResume', JSON.stringify(localStorageData));
+            setLocalStorageConfig(localStorageData);
+            context.setLanguageHandler('es');
+            context.setThemeHandler(localStorageData.colorTheme);
         } else {
             // language
-            let languageSelected = localStorageConfig ? localStorageConfig.language : '';
+            const languageSelected = localStorageConfig ? localStorageConfig.language : '';
             i18n.changeLanguage(languageSelected);
             context.setLanguageHandler(languageSelected);
     
@@ -73,10 +75,14 @@ function App() {
     };
 
     const changeThemeHandler = (themeSelected: colorThemeType) => {
-        setLocalStorageConfig((oldConfig: localStorageDataType) => ({
-            ...oldConfig,
-            colorTheme: themeSelected
-        }));
+      
+        if (localStorageConfig) {
+            console.log('localStorageConfig', localStorageConfig);
+            setLocalStorageConfig((oldConfig: localStorageDataType) => ({
+                ...oldConfig,
+                colorTheme: themeSelected
+            }));
+        }
 
         context.setThemeHandler(themeSelected);
     };

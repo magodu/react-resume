@@ -35,7 +35,7 @@ const SiteContextProvider: React.FC<InputProps> = ( props ) => {
     const [ errorLoading, setErrorLoading ] = useState<boolean>(false);
 
     const { error, sendRequest: fetchResumeData } = useHttp();
-    const [ localStorageConfig ] = useLocalStorage('mgdResume');
+    const [ localStorageConfig, setLocalStorageConfig ] = useLocalStorage('mgdResume');
 
     const languageRef = useRef<string>('');
 
@@ -47,13 +47,14 @@ const SiteContextProvider: React.FC<InputProps> = ( props ) => {
         }  else if (localStorageConfig && localStorageConfig.language) {
             selectedLanguage = localStorageConfig.language;
         } else {
-            localStorage.setItem('mgdResume', JSON.stringify(localStorageData));
+            setLocalStorageConfig(localStorageData);
             selectedLanguage = 'es';
+            setLanguage(selectedLanguage);
         }
 
         languageRef.current = selectedLanguage;
 
-    }, [localStorageConfig]);
+    }, [localStorageConfig, setLocalStorageConfig]);
 
     const getError = useCallback(() => {
         if (error) {
