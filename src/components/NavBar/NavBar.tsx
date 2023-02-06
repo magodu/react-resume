@@ -40,7 +40,6 @@ const NavBar: React.FC<{ fixedBar: boolean, onChangeLanguage: (language: string)
     const location = useLocation();
     const initialClasses = `${classes['nav-bar']} ${classes.clearfix} no-select`;
     const [ navBarClasses, setNavBarClasses ] = useState<string>(initialClasses);
-    const [ navBarFixed, setNavBarFixed ] = useState<boolean>(false);
     const [ menuActive, setMenuActive ] = useState<boolean>(false);
     const [ translate ] = useTranslation('global');
 
@@ -82,11 +81,8 @@ const NavBar: React.FC<{ fixedBar: boolean, onChangeLanguage: (language: string)
     useEffect(() => {
         if (fixedBar) {
             setNavBarClasses(`${initialClasses} ${classes['fixed-nav-bar']}`);
-            setNavBarFixed(true);
-
         } else {
             setNavBarClasses(initialClasses);
-            setNavBarFixed(false);
         }
 
         const languageSelected = language;
@@ -118,13 +114,6 @@ const NavBar: React.FC<{ fixedBar: boolean, onChangeLanguage: (language: string)
 
     }, [location, setActiveClass]);
 
-    const setFixedClass = () => {
-        if (!navBarFixed) {
-            setNavBarClasses(initialClasses);
-            setNavBarFixed(true);
-        }
-    }
-
     const toggleMenu = () => {
         setMenuActive((prevState) => (!prevState));
     }
@@ -147,7 +136,6 @@ const NavBar: React.FC<{ fixedBar: boolean, onChangeLanguage: (language: string)
 
     return (
         <div className={navBarClasses}>
-            <Waypoint onEnter={setFixedClass} onLeave={() => {}} />
             <nav>
                 <div className={classes['mobile-button']}>
                     <div className={classes['mobile-wrapper']} onClick={() => toggleMenu()}>

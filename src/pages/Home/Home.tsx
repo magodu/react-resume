@@ -75,7 +75,6 @@ const Home: React.FC<{ onChangeLanguage: (language: string) => void, onChangeThe
 
     return (
         <React.Fragment>
-            <NavBar fixedBar={homeNavBarFixed} onChangeLanguage={changeLanguageHandler} onChangeTheme={changeThemeHandler}/>
             <Waypoint onEnter={() => changeRoute()} />
             <header id="home" className={`${classes.header} pagewidth`}>
                 { loadedData ? (
@@ -104,6 +103,7 @@ const Home: React.FC<{ onChangeLanguage: (language: string) => void, onChangeThe
                         <i className="bi bi-dot" aria-hidden="true"></i>
                     </Link>
                 </div>
+                <NavBar fixedBar={homeNavBarFixed} onChangeLanguage={changeLanguageHandler} onChangeTheme={changeThemeHandler}/>
             </header>
             <Waypoint onEnter={() => setHomeNavBarFixed(false)} onLeave={() => setHomeNavBarFixed(true)} />
         </React.Fragment>
