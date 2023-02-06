@@ -48,7 +48,7 @@ function App() {
             document.documentElement.style.setProperty('--theme-first-color', themeSelected.color);
         }
 
-    }, [localStorageConfig, context, i18n]);
+    }, [localStorageConfig, setLocalStorageConfig, context, i18n]);
 
     useEffect(() => {
         setLocalStorageData();
