@@ -79,9 +79,9 @@ $chartColorsLength: length($chartColors);
 @media screen and (max-width: 768px) {
     .skills-wrapper {
         .skills {
-            width: 100%;
             li {
                 width: 100%;
+                padding-right: 0;
             }
         }
     }
