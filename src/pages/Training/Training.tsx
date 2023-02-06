@@ -66,7 +66,7 @@ const Training = () => {
                     
                 })
                 .catch((error) => {
-                    console.log('Failed to load images', error);
+                    console.error('Failed to load images in training section', error);
                 });
 
         }
