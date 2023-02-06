@@ -140,9 +140,16 @@
 
 @media screen and (max-width: 768px) {
     .profile-picture {
+        margin: 0 auto;
+
         .profile-img {
             max-width: 400px;
             margin: 0 auto;
+            width: 50%;
+        }
+
+        .info-position {
+            margin: 15px;
         }
     }
 }
