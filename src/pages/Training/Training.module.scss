@@ -84,6 +84,7 @@
         .courses {
             .list-courses {
                 width: 100%;
+                margin: 15px 0 0 15px;
                 li {
                     width: 100%;
                 }
@@ -91,3 +92,14 @@
         }
     }
 }
+
+@media screen and (max-width: 768px) {
+    .training {
+        .training-section {
+            width: 95%;
+            margin: 0 0 2em 1.5em;
+        }
+    }
+}
+
+

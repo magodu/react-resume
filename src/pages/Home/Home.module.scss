@@ -305,13 +305,18 @@
     }
 }
 
-@media screen and (max-width: 687px) {
+@media screen and (max-width: 768px) {
     .header {
         .home-overlay {
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            padding: 0.5rem;
             .home-intro {
                 .name {
                     h1 {
-                        font-size: 1.2rem;
+                        font-size: 1.5rem;
                         margin-top: 0;
                     }
                     h2,
@@ -321,6 +326,20 @@
 
                     .type-wrap {
                         margin: 0.5rem 0 1.5rem 0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 437px) {
+    .header {
+        .home-overlay {
+            .home-intro {
+                .name {
+                    h1 {
+                        font-size: 1rem;
                     }
                 }
             }

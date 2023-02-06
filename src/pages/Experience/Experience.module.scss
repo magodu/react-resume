@@ -83,7 +83,7 @@
                 font-size: 14px!important;
                 font-weight: bold;
                 line-height: 28px;
-                height: 56px;
+                height: auto;
 
                 a {
                     color: white;
@@ -267,22 +267,10 @@
     }
 }
 
+@media (max-width: 768px) {
 
-
-@media (min-width: 768px) {
     .timeline-container {
-        .timeline-block {
-            .timeline-content {
-                p {
-                    font-size: 14px;
-                }
-            }
-        }
-    } 
-}
-
-@media (max-width: 240px) {
-    .timeline-container {
+        width: 100%;
         .timeline-block {
             .timeline-content {
                 h2 {
@@ -294,8 +282,44 @@
                     padding: 0.5em;
                     font-size: 14px;
                 }
+
+                .arrow {
+                    top: 10px;
+                    right: 10px;
+                }
             }
         }
     } 
 }
+
+@media (min-width: 768px) {
+
+    .timeline-container {
+        .timeline-block {
+            .timeline-content {
+                p {
+                    font-size: 14px;
+                }
+            }
+        }
+    } 
+}
+
+// @media (max-width: 240px) {
+//     .timeline-container {
+//         .timeline-block {
+//             .timeline-content {
+//                 h2 {
+//                     padding: 0.5em;
+//                     font-size: 18px;
+//                 }
+
+//                 p {
+//                     padding: 0.5em;
+//                     font-size: 14px;
+//                 }
+//             }
+//         }
+//     } 
+// }
 
