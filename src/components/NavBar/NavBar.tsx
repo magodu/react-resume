@@ -1,7 +1,6 @@
 import React, { useContext, useState, useEffect, useCallback, useMemo } from 'react';
 import { useLocation, Link } from "react-router-dom"
 import { HashLink } from 'react-router-hash-link';
-import { Waypoint } from 'react-waypoint';
 import { useTranslation } from 'react-i18next';
 
 import { SiteContext } from '../../store/site-context';
