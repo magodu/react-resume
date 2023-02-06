@@ -177,14 +177,9 @@
 
                     p {
                         padding: 5px 0;
+                        text-align: justify;
                     }
                 }
-
-              
-
-
-
-                
             }
         }
     }
@@ -287,6 +282,10 @@
                     top: 10px;
                     right: 10px;
                 }
+
+                .job-description {
+                    padding: 0 0.5rem;
+                }
             }
         }
     } 
@@ -305,21 +304,4 @@
     } 
 }
 
-// @media (max-width: 240px) {
-//     .timeline-container {
-//         .timeline-block {
-//             .timeline-content {
-//                 h2 {
-//                     padding: 0.5em;
-//                     font-size: 18px;
-//                 }
-
-//                 p {
-//                     padding: 0.5em;
-//                     font-size: 14px;
-//                 }
-//             }
-//         }
-//     } 
-// }
 
