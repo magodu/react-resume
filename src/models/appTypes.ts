@@ -69,3 +69,11 @@ export type pieChartConfigType = {
     trackColor?: string,
     percentText: piePercentText
 };
+
+export type contactFormType = {
+    subject: string;
+    name: string;
+    email: string;
+    phone: string;
+    message: string;
+}
