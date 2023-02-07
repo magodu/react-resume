@@ -18,7 +18,7 @@ import resume_MarioGonzalez_en from '../../assets/contents/Mario_Gonzalez_Duarte
 const Home: React.FC<{ onChangeLanguage: (language: string) => void, onChangeTheme: (color: colorThemeType) => void }> = ({ onChangeLanguage, onChangeTheme }) => {
     const { language, data } = useContext(SiteContext);
     const [loadedData, setLoadedData] = useState<boolean>(false);
-    const [sectionData, setSectionData] = useState<any>(null);
+    const [openToWork, setOpenToWork] = useState<any>(false);
     const navigate = useNavigate();
     const [homeNavBarFixed, setHomeNavBarFixed] = useState<boolean>(false);
     const [translate] = useTranslation('global');
@@ -57,9 +57,9 @@ const Home: React.FC<{ onChangeLanguage: (language: string) => void, onChangeThe
     useEffect(() => {
         if (!isEmptyObject(data)) {
             setLoadedData(true);
-            setSectionData(data.openToWork);
+            setOpenToWork(data.openToWork);
         }
-    }, [data, sectionData]);
+    }, [data]);
 
     const changeLanguageHandler = (language: string) => {
         onChangeLanguage(language);
@@ -78,8 +78,8 @@ const Home: React.FC<{ onChangeLanguage: (language: string) => void, onChangeThe
             <Waypoint onEnter={() => changeRoute()} />
             <header id="home" className={`${classes.header} pagewidth`}>
                 { loadedData ? (
-                    sectionData.openToWork && (<div className={classes.ribbon}><span>Open to work</span></div>) ) 
-                    : <Spinner />
+                    openToWork && (<div className={classes.ribbon}><span>Open to work</span></div>))
+                    : <Spinner /> 
                 }
                 <div className={classes.background} style={{backgroundImage: `url(${backgroundImage.current})` }}></div>
                 <div className={classes['home-overlay']}>
@@ -99,7 +99,7 @@ const Home: React.FC<{ onChangeLanguage: (language: string) => void, onChangeThe
                     </div>
                 </div>
                 <div>
-                    <Link to="" className={`${classes['scroll-down']} ${classes['page-scroll']}`} title={`${translate('home.scroll')}`}>
+                    <Link to="" className={classes['scroll-down']} title={`${translate('home.scroll')}`}>
                         <i className="bi bi-dot" aria-hidden="true"></i>
                     </Link>
                 </div>
