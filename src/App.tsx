@@ -75,9 +75,7 @@ function App() {
     };
 
     const changeThemeHandler = (themeSelected: colorThemeType) => {
-      
         if (localStorageConfig) {
-            console.log('localStorageConfig', localStorageConfig);
             setLocalStorageConfig((oldConfig: localStorageDataType) => ({
                 ...oldConfig,
                 colorTheme: themeSelected
