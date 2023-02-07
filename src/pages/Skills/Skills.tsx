@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 
-import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect, useRef, useContext } from 'react';
 import { useNavigate } from "react-router-dom"
 import { Waypoint } from 'react-waypoint';
 import { useTranslation } from 'react-i18next';
@@ -8,6 +8,7 @@ import { useTranslation } from 'react-i18next';
 import { SiteContext } from '../../store/site-context';
 import { isEmptyObject } from '../../utils';
 
+import useWindowDimensions from '../../hooks/useWindowDimensions';
 import Pie from '../../components/Pie/Pie';
 import Spinner from '../../components/Spinner/Spinner';
 
@@ -22,6 +23,8 @@ const Skills = () => {
     const navigate = useNavigate();
     const [sectionAnimationClasses, setSectionAnimationClasses] = useState<string>('section');
     const [translate] = useTranslation('global');
+    const { height, width } = useWindowDimensions();
+    const isMobile = useRef<boolean>(false);
 
     const pieChartConfig: pieChartConfigType = {
         delay: 1000,
@@ -30,6 +33,10 @@ const Skills = () => {
             color: '#58666e',
         }
     };
+
+    useEffect(() => {
+        isMobile.current = width && width <= 400 ? true : false;
+    }, [height, width]);
 
     useEffect(() => {
         if (!isEmptyObject(data)) {
@@ -88,12 +95,23 @@ const Skills = () => {
                         <ul className={classes.skills}>
                         {sectionData.skills.map((skill: any, i: number) => (
                             <li key={i}>
-                                <div className={`progress ${classes['progress-wrapper']}`}>
-                                    <div className={classes.lead}>{skill.skill}</div>
-                                    <div className={`progress-bar ${classes['progress-color']}`} role="progressbar" data-progress={skill.level} >
-                                        <span className={classes.percentage}>{skill.level}%</span>
+                                { !isMobile.current && (
+                                    <div className={`progress ${classes['progress-wrapper']}`}>
+                                        <div className={classes.lead}>{skill.skill}</div>
+                                        <div className={`progress-bar ${classes['progress-color']}`} role="progressbar" data-progress={skill.level} >
+                                            <span className={classes.percentage}>{skill.level}%</span>
+                                        </div>
                                     </div>
-                                </div>
+                                )}
+
+                                { isMobile.current && (
+                                    <div className={`progress ${classes['progress-wrapper']}`}>
+                                        <div className={classes.lead}>
+                                            <span>{skill.skill}</span><span className={classes['percentage']}>{skill.level}%</span>
+                                        </div>
+                                        <div className={`progress-bar ${classes['progress-color']}`} role="progressbar" data-progress={skill.level}></div>
+                                    </div>
+                                )}
                             </li>
                             ))}
                         </ul>
