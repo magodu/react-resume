@@ -99,9 +99,9 @@ const Home: React.FC<{ onChangeLanguage: (language: string) => void, onChangeThe
                     </div>
                 </div>
                 <div>
-                    <Link to="" className={classes['scroll-down']} title={`${translate('home.scroll')}`}>
+                    <span className={classes['scroll-down']} title={`${translate('home.scroll')}`}>
                         <i className="bi bi-dot" aria-hidden="true"></i>
-                    </Link>
+                    </span>
                 </div>
                 <NavBar fixedBar={homeNavBarFixed} onChangeLanguage={changeLanguageHandler} onChangeTheme={changeThemeHandler}/>
             </header>
