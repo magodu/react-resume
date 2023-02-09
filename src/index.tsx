@@ -1,7 +1,7 @@
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import i18next from 'i18next';
-import { I18nextProvider } from 'react-i18next';
+import { initReactI18next, I18nextProvider } from 'react-i18next';
 
 import App from './App';
 import SiteContextProvider from './store/site-context';
@@ -13,19 +13,21 @@ import './style.scss';
 
 
 
-i18next.init( {
-    interpolation: { escapeValue: false },
-    lng: 'es',
-    supportedLngs: ['es', 'en'],
-    resources: {
-        es: {
-            global: global_es
-        },
-        en: {
-            global: global_en
+i18next
+    .use(initReactI18next)
+    .init( {
+        interpolation: { escapeValue: false },
+        lng: 'es',
+        supportedLngs: ['es', 'en'],
+        resources: {
+            es: {
+                global: global_es
+            },
+            en: {
+                global: global_en
+            }
         }
-    }
-});
+    });
 
 const root = ReactDOM.createRoot(document.getElementById('root')!);
 root.render(
