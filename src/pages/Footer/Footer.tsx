@@ -19,7 +19,7 @@ const Footer = () => {
             <div className={classes['footer-content']}>
                 <div className={classes['back-top-wrapper']}>
                     <p className={classes['back-top']}>
-                        <HashLink smooth to="/#home">
+                        <HashLink smooth to="/resume#home">
                             <i className="bi bi-chevron-up" aria-hidden="true"></i>
                             <span>{translate('footer.buttonToTop')}</span>
                         </HashLink>
