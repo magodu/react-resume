@@ -42,7 +42,7 @@ const Experience = () => {
             sectionDataRef.current = data.experience;
             createClassesList();
         }
-    }, [createClassesList, data, sectionData]);
+    }, [createClassesList, data]);
 
     const addRouteAnimationSectionClass = () => {
         setSectionAnimationClasses('section fadeInUp animated');
