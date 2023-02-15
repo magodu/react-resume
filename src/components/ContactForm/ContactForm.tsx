@@ -129,7 +129,6 @@ const ContactForm = () => {
             setFormError(true);
             setIsSubmitting(false);
         }
-   
  
      }, [error]);
 
@@ -226,7 +225,7 @@ const ContactForm = () => {
                         )}
                     </div>
                     <Waypoint onEnter={() => addAnimationBlockClasses('inputButton')} />
-                    <button className={formAnimationClasses['inputButton']} type="submit" value="Send Now">
+                    <button className={formAnimationClasses['inputButton']} type="submit" value={`${translate('contact.contactForm.submit_button')}`}>
                         {translate('contact.contactForm.submit_button')}
                     </button>
                 </form>

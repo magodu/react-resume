@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, useCallback } from 'react';
+import React, { useState, useRef, useEffect, useCallback, useContext } from 'react';
 
 import { SiteContextObj, InputProps, colorThemeType } from '../models/appTypes';
 
@@ -14,6 +14,8 @@ const localStorageData: localStorageDataType = {
         description: 'green'
     }
 };
+
+
 
 export const SiteContext = React.createContext<SiteContextObj>({
     language: '',
@@ -67,7 +69,7 @@ const SiteContextProvider: React.FC<InputProps> = ( props ) => {
     const getData = useCallback(() => {
         setLoading(true);
         const transformData = (response: any) => {
-            // console.log('response context', languageRef.current, response.data);
+            //console.log('response context', languageRef.current, response.data);
             setData(response.data);
             setLoading(false);
         };
@@ -118,4 +120,4 @@ const SiteContextProvider: React.FC<InputProps> = ( props ) => {
 
 export default SiteContextProvider;
 
-
+export const useSiteContext = () => useContext(SiteContext);
