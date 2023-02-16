@@ -4,7 +4,6 @@ import { render, screen, cleanup, waitFor, fireEvent } from '@testing-library/re
 import '@testing-library/jest-dom/extend-expect';
 
 import Experience from '../pages/Experience/Experience';
-
 import { SiteContext } from '../store/site-context';
 
 const mockContextNoData = {
@@ -27,6 +26,16 @@ const mockContextData = {
 };
 
 jest.mock('../components/DateFormattedText/DateFormattedText');
+
+function renderComponentWithContext(contextValue) {
+    return render(
+        <SiteContext.Provider value={contextValue}>
+            <Router>
+                <Experience />
+            </Router>
+        </SiteContext.Provider>
+    );
+}
 
 describe('Experience component', () => {
     const renderComponent = () =>
@@ -64,18 +73,6 @@ describe('Experience component', () => {
         expect(menuText).toBeInTheDocument();
     });
 
-
-    function renderComponentWithContext(contextValue) {
-        return render(
-            <SiteContext.Provider value={contextValue}>
-                <Router>
-                    <Experience />
-                </Router>
-            </SiteContext.Provider>
-        );
-      }
-      
-
     test('should be initially loading', () => {
         renderComponentWithContext(mockContextNoData);
         expect(screen.getByTestId('loading')).toBeDefined();
@@ -98,12 +95,10 @@ describe('Experience component', () => {
 
         const clicableElemList = await screen.findAllByTitle('experience.showMoreAlt');
         fireEvent.click(clicableElemList[0]);
-            
 
         // verify that class expanded is added to div with timeline-content class
-        const timelineContentEl = screen.getByText('testCompany').closest('div')
+        const timelineContentEl = screen.getByText('testCompany').closest('div');
         expect(timelineContentEl).toHaveClass('expanded');
-       
     });
 
     test('After click in a expanded Show more the div should be showed removing expanded class', async () => {
@@ -117,15 +112,11 @@ describe('Experience component', () => {
         fireEvent.click(clicableElemList[0]);
 
         // verify that class expanded is added to div with timeline-content class
-        const timelineContentEl = screen.getByText('testCompany').closest('div')
+        const timelineContentEl = screen.getByText('testCompany').closest('div');
         expect(timelineContentEl).toHaveClass('expanded');
-
 
         // click again and verify that class expanded is removed from div with timeline-content class
         fireEvent.click(clicableElemList[0]);
         expect(timelineContentEl).not.toHaveClass('expanded');
-       
     });
-
-    
 });
