@@ -2,7 +2,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { render, screen, cleanup } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 
-import Footer from '../pages/Footer/Footer';
+import Footer from '../components/Footer/Footer';
 
 
 describe('Footer component', () => {

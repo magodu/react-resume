@@ -8,7 +8,7 @@ import Experience from '../Experience/Experience';
 import Skills from '../Skills/Skills';
 import Training from '../Training/Training';
 import Contact from '../Contact/Contact';
-import Footer from '../Footer/Footer';
+import Footer from '../../components/Footer/Footer';
 import Loading from '../../components/Loading/Loading';
 import ErrorLoading from '../../components/ErrorLoading/ErrorLoading';
 
