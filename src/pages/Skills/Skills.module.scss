@@ -78,7 +78,6 @@ $chartColorsLength: length($chartColors);
     }
 }
 
-
 .soft-skills {
     margin-top: 3rem;
     .wrapper {
@@ -119,8 +118,6 @@ $chartColorsLength: length($chartColors);
             background-color: var(--theme-first-color);
         }
     }
-
-    
 }
 
 @media screen and (max-width: 768px) {
@@ -138,7 +135,7 @@ $chartColorsLength: length($chartColors);
             display: flex;
             justify-content: flex-start;
         }
-        .box {
+        .box:nth-child(even) {
             border: 1px solid #ddd;
         }
     }
@@ -151,12 +148,12 @@ $chartColorsLength: length($chartColors);
                 .progress-wrapper {
                     background-color: #c2b9b9;
                     margin-bottom: 10px;
-    
+
                     .lead {
                         width: 100%;
                         top: 12px;
                         font-weight: 500;
-    
+
                         .percentage {
                             float: right;
                             margin-right: 15px;
@@ -164,7 +161,7 @@ $chartColorsLength: length($chartColors);
                             font-weight: 500;
                         }
                     }
-                } 
+                }
             }
         }
     }
