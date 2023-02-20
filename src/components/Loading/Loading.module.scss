@@ -1,3 +1,16 @@
+@property
+	--a {
+		initial-value: 0deg;
+		inherits: false;
+		syntax: '<angle>';
+	}
+	--h {
+		initial-value: 0;
+		inherits: false;
+		syntax: '<number>';
+	}
+
+
 .loading {
     display: flex;
     justify-content: center;
@@ -16,11 +29,68 @@
     z-index: 999;
     text-align: center;
 
-    img {
-        width:700px;
-        height: 700px;
-        margin: auto;
-        vertical-align: middle;
+   
+    .loader {
+        padding: 2rem 4rem;
+        color: #fff;
+        border-style: solid;
+        border-width: 2px;
+        font-size: 2rem;
+        --charge: hsl(var(--h, 0), 80%, 50%);
+        border-image: conic-gradient(var(--charge) var(--a), transparent calc(var(--a) + 0.5deg)) 30;
+        animation: load 2s infinite ease-in-out;
     }
 }
+
+
+
+
+
+@keyframes load {
+    0%, 10% {
+        --a: 0deg;
+        --h: 0;
+    }
+    50% {
+        --a: 270deg;
+           --h: 75;
+    }
+    100% {
+        --a: 360deg;
+        --h: 100;
+    }
+}
+
+@-webkit-keyframes load {
+    0%, 10% {
+        --a: 0deg;
+        --h: 0;
+    }
+    50% {
+        --a: 270deg;
+           --h: 75;
+     }
+    100% {
+        --a: 360deg;
+        --h: 100;
+    }
+}
+
+
+@-moz-keyframes load {
+    0%, 10% {
+        --a: 0deg;
+        --h: 0;
+    }
+    50% {
+        --a: 270deg;
+           --h: 75;
+     }
+    100% {
+        --a: 360deg;
+        --h: 100;
+    }
+}
+
+
 

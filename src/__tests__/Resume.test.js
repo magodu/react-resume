@@ -91,8 +91,8 @@ describe('Resume component', () => {
         renderComponentWithContext(loading, errorLoading);
 
         await waitFor(() => {
-            const loadingImageEl = screen.getByAltText('common.loading');
-            expect(loadingImageEl).toBeInTheDocument();
+            const loadingText = screen.getByText('common.loading');
+            expect(loadingText).toBeInTheDocument();
 
             testSectionComponentsExists();
         });
@@ -106,14 +106,14 @@ describe('Resume component', () => {
         renderComponentWithContext(loading, errorLoading);
 
         await waitFor(() => {
-            const loadingImageEl = screen.queryByAltText('common.loading');
-            expect(loadingImageEl).not.toBeInTheDocument();
+            const loadingText = screen.queryByText('common.loading');
+            expect(loadingText).not.toBeInTheDocument();
 
             testSectionComponentsExists();
         });
     });
 
-    test('renders ErrorLoading if an error happens', async () => {
+    test('renders ErrorLoading component if an error happens', async () => {
         const loading = false;
         const errorLoading = true;
         renderHook(() => useLocalStorage('test-key', 'test-value'));
@@ -121,8 +121,8 @@ describe('Resume component', () => {
         renderComponentWithContext(loading, errorLoading);
 
         await waitFor(() => {
-            const loadingImageEl = screen.getByText('common.loadingError');
-            expect(loadingImageEl).toBeInTheDocument();
+            const errorLoadingText = screen.getByText('common.loadingError');
+            expect(errorLoadingText).toBeInTheDocument();
 
             const homeComp = screen.queryByText('home.greeting');
             // eslint-disable-next-line testing-library/no-wait-for-multiple-assertions

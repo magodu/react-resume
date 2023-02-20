@@ -27,10 +27,8 @@ describe('Loading component', () => {
     test('should render Loading component correctly', () => {
         render(<Loading />);
 
-        const loadingImage = screen.getByAltText('common.loading');
+        const loadingText = screen.getByText('common.loading');
 
-        expect(loadingImage).toBeInTheDocument();
-        expect(loadingImage).toHaveAttribute('src');
-        expect(loadingImage.src).toContain('loading.gif');
+        expect(loadingText).toBeInTheDocument();
     });
 });
