@@ -68,13 +68,59 @@ $chartColorsLength: length($chartColors);
     width: 0;
 }
 
-.skill-language {
+.skill-language,
+.soft-skills {
     margin-top: 30px;
     h2 {
         text-transform: uppercase;
         font-size: 18px;
         text-align: center;
     }
+}
+
+
+.soft-skills {
+    margin-top: 3rem;
+    .wrapper {
+        display: flex;
+        justify-content: center;
+        margin: 1rem 0;
+    }
+    .box {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        color: #fff;
+        background-color: var(--theme-first-color);
+        height: 105px;
+
+        .interest-icon {
+            text-align: center;
+            img {
+                width: 50px;
+                padding-top: 5px;
+            }
+            span {
+                display: block;
+                padding-top: 5px;
+            }
+        }
+
+        &:nth-child(even) {
+            background-color: white;
+            border-top: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+            span {
+                color: #58666e;
+            }
+        }
+
+        &:nth-child(odd) {
+            background-color: var(--theme-first-color);
+        }
+    }
+
+    
 }
 
 @media screen and (max-width: 768px) {
@@ -84,6 +130,16 @@ $chartColorsLength: length($chartColors);
                 width: 100%;
                 padding-right: 0;
             }
+        }
+    }
+    .soft-skills {
+        margin-top: 3rem;
+        .wrapper {
+            display: flex;
+            justify-content: flex-start;
+        }
+        .box {
+            border: 1px solid #ddd;
         }
     }
 }

@@ -64,7 +64,15 @@
         "showMoreAlt": "show more"
     },
     "skills": {
-        "languages_subtitle": "Languages"
+        "languages_subtitle": "Languages",
+        "softSkills_subtitle": "Soft Skills",
+        "softSkills": {
+            "fastLearner": "Fast learner",
+            "teamPlayer": "Team player",
+            "problemSolving": "Problem solving",
+            "mentoring": "Mentoring",
+            "support": "Support"
+        }
     },
     "training": {
         "education_subtitle": "Education",

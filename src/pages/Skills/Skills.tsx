@@ -15,6 +15,12 @@ import Spinner from '../../components/Spinner/Spinner';
 import classes from './Skills.module.scss';
 import { pieChartConfigType } from '../../models/appTypes';
 
+import fastLearningWhiteIcon from '../../assets/images/soft-skill-icons/fast-learning-white-icon.png';
+import teamPlayerIcon from '../../assets/images/soft-skill-icons/team-player-icon.png';
+import problemSolvingWhiteIcon from '../../assets/images/soft-skill-icons/problem-solving-white-icon.png';
+import mentoringWhiteIcon from '../../assets/images/soft-skill-icons/mentoring-icon2.png';
+import supportWhiteIcon from '../../assets/images/soft-skill-icons/support-white-icon.png';
+
 
 const Skills = () => {
     const { colorTheme, data } = useContext(SiteContext);
@@ -136,9 +142,46 @@ const Skills = () => {
                         </div>
                     )}
                 </div>
+
+                <div className={classes['soft-skills']}>
+                    <h2>{translate('skills.softSkills_subtitle')}</h2>
+                    <div className={`row no-gutters ${classes.wrapper}`}>
+                        <div className={`col-md-2 col-sm-4 col-xs-2 ${classes.box}`}>
+                            <div className={classes['interest-icon']}>
+                                <img src={fastLearningWhiteIcon} alt="Fast learner icon" />
+                                <span>{translate('skills.softSkills.fastLearner')}</span>
+                            </div>
+                        </div>
+                        <div className={`col-md-2 col-sm-4 col-xs-2 ${classes.box}`}>
+                            <div className={classes['interest-icon']}>
+                                <img src={teamPlayerIcon} alt="Team player icon" />
+                                <span>{translate('skills.softSkills.teamPlayer')}</span>
+                            </div>
+                        </div>
+                        <div className={`col-md-2 col-sm-4 col-xs-2 ${classes.box}`}>
+                            <div className={classes['interest-icon']}>
+                                <img src={problemSolvingWhiteIcon} alt="Problem solving icon" />
+                                <span>{translate('skills.softSkills.problemSolving')}</span>
+                            </div>
+                        </div>
+                        <div className={`col-md-2 col-sm-4 col-xs-2 ${classes.box}`}>
+                            <div className={classes['interest-icon']}>
+                                <img src={mentoringWhiteIcon} alt="Mentoring icon" />
+                                <span>{translate('skills.softSkills.mentoring')}</span>
+                            </div>
+                        </div>
+                        <div className={`col-md-2 col-sm-4 col-xs-2 ${classes.box}`}>
+                            <div className={classes['interest-icon']}>
+                                <img src={supportWhiteIcon} alt="Support icon" />
+                                <span>{translate('skills.softSkills.support')}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
     );
 };
+
 
 export default Skills;
