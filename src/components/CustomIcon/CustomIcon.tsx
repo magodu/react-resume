@@ -21,14 +21,14 @@ interface IconProperties {
     viewBox?: string;
     title?: string;
     style?: any;
-    fill?: string;
+    //fill?: string;
     role?: string;
     size?: string;
     name: IconNames;
 }
 
 const CustomIcon: React.FC<IconProperties> = ({ viewBox, title, size, name, className, ...props }) => {
-    const fill = props.fill ? props.fill : 'none';
+    //const fill = props.fill ? props.fill : 'none';
     return (
         <svg width={size} height={size} viewBox={viewBox} className={className ? `custom-icons ${className}` : 'custom-icons'} xmlnsXlink="http://www.w3.org/1999/xlink" {...props}>
             {title && <title>{title}</title>}
