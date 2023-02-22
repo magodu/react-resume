@@ -1,0 +1,52 @@
+@import "../../scss/_variables";
+
+
+$color-success: #28a745;
+$color-error: #dc3545;
+$color-warning: #ffc107;
+$color-info: #17a2b8;
+$color-white: #fff;
+$color-black: #000;
+
+svg {
+    &.custom-icons {
+        fill: #000;
+        stroke: transparent;
+        color: transparent;
+        stroke-width: 1px;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+
+        &.icon-success {
+            fill: $color-success;
+        }
+
+        &.icon-warning {
+            fill: $color-warning;
+        }
+
+        &.icon-error {
+            fill: $color-error;
+        }
+
+        &.icon-info {
+            fill: $color-info;
+        }
+
+        &.icon-white {
+            fill: $color-white;
+        }
+
+        &.icon-black {
+            fill: $color-black;
+        }
+
+        &.icon-primary {
+            fill: $primary-color;
+        }
+
+        &.icon-secondary {
+            fill: $secondary-color;
+        }
+    }
+}

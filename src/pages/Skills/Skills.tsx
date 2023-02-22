@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 
 import { useState, useEffect, useRef, useContext } from 'react';
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from 'react-router-dom';
 import { Waypoint } from 'react-waypoint';
 import { useTranslation } from 'react-i18next';
 
@@ -11,16 +11,10 @@ import { isEmptyObject } from '../../utils';
 import useWindowDimensions from '../../hooks/useWindowDimensions';
 import Pie from '../../components/Pie/Pie';
 import Spinner from '../../components/Spinner/Spinner';
+import CustomIcon from '../../components/CustomIcon/CustomIcon';
 
 import classes from './Skills.module.scss';
 import { pieChartConfigType } from '../../models/appTypes';
-
-import fastLearningWhiteIcon from '../../assets/images/soft-skill-icons/fast-learning-white-icon.png';
-import teamPlayerIcon from '../../assets/images/soft-skill-icons/team-player-icon.png';
-import problemSolvingWhiteIcon from '../../assets/images/soft-skill-icons/problem-solving-white-icon.png';
-import mentoringWhiteIcon from '../../assets/images/soft-skill-icons/mentoring-icon2.png';
-import supportWhiteIcon from '../../assets/images/soft-skill-icons/support-white-icon.png';
-
 
 const Skills = () => {
     const { colorTheme, data } = useContext(SiteContext);
@@ -37,7 +31,7 @@ const Skills = () => {
         color: colorTheme.color,
         percentText: {
             color: '#58666e',
-        }
+        },
     };
 
     useEffect(() => {
@@ -50,12 +44,11 @@ const Skills = () => {
 
             setSectionData({
                 skills: data.skills,
-                languages: data.languages.map((obj: any) => ({ ...obj, initialValue: '1' }))
+                languages: data.languages.map((obj: any) => ({ ...obj, initialValue: '1' })),
             });
         }
     }, [data]);
 
-    
     const setSkillBarValues = () => {
         const identifier = setTimeout(() => {
             document.querySelectorAll('.progress-bar').forEach((barElem) => {
@@ -66,13 +59,12 @@ const Skills = () => {
             });
             clearTimeout(identifier);
         }, 1000);
-
     };
 
     const setLanguageValues = () => {
         setSectionData((prevData: any) => {
-            const newData = {...prevData}
-            newData.languages = newData.languages && newData.languages.map((lng: any) => ({ ...lng, initialValue: lng.level }))
+            const newData = { ...prevData };
+            newData.languages = newData.languages && newData.languages.map((lng: any) => ({ ...lng, initialValue: lng.level }));
             return newData;
         });
     };
@@ -80,10 +72,9 @@ const Skills = () => {
     const addRouteAnimationSectionClass = () => {
         setSectionAnimationClasses('section fadeInUp animated');
         navigate('#skills');
-        
+
         setSkillBarValues();
     };
-
 
     return (
         <section id="skills" className={sectionAnimationClasses}>
@@ -96,39 +87,39 @@ const Skills = () => {
                 </div>
 
                 <div className={classes['skills-wrapper']}>
-                    {!loadedData && (<Spinner />)}
-                    {loadedData && (   
+                    {!loadedData && <Spinner />}
+                    {loadedData && (
                         <ul className={classes.skills}>
-                        {sectionData.skills.map((skill: any, i: number) => (
-                            <li key={i}>
-                                { !isMobile.current && (
-                                    <div className={`progress ${classes['progress-wrapper']}`}>
-                                        <div className={classes.lead}>{skill.skill}</div>
-                                        <div className={`progress-bar ${classes['progress-color']}`} role="progressbar" data-progress={skill.level} >
-                                            <span className={classes.percentage}>{skill.level}%</span>
+                            {sectionData.skills.map((skill: any, i: number) => (
+                                <li key={i}>
+                                    {!isMobile.current && (
+                                        <div className={`progress ${classes['progress-wrapper']}`}>
+                                            <div className={classes.lead}>{skill.skill}</div>
+                                            <div className={`progress-bar ${classes['progress-color']}`} role="progressbar" data-progress={skill.level}>
+                                                <span className={classes.percentage}>{skill.level}%</span>
+                                            </div>
                                         </div>
-                                    </div>
-                                )}
+                                    )}
 
-                                { isMobile.current && (
-                                    <div className={`progress ${classes['progress-wrapper']}`}>
-                                        <div className={classes.lead}>
-                                            <span>{skill.skill}</span><span className={classes['percentage']}>{skill.level}%</span>
+                                    {isMobile.current && (
+                                        <div className={`progress ${classes['progress-wrapper']}`}>
+                                            <div className={classes.lead}>
+                                                <span>{skill.skill}</span>
+                                                <span className={classes['percentage']}>{skill.level}%</span>
+                                            </div>
+                                            <div className={`progress-bar ${classes['progress-color']}`} role="progressbar" data-progress={skill.level}></div>
                                         </div>
-                                        <div className={`progress-bar ${classes['progress-color']}`} role="progressbar" data-progress={skill.level}></div>
-                                    </div>
-                                )}
-                            </li>
+                                    )}
+                                </li>
                             ))}
                         </ul>
                     )}
-                    
                 </div>
                 <Waypoint onEnter={() => setLanguageValues()} />
                 <div className={classes['skill-language']}>
                     <h2>{translate('skills.languages_subtitle')}</h2>
-                    {!loadedData && (<Spinner />)}
-                    {loadedData && (   
+                    {!loadedData && <Spinner />}
+                    {loadedData && (
                         <div className="col-sm-12">
                             <div className="skills">
                                 <div className="row">
@@ -148,31 +139,31 @@ const Skills = () => {
                     <div className={`row no-gutters ${classes.wrapper}`}>
                         <div className={`col-md-2 col-sm-4 col-xs-2 ${classes.box}`}>
                             <div className={classes['interest-icon']}>
-                                <img src={fastLearningWhiteIcon} alt="Fast learner icon" />
+                                <CustomIcon name="fastLearning" size="60" className="icon-white" />
                                 <span>{translate('skills.softSkills.fastLearner')}</span>
                             </div>
                         </div>
                         <div className={`col-md-2 col-sm-4 col-xs-2 ${classes.box}`}>
                             <div className={classes['interest-icon']}>
-                                <img src={teamPlayerIcon} alt="Team player icon" />
+                                <CustomIcon name="teamWork" size="60" className="icon-black" />
                                 <span>{translate('skills.softSkills.teamPlayer')}</span>
                             </div>
                         </div>
                         <div className={`col-md-2 col-sm-4 col-xs-2 ${classes.box}`}>
                             <div className={classes['interest-icon']}>
-                                <img src={problemSolvingWhiteIcon} alt="Problem solving icon" />
+                                <CustomIcon name="problemSolving" size="60" className="icon-white" />
                                 <span>{translate('skills.softSkills.problemSolving')}</span>
                             </div>
                         </div>
                         <div className={`col-md-2 col-sm-4 col-xs-2 ${classes.box}`}>
                             <div className={classes['interest-icon']}>
-                                <img src={mentoringWhiteIcon} alt="Mentoring icon" />
+                                <CustomIcon name="mentoring" size="60" className="icon-black" />
                                 <span>{translate('skills.softSkills.mentoring')}</span>
                             </div>
                         </div>
                         <div className={`col-md-2 col-sm-4 col-xs-2 ${classes.box}`}>
                             <div className={classes['interest-icon']}>
-                                <img src={supportWhiteIcon} alt="Support icon" />
+                                <CustomIcon name="support" size="60" className="icon-white" />
                                 <span>{translate('skills.softSkills.support')}</span>
                             </div>
                         </div>
@@ -182,6 +173,5 @@ const Skills = () => {
         </section>
     );
 };
-
 
 export default Skills;
