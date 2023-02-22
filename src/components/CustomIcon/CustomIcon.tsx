@@ -1,9 +1,4 @@
-import FastLearning from './svg-icons/FastLearning';
-import Mentoring from './svg-icons/Mentoring';
-import ProblemSolving from './svg-icons/ProblemSolving';
-import Support from './svg-icons/Support';
-import TeamWork from './svg-icons/TeamWork';
-
+import { FastLearning, Mentoring, ProblemSolving, Support, TeamWork } from './svg-icons';
 import './CustomIcon.scss';
 
 const Icons = {
@@ -14,7 +9,7 @@ const Icons = {
     support: () => <Support />,
 } as const;
 
-export type IconNames = keyof typeof Icons;
+type IconNames = keyof typeof Icons;
 
 interface IconProperties {
     className?: string;
