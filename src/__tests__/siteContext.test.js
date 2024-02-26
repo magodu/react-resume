@@ -26,15 +26,15 @@ React.useContext = mockUseContext;
 
 describe('useSiteContext test', () => {
     test('should return present feature toggles  with its state and dispatch function', () => {
-    render(<SiteContextProvider />);
-    const { result } = renderHook(() => useSiteContext(), { wrapper });
+        render(<SiteContextProvider />);
+        const { result } = renderHook(() => useSiteContext(), { wrapper });
 
-    expect(result.current.language).toBe('es');
-    expect(result.current.colorTheme).toEqual({ color: '#06A763', description: 'green'});
-    expect(result.current.data).toEqual({});
-    expect(result.current.isLoading).toBe(false);
-    expect(result.current.errorLoading).toBe(false);
-    expect(result.current).toEqual(mockContextData);
+        expect(result.current.language).toBe('es');
+        expect(result.current.colorTheme).toEqual({ color: '#06A763', description: 'green'});
+        expect(result.current.data).toEqual({});
+        expect(result.current.isLoading).toBe(false);
+        expect(result.current.errorLoading).toBe(false);
+        expect(result.current).toEqual(mockContextData);
     });
 });
 
