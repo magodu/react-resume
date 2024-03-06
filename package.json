@@ -2,8 +2,9 @@
   "name": "mario-gonzalez-duarte-react-resume",
   "version": "1.0.0",
   "private": true,
+  "homepage": "/resume/",
   "dependencies": {
-    "@react-google-maps/api": "^2.17.1",
+    "@react-google-maps/api": "^2.19.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",

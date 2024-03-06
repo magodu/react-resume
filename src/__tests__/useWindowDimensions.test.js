@@ -1,5 +1,5 @@
 import { act, renderHook } from '@testing-library/react';
-import useWindowDimensions from '../hooks/useWindowDimensions';
+import useWindowDimensions from 'src/hooks/useWindowDimensions';
 
 describe('useWindowDimensions', () => {
     test('should return the initial window dimensions', async () => {

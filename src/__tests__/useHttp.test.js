@@ -1,7 +1,7 @@
 import { act, renderHook } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 
-import useHttp from '../hooks/useHttp';
+import useHttp from 'src/hooks/useHttp';
 
 describe('useHttp', () => {
     let fetchMock;

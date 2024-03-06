@@ -3,14 +3,14 @@ import { useNavigate } from 'react-router-dom';
 import { Waypoint } from 'react-waypoint';
 import { useTranslation } from 'react-i18next';
 
-import { SiteContext } from '../../store/site-context';
-import { isEmptyObject } from '../../utils';
+import { SiteContext } from 'src/store/site-context';
+import { isEmptyObject } from 'src/utils';
 
-import Spinner from '../../components/Spinner/Spinner';
+import Spinner from 'src/components/Spinner/Spinner';
 
 import classes from './Training.module.scss';
 
-import { course } from '../../models/appTypes';
+import { course } from 'src/models/appTypes';
 
 
 const Training = () => {
@@ -29,7 +29,7 @@ const Training = () => {
             const cData: course = {
                 description: courseData.description,
                 imageName: courseData.imageName,
-                imageSrc: require(`../../assets/images/courses/${courseData.imageName}`),
+                imageSrc: require(`src/assets/images/courses/${courseData.imageName}`),
                 title: courseData.title
             }
 

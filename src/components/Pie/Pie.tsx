@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 
 import classes from './Pie.module.scss';
 
-import { pieChartConfigType } from '../../models/appTypes';
+import { pieChartConfigType } from 'src/models/appTypes';
 
 const cleanPercentage = (percentage: number) => {
     const tooLow = !Number.isFinite(+percentage) || percentage < 0;

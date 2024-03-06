@@ -2,7 +2,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { render, screen, cleanup } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 
-import AboutMe from '../pages/AboutMe/AboutMe';
+import AboutMe from 'src/pages/AboutMe/AboutMe';
 
 
 describe('AboutMe component', () => {

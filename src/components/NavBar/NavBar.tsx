@@ -3,8 +3,8 @@ import { useLocation, Link } from "react-router-dom"
 import { HashLink } from 'react-router-hash-link';
 import { useTranslation } from 'react-i18next';
 
-import { SiteContext } from '../../store/site-context';
-import { colorThemeType } from '../../models/appTypes';
+import { SiteContext } from 'src/store/site-context';
+import { colorThemeType } from 'src/models/appTypes';
 
 import classes from './NavBar.module.scss';
 
@@ -144,22 +144,22 @@ const NavBar: React.FC<{ fixedBar: boolean, onChangeLanguage: (language: string)
                 </div>
                 <ul className={`${classes['main-nav']} pagewidth ${menuActive ? classes['show-menu'] : ''}`}>
                     <li id="menuItemMain" className={menuLinkClasses['home']}>
-                        <HashLink smooth to="/resume#home">{translate('common.title_home')}</HashLink>
+                        <HashLink smooth to="#home">{translate('common.title_home')}</HashLink>
                     </li>
                     <li id="menuItemMain" className={menuLinkClasses['aboutMe']}>
-                        <HashLink smooth to="/resume#aboutMe">{translate('common.title_aboutMe')}</HashLink>
+                        <HashLink smooth to="#aboutMe">{translate('common.title_aboutMe')}</HashLink>
                     </li>
                     <li id="menuItemMain" className={menuLinkClasses['experience']}>
-                        <HashLink smooth to="/resume#experience">{translate('common.title_experience')}</HashLink>
+                        <HashLink smooth to="#experience">{translate('common.title_experience')}</HashLink>
                     </li>
                     <li id="menuItemMain" className={menuLinkClasses['skills']}>
-                        <HashLink smooth to="/resume#skills">{translate('common.title_skills')}</HashLink>
+                        <HashLink smooth to="#skills">{translate('common.title_skills')}</HashLink>
                     </li>
                     <li id="menuItemMain" className={menuLinkClasses['training']}>
-                        <HashLink smooth to="/resume#training">{translate('common.title_training')}</HashLink>
+                        <HashLink smooth to="#training">{translate('common.title_training')}</HashLink>
                     </li>
                     <li id="menuItemMain" className={menuLinkClasses['contact']}>
-                        <HashLink smooth to="/resume#contact">{translate('common.title_contact')}</HashLink>
+                        <HashLink smooth to="#contact">{translate('common.title_contact')}</HashLink>
                     </li>
                     <li id="menuItemLanguage" className={classes['menu-item-language']}>
                         <span className="title">{translate('common.title_language')}</span>

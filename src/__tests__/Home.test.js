@@ -2,8 +2,8 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { render, screen, cleanup, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 
-import Home from '../pages/Home/Home';
-import { SiteContext } from '../store/site-context';
+import Home from 'src/pages/Home/Home';
+import { SiteContext } from 'src/store/site-context';
 
 const mockContextData = {
     colorTheme: {color: '', description: ''},

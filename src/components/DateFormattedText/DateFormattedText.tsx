@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-import { getMonthName, getYear, calculatePeriod } from '../../utils';
+import { getMonthName, getYear, calculatePeriod } from 'src/utils';
 
 interface dataTextProps {
     from: string;

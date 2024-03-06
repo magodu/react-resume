@@ -3,15 +3,15 @@ import { useNavigate } from "react-router-dom"
 import { Waypoint } from 'react-waypoint';
 import { useTranslation } from 'react-i18next';
 
-import { SiteContext } from '../../store/site-context';
-import { isEmptyObject } from '../../utils';
+import { SiteContext } from 'src/store/site-context';
+import { isEmptyObject } from 'src/utils';
 
-import Spinner from '../../components/Spinner/Spinner';
-import DateFormattedText from '../../components/DateFormattedText/DateFormattedText';
+import Spinner from 'src/components/Spinner/Spinner';
+import DateFormattedText from 'src/components/DateFormattedText/DateFormattedText';
 
 import classes from './Experience.module.scss';
 
-import { experienceBlock } from '../../models/appTypes';
+import { experienceBlock } from 'src/models/appTypes';
 
 
 const Experience = () => {

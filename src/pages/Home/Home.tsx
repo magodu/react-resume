@@ -1,19 +1,19 @@
 import React, { useState, useEffect, useRef, useCallback, useContext } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Waypoint } from 'react-waypoint';
 import { useTranslation } from 'react-i18next';
 
-import { SiteContext } from '../../store/site-context';
-import { isEmptyObject } from '../../utils';
-import { colorThemeType } from '../../models/appTypes';
+import { SiteContext } from 'src/store/site-context';
+import { isEmptyObject } from 'src/utils';
+import { colorThemeType } from 'src/models/appTypes';
 
-import Spinner from '../../components/Spinner/Spinner';
-import NavBar from '../../components/NavBar/NavBar';
-import useTypingText from '../../hooks/useTypingText';
+import Spinner from 'src/components/Spinner/Spinner';
+import NavBar from 'src/components/NavBar/NavBar';
+import useTypingText from 'src/hooks/useTypingText';
 import classes from './Home.module.scss';
 
-import CV_MarioGonzalez_es from '../../assets/contents/Mario_Gonzalez_Duarte_CV_es.pdf';
-import resume_MarioGonzalez_en from '../../assets/contents/Mario_Gonzalez_Duarte_resume_en.pdf';
+import CV_MarioGonzalez_es from 'src/assets/contents/Mario_Gonzalez_Duarte_CV_es.pdf';
+import resume_MarioGonzalez_en from 'src/assets/contents/Mario_Gonzalez_Duarte_resume_en.pdf';
 
 const Home: React.FC<{ onChangeLanguage: (language: string) => void, onChangeTheme: (color: colorThemeType) => void }> = ({ onChangeLanguage, onChangeTheme }) => {
     const { language, data } = useContext(SiteContext);
@@ -27,7 +27,7 @@ const Home: React.FC<{ onChangeLanguage: (language: string) => void, onChangeThe
 
     const loadBackgroundImages = (imageName: string) => {
         return new Promise((resolve, reject) => {
-            const bgImageUrl: string = require(`../../assets/images/backgrounds/${imageName}`);
+            const bgImageUrl: string = require(`src/assets/images/backgrounds/${imageName}`);
             const image = new Image();
             image.src = bgImageUrl;
             
@@ -92,9 +92,9 @@ const Home: React.FC<{ onChangeLanguage: (language: string) => void, onChangeThe
                                     <span>{word}</span>
                                 </div>
                             </div>
-                            <Link to={language === 'es' ? CV_MarioGonzalez_es : resume_MarioGonzalez_en} className={classes['download-link']} target="_blank" rel="noreferrer">
+                            <a href ={language === 'es' ? CV_MarioGonzalez_es : resume_MarioGonzalez_en} className={classes['download-link']} target="_blank" rel="noreferrer">
                                 {translate('common.resume_download')}
-                            </Link>
+                            </a>
                         </div>
                     </div>
                 </div>

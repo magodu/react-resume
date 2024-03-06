@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
-import { GoogleMap, useLoadScript, MarkerF } from '@react-google-maps/api';
+import { GoogleMap, useJsApiLoader, useLoadScript, MarkerF } from '@react-google-maps/api';
 
-import Spinner from '../../components/Spinner/Spinner';
+import Spinner from 'src/components/Spinner/Spinner';
 
 interface LatLngLiteral {
     lat: number;

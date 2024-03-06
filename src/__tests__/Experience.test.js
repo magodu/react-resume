@@ -3,8 +3,8 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { render, screen, cleanup, waitFor, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 
-import Experience from '../pages/Experience/Experience';
-import { SiteContext } from '../store/site-context';
+import Experience from 'src/pages/Experience/Experience';
+import { SiteContext } from 'src/store/site-context';
 
 const mockContextNoData = {
     data: {},

@@ -1,8 +1,8 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
-import global_es from './assets/i18n/es/global.json';
-import global_en from './assets/i18n/en/global.json';
+import global_es from 'src/assets/i18n/es/global.json';
+import global_en from 'src/assets/i18n/en/global.json';
 
 i18n
 .use(initReactI18next)

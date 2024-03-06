@@ -5,16 +5,16 @@ import { useNavigate } from "react-router-dom";
 import { Waypoint } from 'react-waypoint';
 import { useTranslation } from 'react-i18next';
 
-import { SiteContext } from '../../store/site-context';
-import { isEmptyObject } from '../../utils';
+import { SiteContext } from 'src/store/site-context';
+import { isEmptyObject } from 'src/utils';
 
-import Spinner from '../../components/Spinner/Spinner';
+import Spinner from 'src/components/Spinner/Spinner';
 
 import classes from './AboutMe.module.scss';
-import resumePhoto from '../../assets/images/resume-photo.jpg';
-import signatureImage from '../../assets/images/signature.jpg';
+import resumePhoto from 'src/assets/images/resume-photo.jpg';
+import signatureImage from 'src/assets/images/signature.jpg';
 
-import { aboutBlocks } from '../../models/appTypes';
+import { aboutBlocks } from 'src/models/appTypes';
 
 
 const AboutMe = () => {

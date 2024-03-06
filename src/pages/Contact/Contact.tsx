@@ -5,20 +5,19 @@ import { useNavigate } from "react-router-dom"
 import { Waypoint } from 'react-waypoint';
 import { useTranslation } from 'react-i18next';
 
-import { SiteContext } from '../../store/site-context';
-import { isEmptyObject } from '../../utils';
+import { SiteContext } from 'src/store/site-context';
+import { isEmptyObject } from 'src/utils';
 
-import Spinner from '../../components/Spinner/Spinner';
-import GoogleMapComponent from '../../components/GoogleMap/GoogleMap';
-import ContactForm from '../../components/ContactForm/ContactForm';
+import Spinner from 'src/components/Spinner/Spinner';
+// import GoogleMapComponent from 'src/components/GoogleMap/GoogleMap';
+// import ContactForm from 'src/components/ContactForm/ContactForm';
 
 import classes from './Contact.module.scss';
 
-import CV_MarioGonzalez_es from '../../assets/contents/Mario_Gonzalez_Duarte_CV_es.pdf';
-import resume_MarioGonzalez_en from '../../assets/contents/Mario_Gonzalez_Duarte_resume_en.pdf';
-
-import { contactBlock } from '../../models/appTypes';
-
+import CV_MarioGonzalez_es from 'src/assets/contents/Mario_Gonzalez_Duarte_CV_es.pdf';
+import resume_MarioGonzalez_en from 'src/assets/contents/Mario_Gonzalez_Duarte_resume_en.pdf';
+ 
+import { contactBlock } from 'src/models/appTypes';
 
 const Contact = () => {
     const { language, data } = useContext(SiteContext);
@@ -78,10 +77,10 @@ const Contact = () => {
                 {!loadedData && (<Spinner />)}
                 {loadedData && (   
                     <div className="row">
-                        <GoogleMapComponent zoom={sectionData.maps.zoom} position={sectionData.maps.position} />
+                      {/*   <GoogleMapComponent zoom={sectionData.maps.zoom} position={sectionData.maps.position} /> */}
                     </div>
                 )}
-                <div className="row">
+                <div className="row mt-3">
                     <div className="col-lg-6 col-md-6 col-sm-12">
                         {!loadedData && (<Spinner />)}
                         {loadedData && (  
@@ -134,7 +133,7 @@ const Contact = () => {
                         )}
                     </div>
                     <div className="col-lg-6 col-md-6 col-sm-12">
-                        <ContactForm />
+                       {/*  <ContactForm /> */}
                     </div>
                 </div>
             </div>

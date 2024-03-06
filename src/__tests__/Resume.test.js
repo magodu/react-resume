@@ -3,10 +3,10 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { render, screen, cleanup, waitFor, renderHook } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 
-import { SiteContext } from '../store/site-context';
+import { SiteContext } from 'src/store/site-context';
 
-import Resume from '../pages/Resume/Resume';
-import useLocalStorage from '../hooks/useLocalStorage';
+import Resume from 'src/pages/Resume/Resume';
+import useLocalStorage from 'src/hooks/useLocalStorage';
 
 window.scrollTo = jest.fn();
 

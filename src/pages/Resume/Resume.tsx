@@ -2,20 +2,20 @@ import React, { useEffect, useCallback, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from "react-router-dom";
 
-import Home from '../Home/Home';
-import AboutMe from '../AboutMe/AboutMe';
-import Experience from '../Experience/Experience';
-import Skills from '../Skills/Skills';
-import Training from '../Training/Training';
-import Contact from '../Contact/Contact';
-import Footer from '../../components/Footer/Footer';
-import Loading from '../../components/Loading/Loading';
-import ErrorLoading from '../../components/ErrorLoading/ErrorLoading';
+import Home from 'src/pages/Home/Home';
+import AboutMe from 'src/pages/AboutMe/AboutMe';
+import Experience from 'src/pages/Experience/Experience';
+import Skills from 'src/pages/Skills/Skills';
+import Training from 'src/pages/Training/Training';
+import Contact from 'src/pages/Contact/Contact';
+import Footer from 'src/components/Footer/Footer';
+import Loading from 'src/components/Loading/Loading';
+import ErrorLoading from 'src/components/ErrorLoading/ErrorLoading';
 
-import useLocalStorage from '../../hooks/useLocalStorage';
+import useLocalStorage from 'src/hooks/useLocalStorage';
 
-import { SiteContext } from '../../store/site-context'
-import { localStorageDataType, colorThemeType } from '../../models/appTypes';
+import { SiteContext } from 'src/store/site-context'
+import { localStorageDataType, colorThemeType } from 'src/models/appTypes';
 
 const localStorageData: localStorageDataType = {
     language: 'es',

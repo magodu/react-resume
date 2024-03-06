@@ -1,11 +1,10 @@
 import React, { useState, useRef, useEffect, useCallback, useContext } from 'react';
 
-import { SiteContextObj, InputProps, colorThemeType } from '../models/appTypes';
+import useHttp from 'src/hooks/useHttp';
+import useLocalStorage from 'src/hooks/useLocalStorage';
 
-import useHttp from '../hooks/useHttp';
-import useLocalStorage from '../hooks/useLocalStorage';
-
-import { localStorageDataType } from '../models/appTypes';
+import { SiteContextObj, InputProps, colorThemeType } from 'src/models/appTypes';
+import { localStorageDataType } from 'src/models/appTypes';
 
 const localStorageData: localStorageDataType = {
     language: 'es',

@@ -2,12 +2,12 @@ import React, { useState, useEffect, FormEvent } from 'react';
 import { Waypoint } from 'react-waypoint';
 import { useTranslation } from 'react-i18next';
 
-import useHttp from '../../hooks/useHttp';
-import useInput from '../../hooks/useInput';
-import Spinner from '../../components/Spinner/Spinner';
+import useHttp from 'src/hooks/useHttp';
+import useInput from 'src/hooks/useInput';
+import Spinner from 'src/components/Spinner/Spinner';
 import classes from './ContactForm.module.scss';
 
-import { contactFormType } from '../../models/appTypes';
+import { contactFormType } from 'src/models/appTypes';
 
 interface formAnimationBlock {
     inputName: string,

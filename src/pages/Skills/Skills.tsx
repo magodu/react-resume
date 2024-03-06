@@ -5,16 +5,16 @@ import { useNavigate } from 'react-router-dom';
 import { Waypoint } from 'react-waypoint';
 import { useTranslation } from 'react-i18next';
 
-import { SiteContext } from '../../store/site-context';
-import { isEmptyObject } from '../../utils';
+import { SiteContext } from 'src/store/site-context';
+import { isEmptyObject } from 'src/utils';
 
-import useWindowDimensions from '../../hooks/useWindowDimensions';
-import Pie from '../../components/Pie/Pie';
-import Spinner from '../../components/Spinner/Spinner';
-import CustomIcon from '../../components/CustomIcon/CustomIcon';
+import useWindowDimensions from 'src/hooks/useWindowDimensions';
+import Pie from 'src/components/Pie/Pie';
+import Spinner from 'src/components/Spinner/Spinner';
+import CustomIcon from 'src/components/CustomIcon/CustomIcon';
 
 import classes from './Skills.module.scss';
-import { pieChartConfigType } from '../../models/appTypes';
+import { pieChartConfigType } from 'src/models/appTypes';
 
 const Skills = () => {
     const { colorTheme, data } = useContext(SiteContext);

@@ -2,7 +2,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { render, screen, cleanup } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 
-import NavBar from '../components/NavBar/NavBar';
+import NavBar from 'src/components/NavBar/NavBar';
 
 
 describe('Navbar component', () => {

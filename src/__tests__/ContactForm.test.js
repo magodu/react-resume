@@ -4,7 +4,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import '@testing-library/jest-dom/extend-expect';
 import userEvent from '@testing-library/user-event';
 
-import ContactForm from '../components/ContactForm/ContactForm';
+import ContactForm from 'src/components/ContactForm/ContactForm';
 
 describe('ContactForm component', () => {
     const renderComponent = () =>
