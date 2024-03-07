@@ -178,6 +178,10 @@
                     p {
                         padding: 5px 0;
                         text-align: justify;
+
+                        @media (max-width: 1170px) {
+                            text-align: left;
+                        }
                     }
                 }
             }
@@ -303,5 +307,3 @@
         }
     } 
 }
-
-
