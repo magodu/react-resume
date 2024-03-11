@@ -10,7 +10,7 @@ import { isEmptyObject } from 'src/utils';
 
 import Spinner from 'src/components/Spinner/Spinner';
 // import GoogleMapComponent from 'src/components/GoogleMap/GoogleMap';
-// import ContactForm from 'src/components/ContactForm/ContactForm';
+import ContactForm from 'src/components/ContactForm/ContactForm';
 
 import classes from './Contact.module.scss';
 
@@ -133,7 +133,7 @@ const Contact = () => {
                         )}
                     </div>
                     <div className="col-lg-6 col-md-6 col-sm-12">
-                       {/*  <ContactForm /> */}
+                        <ContactForm />
                     </div>
                 </div>
             </div>

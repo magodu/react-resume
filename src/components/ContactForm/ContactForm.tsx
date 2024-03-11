@@ -97,7 +97,7 @@ const ContactForm = () => {
     const inputMessageClasses = messageInputHasError ? 'invalid' : '';
 
     const sendFormData = async (contactFormData: contactFormType) => {
-        const urlData: string = 'http://mariogonzalezduarte.es/api/email.php';
+        const urlData: string = 'https://www.mariogonzalezduarte.es/api/email.php';
 
         setIsSubmitting(true);
         const transformData = (response: any) => {
