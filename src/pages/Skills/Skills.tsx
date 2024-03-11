@@ -124,7 +124,7 @@ const Skills = () => {
                             <div className="skills">
                                 <div className="row">
                                     {sectionData.languages.map((language: any, i: number) => (
-                                        <div key={i} className="col-md-4 col-xs-4">
+                                        <div key={i} className="col-md-6 col-xs-6">
                                             <Pie percentage={language.initialValue} title={`${language.language}`} config={pieChartConfig} />
                                         </div>
                                     ))}
