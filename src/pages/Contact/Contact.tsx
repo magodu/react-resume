@@ -9,7 +9,7 @@ import { SiteContext } from 'src/store/site-context';
 import { isEmptyObject } from 'src/utils';
 
 import Spinner from 'src/components/Spinner/Spinner';
-// import GoogleMapComponent from 'src/components/GoogleMap/GoogleMap';
+import GoogleMapComponent from 'src/components/GoogleMap/GoogleMap';
 import ContactForm from 'src/components/ContactForm/ContactForm';
 
 import classes from './Contact.module.scss';
@@ -77,7 +77,7 @@ const Contact = () => {
                 {!loadedData && (<Spinner />)}
                 {loadedData && (   
                     <div className="row">
-                      {/*   <GoogleMapComponent zoom={sectionData.maps.zoom} position={sectionData.maps.position} /> */}
+                        <GoogleMapComponent zoom={sectionData.maps.zoom} position={sectionData.maps.position} />
                     </div>
                 )}
                 <div className="row mt-3">
