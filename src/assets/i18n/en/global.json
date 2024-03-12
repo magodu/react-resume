@@ -106,28 +106,5 @@
     },
     "footer": {
         "buttonToTop": "Back to top"
-    },
- 
-    "contactForm": {
-        "title": "Quick Contact",
-        "subtitle": "Contact me and I'll reply to you soon!",
-        "placeholders": {
-            "name": "Your name",
-            "email": "Your email address",
-            "message": "Type your message here...."
-        },
-        "button": {
-            "submit": "Submit",
-            "sending": "Sending..."
-        },
-        "confirm": {
-            "title": "Message sent",
-            "subtitle": "I'll reply to you soon :)"
-        },
-        "error": {
-            "title": "Error sending message",
-            "subtitle": "Opps! There is some problem with the server. Try again.",
-            "emailMe": "If you prefer, you can also email me directly to:"
-        }
     }
 }

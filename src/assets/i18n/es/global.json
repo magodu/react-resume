@@ -97,7 +97,7 @@
             "error_email": "Por favor, introduzca un email válido.",
             "error_message": "Por favor, introduzca un mensaje.",
             "error_banner": "Por favor, revise los campos no válidos",
-            "success_banner": "El mensaje se ha enviado correctamente. Le contactaré lo antes posible.",
+            "success_banner": "El mensaje se ha enviado correctamente. Contactaré lo antes posible.",
             "sending": "Enviando...",
             "server_error_title": "Error al enviar el mensaje",
             "server_error_subtitle": "Opps! There is some problem with the server. Try again.",
@@ -106,28 +106,5 @@
     },
     "footer": {
         "buttonToTop": "Inicio"
-    },
- 
-    "contactForm": {
-        "title": "Quick Contact",
-        "subtitle": "Contact me and I'll reply to you soon!",
-        "placeholders": {
-            "name": "Your name",
-            "email": "Your email address",
-            "message": "Type your message here...."
-        },
-        "button": {
-            "submit": "Submit",
-            "sending": "Sending..."
-        },
-        "confirm": {
-            "title": "Message sent",
-            "subtitle": "I'll reply to you soon :)"
-        },
-        "error": {
-            "title": "Error sending message",
-            "subtitle": "Parece que hay algun problema con el servidor. Inténtalo de nuevo.",
-            "emailMe": "O si prefieres, enviame un email directamente a:"
-        }
     }
 }
