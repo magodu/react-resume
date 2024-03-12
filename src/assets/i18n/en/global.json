@@ -97,7 +97,7 @@
             "error_email": "Please enter a valid email.",
             "error_message": "Please enter a message.",
             "error_banner": "Please review the wrong fields",
-            "success_banner": "Message sent seccusfully. I will contact you ASAP.",
+            "success_banner": "Message sent successfully. I will contact you ASAP.",
             "sending": "Sending...",
             "server_error_title": "Error sending message",
             "server_error_subtitle": "Opps! There is some problem with the server. Try again.",
