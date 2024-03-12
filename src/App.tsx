@@ -14,7 +14,6 @@ function App() {
         <BrowserRouter basename="/resume">
             <SiteContextProvider>
                 <Routes>
-                  {/*   <Route path='/' element={<Navigate replace to='/resume' />} /> */}
                     <Route path='/' element={<Resume />} />
                     <Route path='*' element={<Navigate replace to='/' />} />
                 </Routes>
