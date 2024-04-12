@@ -12,9 +12,6 @@ import NavBar from 'src/components/NavBar/NavBar';
 import useTypingText from 'src/hooks/useTypingText';
 import classes from './Home.module.scss';
 
-import CV_MarioGonzalez_es from 'src/assets/contents/Mario_Gonzalez_Duarte_CV_es.pdf';
-import resume_MarioGonzalez_en from 'src/assets/contents/Mario_Gonzalez_Duarte_resume_en.pdf';
-
 const Home: React.FC<{ onChangeLanguage: (language: string) => void, onChangeTheme: (color: colorThemeType) => void }> = ({ onChangeLanguage, onChangeTheme }) => {
     const { language, data } = useContext(SiteContext);
     const [loadedData, setLoadedData] = useState<boolean>(false);
@@ -81,7 +78,7 @@ const Home: React.FC<{ onChangeLanguage: (language: string) => void, onChangeThe
                     openToWork && (<div className={classes.ribbon}><span>Open to work</span></div>))
                     : <Spinner /> 
                 }
-                <div className={classes.background} style={{backgroundImage: `url(${backgroundImage.current})` }}></div>
+                <div className={classes.background} style={{backgroundImage: `url(${backgroundImage.current})` }} data-testid="background"></div>
                 <div className={classes['home-overlay']}>
                     <div className={classes['home-intro']}>
                         <div className={classes.name}>
@@ -92,7 +89,7 @@ const Home: React.FC<{ onChangeLanguage: (language: string) => void, onChangeThe
                                     <span>{word}</span>
                                 </div>
                             </div>
-                            <a href ={language === 'es' ? CV_MarioGonzalez_es : resume_MarioGonzalez_en} className={classes['download-link']} target="_blank" rel="noreferrer">
+                            <a href={language === 'es' ? process.env.PUBLIC_URL + '/curriculums/Mario_Gonzalez_Duarte_CV_es.pdf' : process.env.PUBLIC_URL + '/curriculums/Mario_Gonzalez_Duarte_resume_en.pdf'} className={classes['download-link']} target="_blank" rel="noreferrer" download={language === 'es' ? 'Mario_Gonzalez_Duarte_CV.pdf' : 'Mario_Gonzalez_Duarte_resume.pdf'}>
                                 {translate('common.resume_download')}
                             </a>
                         </div>

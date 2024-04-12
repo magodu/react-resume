@@ -11,16 +11,15 @@ import 'src/i18n';
 function App() {   
     return (
         <I18nextProvider i18n={i18next}>
-        <BrowserRouter basename="/resume">
-            <SiteContextProvider>
-                <Routes>
-                    <Route path='/' element={<Resume />} />
-                    <Route path='*' element={<Navigate replace to='/' />} />
-                </Routes>
-            </SiteContextProvider>
-        </BrowserRouter>
-    </I18nextProvider>
-
+            <BrowserRouter basename="/resume">
+                <SiteContextProvider>
+                    <Routes>
+                        <Route path='/' element={<Resume />} />
+                        <Route path='*' element={<Navigate replace to='/' />} />
+                    </Routes>
+                </SiteContextProvider>
+            </BrowserRouter>
+        </I18nextProvider>
     );
 }
 

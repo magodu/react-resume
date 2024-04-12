@@ -1,5 +1,5 @@
 import { BrowserRouter as Router } from 'react-router-dom';
-import { render, screen, cleanup, waitFor } from '@testing-library/react';
+import { render, screen, cleanup, waitFor, act } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 
 import Home from 'src/pages/Home/Home';
@@ -52,7 +52,9 @@ describe('Home component', () => {
     });
 
     test('shows openToWork ribbon if the property is true', async () => {
-        renderComponentWithContext(mockContextData);
+        await act(async () => {
+            renderComponentWithContext(mockContextData);
+        });
 
         await waitFor(() => {
             expect(screen.getByText('Open to work')).toBeInTheDocument();
@@ -60,15 +62,14 @@ describe('Home component', () => {
     });
 
     test('loads a random background image', async () => {
-        const { container } = renderComponentWithContext();
+        await act(async () => {
+            renderComponentWithContext();
+        });
     
-        // Wait for the background image to load
-        await new Promise((resolve) => setTimeout(resolve, 1000));
-    
-        const backgroundImage = container.querySelector('.background')?.style.backgroundImage;
-    
-        // Check that the background image URL is not empty
-        expect(backgroundImage).not.toBe('');
-      });
+        await waitFor(() => {
+            const backgroundImage = screen.getByTestId('background').style.backgroundImage;
+            expect(backgroundImage).not.toBe('');
+        });
+    });
 });
 

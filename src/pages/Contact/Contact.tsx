@@ -14,9 +14,6 @@ import ContactForm from 'src/components/ContactForm/ContactForm';
 
 import classes from './Contact.module.scss';
 
-import CV_MarioGonzalez_es from 'src/assets/contents/Mario_Gonzalez_Duarte_CV_es.pdf';
-import resume_MarioGonzalez_en from 'src/assets/contents/Mario_Gonzalez_Duarte_resume_en.pdf';
- 
 import { contactBlock } from 'src/models/appTypes';
 
 const Contact = () => {
@@ -112,7 +109,7 @@ const Contact = () => {
                                     <i className={`bi bi-filetype-pdf ${classes['details-icons']}`} aria-hidden="true"></i>
                                     <p>
                                         <b>{translate('common.resume_download')}: </b>
-                                        <a href={language === 'es' ? CV_MarioGonzalez_es : resume_MarioGonzalez_en} title={`${translate('contact.details.resumeDownload')}`} target="_blank" rel="noreferrer">
+                                        <a href={language === 'es' ? process.env.PUBLIC_URL + '/curriculums/Mario_Gonzalez_Duarte_CV_es.pdf' : process.env.PUBLIC_URL + '/curriculums/Mario_Gonzalez_Duarte_resume_en.pdf'} title={`${translate('contact.details.resumeDownload')}`} target="_blank" rel="noreferrer" download={language === 'es' ? 'Mario_Gonzalez_Duarte_CV.pdf' : 'Mario_Gonzalez_Duarte_resume.pdf'}>
                                             <i className="bi bi-download" aria-hidden="true"></i>
                                         </a>
                                     </p>

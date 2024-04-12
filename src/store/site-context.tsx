@@ -68,7 +68,6 @@ const SiteContextProvider: React.FC<InputProps> = ( props ) => {
     const getData = useCallback(() => {
         setLoading(true);
         const transformData = (response: any) => {
-            //console.log('response context', languageRef.current, response.data);
             setData(response.data);
             setLoading(false);
         };
