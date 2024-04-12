@@ -22,7 +22,7 @@ function renderComponentWithContext() {
     );
 }
 
-describe('AboutMe component', () => {
+describe('Home component', () => {
 
     beforeEach(() => {
         jest.mock('react-i18next', () => ({
@@ -44,7 +44,7 @@ describe('AboutMe component', () => {
 
     afterEach(cleanup);
 
-    test('should render AboutMe component correctly', () => {
+    test('should render Home component correctly', () => {
         render(<Router><Home /></Router>);
 
         const greetingText = screen.getByText('home.greeting');
