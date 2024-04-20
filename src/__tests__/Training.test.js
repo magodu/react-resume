@@ -1,4 +1,4 @@
-import { BrowserRouter as Router } from 'react-router-dom';
+import { MemoryRouter } from 'react-router-dom';
 import { render, screen, cleanup } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 
@@ -6,7 +6,7 @@ import Training from '../pages/Training/Training';
 
 
 describe('Training component', () => {
-    const renderComponent = () => render(<Router><Training /></Router>);
+    const renderComponent = () => render(<MemoryRouter><Training /></MemoryRouter>);
 
     beforeEach(() => {
         jest.mock('react-i18next', () => ({

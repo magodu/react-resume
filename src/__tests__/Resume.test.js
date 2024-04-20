@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { MemoryRouter } from 'react-router-dom';
 import { render, screen, cleanup, waitFor, renderHook } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 
@@ -48,9 +48,9 @@ describe('Resume component', () => {
                     },
                 }}
             >
-                <Router>
+                <MemoryRouter>
                     <Resume />
-                </Router>
+                </MemoryRouter>
             </SiteContext.Provider>
         );
     }

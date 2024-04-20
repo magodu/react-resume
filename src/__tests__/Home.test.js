@@ -1,4 +1,4 @@
-import { BrowserRouter as Router } from 'react-router-dom';
+import { MemoryRouter } from 'react-router-dom';
 import { render, screen, cleanup, waitFor, act } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 
@@ -15,9 +15,9 @@ const mockContextData = {
 function renderComponentWithContext() {
     return render(
         <SiteContext.Provider value={mockContextData}>
-            <Router>
+            <MemoryRouter>
                 <Home />
-            </Router>
+            </MemoryRouter>
         </SiteContext.Provider>
     );
 }
@@ -45,7 +45,7 @@ describe('Home component', () => {
     afterEach(cleanup);
 
     test('should render Home component correctly', () => {
-        render(<Router><Home /></Router>);
+        render(<MemoryRouter><Home /></MemoryRouter>);
 
         const greetingText = screen.getByText('home.greeting');
         expect(greetingText).toBeInTheDocument();

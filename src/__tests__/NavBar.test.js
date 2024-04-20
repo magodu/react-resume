@@ -1,4 +1,4 @@
-import { BrowserRouter as Router } from 'react-router-dom';
+import { MemoryRouter } from 'react-router-dom';
 import { render, screen, cleanup } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 
@@ -6,7 +6,7 @@ import NavBar from 'src/components/NavBar/NavBar';
 
 
 describe('Navbar component', () => {
-    const renderComponent = () => render(<Router><NavBar /></Router>);
+    const renderComponent = () => render(<MemoryRouter><NavBar /></MemoryRouter>);
 
     beforeEach(() => {
         jest.mock('react-i18next', () => ({

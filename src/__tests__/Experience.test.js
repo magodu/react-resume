@@ -1,5 +1,5 @@
 /* eslint-disable testing-library/no-node-access */
-import { BrowserRouter as Router } from 'react-router-dom';
+import { MemoryRouter } from 'react-router-dom';
 import { render, screen, cleanup, waitFor, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 
@@ -30,9 +30,9 @@ jest.mock('../components/DateFormattedText/DateFormattedText');
 function renderComponentWithContext(contextValue) {
     return render(
         <SiteContext.Provider value={contextValue}>
-            <Router>
+            <MemoryRouter>
                 <Experience />
-            </Router>
+            </MemoryRouter>
         </SiteContext.Provider>
     );
 }
@@ -40,9 +40,9 @@ function renderComponentWithContext(contextValue) {
 describe('Experience component', () => {
     const renderComponent = () =>
         render(
-            <Router>
+            <MemoryRouter>
                 <Experience />
-            </Router>
+            </MemoryRouter>
         );
 
     beforeEach(() => {
